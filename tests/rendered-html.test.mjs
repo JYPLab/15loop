@@ -67,6 +67,28 @@ test("evaluates recall locally when no API key is configured", async () => {
   assert.equal(data.feedbackEn.length > 0, true);
 });
 
+test("keeps account creation optional for anonymous learners", async () => {
+  const app = await worker();
+  const response = await app.fetch(
+    new Request("http://localhost/api/account"),
+    env(),
+    context,
+  );
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(await response.json(), { authenticated: false });
+
+  const [page, accountRoute, progressRoute] = await Promise.all([
+    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/api/account/route.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/api/progress/route.ts", import.meta.url), "utf8"),
+  ]);
+  assert.match(page, /\/signin-with-chatgpt\?return_to=/);
+  assert.match(page, /가입 없이 계속 체험/);
+  assert.match(accountRoute, /getChatGPTUser/);
+  assert.match(progressRoute, /resolveLearnerId/);
+});
+
 test("ships a complete 30-word learning dataset", async () => {
   const source = await readFile(new URL("../data/words.ts", import.meta.url), "utf8");
   const entries = source.match(/\n    id: "/g) ?? [];

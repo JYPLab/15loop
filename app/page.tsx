@@ -19,6 +19,15 @@ type ProgressResponse = {
     nextDueAt?: string | null;
   };
 };
+type AccountResponse = {
+  authenticated: boolean;
+  user?: {
+    displayName: string;
+    email: string;
+  };
+  signOutPath?: string;
+  claimed?: boolean;
+};
 
 const skillOrder: SkillKey[] = ["see", "hear", "context", "recall"];
 const initialScores: Record<SkillKey, number> = {
@@ -78,6 +87,18 @@ const copy = {
     saved: "학습 기록 저장됨",
     local: "로컬 안전 평가",
     model: "GPT-5.6 평가",
+    saveProfile: "결과 저장",
+    account: "학습 계정",
+    saveTitle: "방금 발견한 영어 연결도를 저장할까요?",
+    saveBody: "ChatGPT로 로그인하면 약한 단어와 다음 복습 시점이 다른 기기에서도 이어집니다.",
+    savePrimary: "ChatGPT로 10초 만에 저장",
+    saveLater: "가입 없이 계속 체험",
+    saveTrust: "비밀번호와 학교 정보는 받지 않아요.",
+    accountTitle: "학습 기록이 계정에 저장되고 있어요.",
+    accountBody: "이 기기에서 시작한 기록도 안전하게 연결했습니다.",
+    signOut: "로그아웃",
+    close: "닫기",
+    claimed: "익명 학습 기록을 계정으로 옮겼어요.",
   },
   en: {
     home: "LoopVoca home",
@@ -128,6 +149,18 @@ const copy = {
     saved: "Progress saved",
     local: "Local safety evaluation",
     model: "GPT-5.6 evaluation",
+    saveProfile: "Save results",
+    account: "Learning account",
+    saveTitle: "Save the English connections you just discovered?",
+    saveBody: "Sign in with ChatGPT to continue your weak words and review timing across devices.",
+    savePrimary: "Save with ChatGPT in 10 seconds",
+    saveLater: "Keep trying without an account",
+    saveTrust: "We do not ask for a password or school information.",
+    accountTitle: "Your learning record is saving to your account.",
+    accountBody: "The progress you started on this device is connected too.",
+    signOut: "Sign out",
+    close: "Close",
+    claimed: "Your guest learning record is now connected.",
   },
 } as const;
 
@@ -175,6 +208,10 @@ export default function Home() {
   const [isChecking, setIsChecking] = useState(false);
   const [isProgressLoaded, setIsProgressLoaded] = useState(false);
   const [lastSaved, setLastSaved] = useState(false);
+  const [account, setAccount] = useState<AccountResponse>({ authenticated: false });
+  const [accountOpen, setAccountOpen] = useState(false);
+  const [accountPromptDismissed, setAccountPromptDismissed] = useState(false);
+  const [accountNotice, setAccountNotice] = useState(false);
 
   const t = copy[locale];
   const word = useMemo<VocaWord>(() => {
@@ -223,6 +260,7 @@ export default function Home() {
           : "ko";
       setLocale(initialLocale);
       document.documentElement.lang = initialLocale;
+      setAccountPromptDismissed(window.sessionStorage.getItem("loopvoca-account-prompt-dismissed") === "1");
       setLearnerId(getLearnerId());
     });
 
@@ -233,19 +271,63 @@ export default function Home() {
     if (!learnerId) return;
     let active = true;
 
-    fetch(`/api/progress?learnerId=${encodeURIComponent(learnerId)}`)
-      .then((response) => response.ok ? response.json() as Promise<ProgressResponse> : null)
-      .then((data) => {
-        if (!active || !data?.profile) return;
-        setScores(data.profile.scores);
-        setCompletedToday(Math.min(dailyWords.length, data.profile.completedToday));
-        setStreak(data.profile.streak);
-      })
-      .catch(() => undefined)
-      .finally(() => active && setIsProgressLoaded(true));
+    const loadAccountAndProgress = async () => {
+      try {
+        const accountResponse = await fetch("/api/account");
+        let accountData = accountResponse.ok
+          ? await accountResponse.json() as AccountResponse
+          : { authenticated: false };
+
+        if (accountData.authenticated) {
+          const claimResponse = await fetch("/api/account", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ guestLearnerId: learnerId }),
+          });
+          if (claimResponse.ok) {
+            accountData = await claimResponse.json() as AccountResponse;
+          }
+        }
+
+        if (!active) return;
+        setAccount(accountData);
+
+        const welcome = new URLSearchParams(window.location.search).get("welcome") === "1";
+        if (accountData.authenticated && (accountData.claimed || welcome)) {
+          setAccountNotice(true);
+          const url = new URL(window.location.href);
+          url.searchParams.delete("welcome");
+          window.history.replaceState({}, "", url);
+        }
+
+        const progressResponse = await fetch(`/api/progress?learnerId=${encodeURIComponent(learnerId)}`);
+        const progressData = progressResponse.ok
+          ? await progressResponse.json() as ProgressResponse
+          : null;
+        if (!active || !progressData?.profile) return;
+        setScores(progressData.profile.scores);
+        setCompletedToday(Math.min(dailyWords.length, progressData.profile.completedToday));
+        setStreak(progressData.profile.streak);
+      } catch {
+        // Anonymous learning remains available if account discovery is interrupted.
+      } finally {
+        if (active) setIsProgressLoaded(true);
+      }
+    };
+
+    void loadAccountAndProgress();
 
     return () => { active = false; };
   }, [learnerId]);
+
+  useEffect(() => {
+    if (!accountOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setAccountOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [accountOpen]);
 
   const changeLocale = (nextLocale: Locale) => {
     setLocale(nextLocale);
@@ -352,6 +434,7 @@ export default function Home() {
         setCompletedToday((current) => Math.min(dailyWords.length, current + 1));
       }
       setCompleted(true);
+      if (!account.authenticated && !accountPromptDismissed) setAccountOpen(true);
       return;
     }
 
@@ -386,6 +469,13 @@ export default function Home() {
         : t.recallTitle(locale === "ko" ? word.contextKo : word.contextEn);
 
   const progressPercent = Math.round((completedToday / dailyWords.length) * 100);
+  const displayName = account.user?.displayName || account.user?.email || "JY";
+  const initials = displayName.split(/\s+/).map((part) => part[0]).join("").slice(0, 2).toUpperCase() || "JY";
+  const dismissAccountPrompt = () => {
+    setAccountOpen(false);
+    setAccountPromptDismissed(true);
+    window.sessionStorage.setItem("loopvoca-account-prompt-dismissed", "1");
+  };
 
   return (
     <main className="app-shell">
@@ -401,9 +491,18 @@ export default function Home() {
             <button className={locale === "en" ? "active" : ""} onClick={() => changeLocale("en")}>EN</button>
           </div>
           <div className="streak"><span>●</span> {t.streak(streak)}</div>
-          <button className="profile" aria-label={t.profile}>JY</button>
+          <button className="account-trigger" onClick={() => setAccountOpen(true)} aria-label={t.account}>
+            <span className="account-label">{account.authenticated ? displayName : t.saveProfile}</span>
+            <span className="profile">{initials}</span>
+          </button>
         </div>
       </header>
+
+      {accountNotice && (
+        <button className="account-notice" onClick={() => setAccountNotice(false)} aria-label={t.close}>
+          <span>✓</span> {t.claimed}
+        </button>
+      )}
 
       <section className="hero" id="top">
         <div>
@@ -585,6 +684,38 @@ export default function Home() {
         <span>LoopVoca Learning Loop Engine · GPT-5.6</span>
         <p>{t.footer}</p>
       </footer>
+
+      {accountOpen && (
+        <div className="account-backdrop" role="presentation" onMouseDown={(event) => {
+          if (event.target === event.currentTarget) setAccountOpen(false);
+        }}>
+          <section className="account-modal" role="dialog" aria-modal="true" aria-labelledby="account-title">
+            <button className="modal-close" onClick={() => setAccountOpen(false)} aria-label={t.close}>×</button>
+            <span className="modal-kicker">LOOPVOCA PROFILE</span>
+            {account.authenticated ? (
+              <>
+                <div className="modal-avatar">{initials}</div>
+                <h2 id="account-title">{t.accountTitle}</h2>
+                <p>{t.accountBody}</p>
+                <div className="account-identity">
+                  <strong>{displayName}</strong>
+                  <span>{account.user?.email}</span>
+                </div>
+                <a className="modal-secondary" href={account.signOutPath || "/signout-with-chatgpt?return_to=%2F"}>{t.signOut}</a>
+              </>
+            ) : (
+              <>
+                <div className="modal-symbol">↻</div>
+                <h2 id="account-title">{t.saveTitle}</h2>
+                <p>{t.saveBody}</p>
+                <a className="modal-primary" href="/signin-with-chatgpt?return_to=%2F%3Fwelcome%3D1">{t.savePrimary} <span>→</span></a>
+                <button className="modal-secondary" onClick={dismissAccountPrompt}>{t.saveLater}</button>
+                <small>{t.saveTrust}</small>
+              </>
+            )}
+          </section>
+        </div>
+      )}
     </main>
   );
 }

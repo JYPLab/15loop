@@ -7,7 +7,7 @@ LoopVoca is an adaptive English vocabulary learning engine for Korean middle-sch
 3. Context — can the learner use the word naturally in a sentence?
 4. Active recall — can the learner retrieve the full expression without a hint?
 
-The MVP provides a bilingual Korean/English experience, a 30-word daily loop, browser speech, randomized review, persistent learner profiles, and GPT-5.6-powered recall evaluation.
+The MVP provides a bilingual Korean/English experience, a 30-word daily loop, browser speech, randomized review, persistent learner profiles, progressive account creation, and GPT-5.6-powered recall evaluation.
 
 ## Why it exists
 
@@ -48,6 +48,15 @@ OPENAI_MODEL=gpt-5.6
 ## Persistence
 
 The Sites project declares a D1 binding named `DB`. Schema definitions live in `db/schema.ts`, and generated SQL migrations are stored in `drizzle/`. The browser stores only an anonymous device identifier and language preference; learning records remain authoritative in D1.
+
+## Progressive account flow
+
+- Learners start immediately without registration so the first value is the learning loop itself.
+- After completing the first word, LoopVoca offers an optional **Sign in with ChatGPT** step to save the learner profile.
+- The server derives account identity from authenticated request headers and never trusts a client-supplied email.
+- Anonymous progress is merged into the signed-in profile, including connection scores, word mastery, review timing, and evaluation history.
+- Returning learners continue at the learning screen without an onboarding survey. Public hackathon judging remains available without an account.
+- LoopVoca does not collect a separate password or school information.
 
 ## Verification
 

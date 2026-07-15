@@ -43,7 +43,11 @@ button { color: inherit; }
 .language-toggle button.active { background: var(--blue); color: white; }
 .streak { padding: 10px 14px; border: 1px solid rgba(21, 24, 20, .16); border-radius: 999px; background: rgba(255,255,255,.45); font-size: 13px; font-weight: 700; }
 .streak span { color: var(--coral); font-size: 10px; margin-right: 5px; }
-.profile { border: 0; width: 39px; height: 39px; border-radius: 50%; background: var(--blue); color: white; font-weight: 850; cursor: pointer; }
+.account-trigger { min-height: 44px; display: inline-flex; align-items: center; gap: 9px; padding: 3px 3px 3px 13px; border: 1px solid rgba(21,24,20,.16); border-radius: 999px; background: rgba(255,255,255,.58); cursor: pointer; }
+.account-label { max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; font-weight: 900; }
+.profile { display: grid; place-items: center; width: 37px; height: 37px; border-radius: 50%; background: var(--blue); color: white; font-size: 11px; font-weight: 850; }
+.account-notice { position: fixed; z-index: 30; top: 98px; right: clamp(20px, 4vw, 64px); display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 15px; border: 1px solid rgba(21,24,20,.16); border-radius: 999px; background: var(--ink); color: white; box-shadow: 0 12px 36px rgba(21,24,20,.18); font-size: 12px; font-weight: 800; cursor: pointer; }
+.account-notice span { color: var(--green); }
 
 .hero { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; padding: 54px 0 42px; }
 .kicker { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 750; color: var(--muted); }
@@ -149,6 +153,25 @@ h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: 1px; 
 footer { display: flex; justify-content: space-between; align-items: center; padding: 28px 2px 38px; color: var(--muted); font-size: 10px; font-weight: 750; letter-spacing: .08em; }
 footer p { margin: 0; }
 
+.account-backdrop { position: fixed; z-index: 50; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(14,16,13,.58); backdrop-filter: blur(5px); }
+.account-modal { position: relative; width: min(100%, 470px); padding: 36px; border: 1px solid rgba(21,24,20,.16); border-radius: 22px; background: var(--card); box-shadow: 0 30px 90px rgba(0,0,0,.28); text-align: center; }
+.modal-close { position: absolute; top: 13px; right: 13px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: transparent; color: var(--muted); font-size: 25px; cursor: pointer; }
+.modal-close:hover { background: #eeeee8; color: var(--ink); }
+.modal-kicker { display: block; color: var(--blue); font-size: 9px; font-weight: 950; letter-spacing: .16em; }
+.modal-symbol, .modal-avatar { display: grid; place-items: center; width: 72px; height: 72px; margin: 21px auto 18px; border-radius: 50%; background: var(--green); color: var(--ink); font-size: 37px; font-weight: 950; }
+.modal-avatar { background: var(--blue); color: white; font-size: 20px; }
+.account-modal h2 { margin: 0; font-size: clamp(26px, 5vw, 37px); line-height: 1.08; letter-spacing: -.045em; }
+.account-modal > p { margin: 14px auto 23px; max-width: 370px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.modal-primary, .modal-secondary { min-height: 48px; display: flex; align-items: center; justify-content: center; width: 100%; border-radius: 11px; font-size: 13px; font-weight: 900; text-decoration: none; cursor: pointer; }
+.modal-primary { border: 0; background: var(--ink); color: white; }
+.modal-primary span { margin-left: 9px; color: var(--green); }
+.modal-secondary { margin-top: 8px; border: 1px solid var(--line); background: transparent; color: var(--ink); }
+.account-modal > small { display: block; margin-top: 14px; color: var(--muted); font-size: 10px; }
+.account-identity { margin: 0 0 20px; padding: 15px; border-radius: 12px; background: #efefe8; }
+.account-identity strong, .account-identity span { display: block; }
+.account-identity strong { font-size: 14px; }
+.account-identity span { margin-top: 5px; color: var(--muted); font-size: 11px; }
+
 @media (max-width: 920px) {
   .workspace { grid-template-columns: 1fr; }
   .insight-panel { min-height: 430px; }
@@ -158,7 +181,8 @@ footer p { margin: 0; }
 
 @media (max-width: 640px) {
   .app-shell { padding: 0 14px; }
-  .topbar { height: 70px; }.streak { display: none; }.topbar-actions { gap: 7px; }.profile { display: none; }
+  .topbar { height: 70px; }.streak { display: none; }.topbar-actions { gap: 7px; }.account-label { display: none; }.account-trigger { padding: 3px; border: 0; background: transparent; }
+  .account-notice { top: 78px; left: 14px; right: 14px; justify-content: center; }
   .language-toggle button { width: 34px; }
   .hero { padding: 38px 4px 30px; align-items: flex-end; }
   h1 { font-size: 42px; }.today-stat { min-width: 90px; padding: 10px 0 10px 12px; }.today-stat strong { font-size: 28px; }
@@ -170,6 +194,7 @@ footer p { margin: 0; }
   .feedback-row { align-items: flex-start; flex-direction: column; }.next-button { width: 100%; }
   .result-card { min-height: 570px; padding: 28px 22px; }.result-actions { flex-direction: column; width: 100%; }.result-actions button { width: 100%; }
   footer { align-items: flex-start; gap: 8px; flex-direction: column; }
+  .account-modal { padding: 34px 20px 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

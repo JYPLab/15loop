@@ -1,4 +1,5 @@
 import { and, asc, eq } from "drizzle-orm";
+import { getChatGPTUser } from "../../chatgpt-auth";
 
 type Db = ReturnType<typeof import("../../../db").getDb>;
 type Schema = typeof import("../../../db/schema");
@@ -28,6 +29,15 @@ type ProgressRequest = {
   score?: number;
   locale?: "ko" | "en";
 };
+
+function accountLearnerId(email: string) {
+  return `account:${email.trim().toLowerCase()}`;
+}
+
+async function resolveLearnerId(fallbackLearnerId: string) {
+  const user = await getChatGPTUser();
+  return user ? accountLearnerId(user.email) : fallbackLearnerId;
+}
 
 function todayInSeoul() {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date());
@@ -101,8 +111,9 @@ function routeError(error: unknown) {
 }
 
 export async function GET(request: Request) {
-  const learnerId = new URL(request.url).searchParams.get("learnerId")?.trim() ?? "";
-  if (!learnerId || learnerId.length > 100) {
+  const fallbackLearnerId = new URL(request.url).searchParams.get("learnerId")?.trim() ?? "";
+  const learnerId = await resolveLearnerId(fallbackLearnerId);
+  if (!learnerId || learnerId.length > 180) {
     return Response.json({ error: "valid learnerId is required" }, { status: 400 });
   }
 
@@ -124,13 +135,13 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   const body = (await request.json()) as ProgressRequest;
-  const learnerId = body.learnerId?.trim() ?? "";
+  const learnerId = await resolveLearnerId(body.learnerId?.trim() ?? "");
   const wordId = body.wordId?.trim() ?? "";
   const skill = body.skill;
   const locale = body.locale === "en" ? "en" : "ko";
   const score = clamp(Number(body.score ?? 0));
 
-  if (!learnerId || learnerId.length > 100 || !wordId || wordId.length > 80 || !skill || !["see", "hear", "context", "recall"].includes(skill)) {
+  if (!learnerId || learnerId.length > 180 || !wordId || wordId.length > 80 || !skill || !["see", "hear", "context", "recall"].includes(skill)) {
     return Response.json({ error: "invalid progress event" }, { status: 400 });
   }
 
