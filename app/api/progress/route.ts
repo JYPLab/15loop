@@ -1,5 +1,6 @@
 import { and, asc, eq } from "drizzle-orm";
-import { getChatGPTUser } from "../../chatgpt-auth";
+import { getOptionalParent } from "../../../lib/auth";
+import { guardianHasAccess } from "../../../lib/commercial";
 
 type Db = ReturnType<typeof import("../../../db").getDb>;
 type Schema = typeof import("../../../db/schema");
@@ -30,13 +31,33 @@ type ProgressRequest = {
   locale?: "ko" | "en";
 };
 
-function accountLearnerId(email: string) {
-  return `account:${email.trim().toLowerCase()}`;
+type LearnerResolution = { learnerId: string; status: "ok" | "invalid" | "auth" | "expired" };
+
+async function resolveLearnerId(request: Request, fallbackLearnerId: string): Promise<LearnerResolution> {
+  if (/^learner-[0-9a-f-]{36}$/i.test(fallbackLearnerId)) return { learnerId: fallbackLearnerId, status: "ok" };
+  if (!/^child-[0-9a-f-]{36}$/i.test(fallbackLearnerId)) return { learnerId: "", status: "invalid" };
+  const parent = await getOptionalParent(request);
+  if (!parent) return { learnerId: "", status: "auth" };
+  const { db, schema } = await getStorage();
+  const [ownership] = await db.select().from(schema.guardianLearners).where(and(
+    eq(schema.guardianLearners.guardianId, parent.id),
+    eq(schema.guardianLearners.learnerId, fallbackLearnerId),
+  )).limit(1);
+  if (!ownership) return { learnerId: "", status: "auth" };
+  const [account] = await db.select().from(schema.guardianAccounts)
+    .where(eq(schema.guardianAccounts.id, parent.id)).limit(1);
+  if (!account || !guardianHasAccess(account)) return { learnerId: "", status: "expired" };
+  return { learnerId: fallbackLearnerId, status: "ok" };
 }
 
-async function resolveLearnerId(fallbackLearnerId: string) {
-  const user = await getChatGPTUser();
-  return user ? accountLearnerId(user.email) : fallbackLearnerId;
+function learnerResolutionError(resolution: LearnerResolution) {
+  if (resolution.status === "expired") {
+    return Response.json({ error: "무료 체험 또는 이용권이 만료되었습니다." }, { status: 402 });
+  }
+  if (resolution.status === "auth") {
+    return Response.json({ error: "이 학습자에 접근할 권한이 없습니다." }, { status: 401 });
+  }
+  return Response.json({ error: "valid learnerId is required" }, { status: 400 });
 }
 
 function todayInSeoul() {
@@ -112,10 +133,9 @@ function routeError(error: unknown) {
 
 export async function GET(request: Request) {
   const fallbackLearnerId = new URL(request.url).searchParams.get("learnerId")?.trim() ?? "";
-  const learnerId = await resolveLearnerId(fallbackLearnerId);
-  if (!learnerId || learnerId.length > 180) {
-    return Response.json({ error: "valid learnerId is required" }, { status: 400 });
-  }
+  const resolution = await resolveLearnerId(request, fallbackLearnerId);
+  if (resolution.status !== "ok" || resolution.learnerId.length > 180) return learnerResolutionError(resolution);
+  const learnerId = resolution.learnerId;
 
   try {
     const { db, schema } = await getStorage();
@@ -135,13 +155,15 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   const body = (await request.json()) as ProgressRequest;
-  const learnerId = await resolveLearnerId(body.learnerId?.trim() ?? "");
+  const resolution = await resolveLearnerId(request, body.learnerId?.trim() ?? "");
+  if (resolution.status !== "ok" || resolution.learnerId.length > 180) return learnerResolutionError(resolution);
+  const learnerId = resolution.learnerId;
   const wordId = body.wordId?.trim() ?? "";
   const skill = body.skill;
   const locale = body.locale === "en" ? "en" : "ko";
   const score = clamp(Number(body.score ?? 0));
 
-  if (!learnerId || learnerId.length > 180 || !wordId || wordId.length > 80 || !skill || !["see", "hear", "context", "recall"].includes(skill)) {
+  if (!wordId || wordId.length > 80 || !skill || !["see", "hear", "context", "recall"].includes(skill)) {
     return Response.json({ error: "invalid progress event" }, { status: 400 });
   }
 

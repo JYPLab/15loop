@@ -1,4 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
+import { and, eq, sql } from "drizzle-orm";
+import { dailyWords } from "../../../data/words";
+import { getOptionalParent } from "../../../lib/auth";
+import { guardianHasAccess } from "../../../lib/commercial";
 
 type EvaluationRequest = {
   learnerId?: string;
@@ -41,23 +45,87 @@ function localEvaluation(target: string, answer: string) {
   };
 }
 
+function usageDate() {
+  return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date());
+}
+
+async function sha256(value: string) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
+  return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+async function consumeAiAllowance(request: NextRequest, learnerId: string) {
+  const [{ getDb }, schema] = await Promise.all([import("../../../db"), import("../../../db/schema")]);
+  const db = getDb();
+  let actorType = "guest";
+  let actorId = "";
+  let limit = 2;
+
+  if (/^child-[0-9a-f-]{36}$/i.test(learnerId)) {
+    const parent = await getOptionalParent(request);
+    if (!parent) return false;
+    const [ownership] = await db.select().from(schema.guardianLearners).where(and(
+      eq(schema.guardianLearners.guardianId, parent.id),
+      eq(schema.guardianLearners.learnerId, learnerId),
+    )).limit(1);
+    const [account] = await db.select().from(schema.guardianAccounts)
+      .where(eq(schema.guardianAccounts.id, parent.id)).limit(1);
+    if (!ownership || !account || !guardianHasAccess(account)) return false;
+    actorType = "guardian";
+    actorId = parent.id;
+    limit = 200;
+  } else if (/^learner-[0-9a-f-]{36}$/i.test(learnerId)) {
+    const clientIp = request.headers.get("cf-connecting-ip") ||
+      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    actorId = await sha256(clientIp);
+  } else {
+    return false;
+  }
+
+  const date = usageDate();
+  const id = `${date}:${actorType}:${actorId}`;
+  const [usage] = await db.insert(schema.aiEvaluationUsage).values({ id, actorType, usageDate: date })
+    .onConflictDoUpdate({
+      target: schema.aiEvaluationUsage.id,
+      set: {
+        requestCount: sql`${schema.aiEvaluationUsage.requestCount} + 1`,
+        updatedAt: new Date().toISOString(),
+      },
+    }).returning({ requestCount: schema.aiEvaluationUsage.requestCount });
+  return usage.requestCount <= limit;
+}
+
 export async function POST(request: NextRequest) {
   const body = (await request.json()) as EvaluationRequest;
-  const target = body.target?.trim() ?? "";
+  const submittedTarget = body.target?.trim() ?? "";
   const answer = body.answer?.trim() ?? "";
-  const meaning = body.meaning?.trim() ?? "";
-  const word = body.word?.trim() ?? "";
+  const learnerId = body.learnerId?.trim() ?? "";
 
-  if (!target || !answer) {
+  if (!submittedTarget || !answer) {
     return NextResponse.json({ error: "target and answer are required" }, { status: 400 });
   }
 
-  if (target.length > 300 || answer.length > 500 || meaning.length > 300) {
+  if (submittedTarget.length > 300 || answer.length > 500) {
     return NextResponse.json({ error: "evaluation input is too long" }, { status: 400 });
   }
 
+  const curriculumItem = dailyWords.find((item) => normalize(item.example) === normalize(submittedTarget));
+  if (!curriculumItem) {
+    return NextResponse.json({ error: "only LoopVoca curriculum items can be evaluated" }, { status: 400 });
+  }
+  const target = curriculumItem.example;
+  const meaning = curriculumItem.contextKo;
+  const word = curriculumItem.word;
+
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) return NextResponse.json(localEvaluation(target, answer));
+
+  try {
+    const allowed = await consumeAiAllowance(request, learnerId);
+    if (!allowed) return NextResponse.json({ ...localEvaluation(target, answer), limited: true });
+  } catch {
+    return NextResponse.json({ ...localEvaluation(target, answer), limited: true });
+  }
 
   const model = process.env.OPENAI_MODEL ?? "gpt-5.6";
 

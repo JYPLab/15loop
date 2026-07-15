@@ -2,6 +2,8 @@
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import { dailyWords, shuffledDailyWords, type VocaWord } from "../data/words";
+import { getSupabaseBrowserClient } from "../lib/supabase-browser";
+import { speakEnglish } from "../lib/speech";
 
 type Locale = "ko" | "en";
 type SkillKey = "see" | "hear" | "context" | "recall";
@@ -25,8 +27,6 @@ type AccountResponse = {
     displayName: string;
     email: string;
   };
-  signOutPath?: string;
-  claimed?: boolean;
 };
 
 type ChallengeState = "intro" | "playing" | "complete";
@@ -92,15 +92,18 @@ const copy = {
     saveProfile: "결과 저장",
     account: "학습 계정",
     saveTitle: "방금 발견한 영어 연결도를 저장할까요?",
-    saveBody: "ChatGPT로 로그인하면 약한 단어와 다음 복습 시점이 다른 기기에서도 이어집니다.",
-    savePrimary: "ChatGPT로 10초 만에 저장",
-    saveLater: "가입 없이 계속 체험",
-    saveTrust: "비밀번호와 학교 정보는 받지 않아요.",
+    saveBody: "부모가 Google 또는 이메일로 가입하면 약한 단어와 다음 복습 시점이 가족 계정에 이어집니다.",
+    savePrimary: "부모 계정으로 결과 연결",
+    saveLater: "무료 진단 먼저 하기",
+    saveTrust: "학생에게 이메일이나 비밀번호를 요구하지 않아요.",
+    accessExpiredTitle: "무료 체험 또는 이용권이 끝났어요.",
+    accessExpiredBody: "부모 대시보드에서 이용권을 확인하면 같은 학습 기록으로 계속할 수 있어요.",
+    accessExpiredAction: "이용권 확인",
     accountTitle: "학습 기록이 계정에 저장되고 있어요.",
     accountBody: "이 기기에서 시작한 기록도 안전하게 연결했습니다.",
-    signOut: "로그아웃",
+    signOut: "부모 대시보드",
     close: "닫기",
-    claimed: "익명 학습 기록을 계정으로 옮겼어요.",
+    claimed: "학습 기록을 가족 계정에 연결했어요.",
     shareAchievement: "오늘의 성장 공유",
     sendChallenge: "친구에게 5단어 챌린지",
     shareSuccess: "공유할 준비가 됐어요.",
@@ -175,15 +178,18 @@ const copy = {
     saveProfile: "Save results",
     account: "Learning account",
     saveTitle: "Save the English connections you just discovered?",
-    saveBody: "Sign in with ChatGPT to continue your weak words and review timing across devices.",
-    savePrimary: "Save with ChatGPT in 10 seconds",
-    saveLater: "Keep trying without an account",
-    saveTrust: "We do not ask for a password or school information.",
+    saveBody: "A parent can continue weak words and review timing with Google or email sign-in.",
+    savePrimary: "Connect a parent account",
+    saveLater: "Take the free diagnostic first",
+    saveTrust: "Students never need an email address or password.",
+    accessExpiredTitle: "Your trial or access pass has ended.",
+    accessExpiredBody: "Check access in the parent dashboard to continue with the same learning record.",
+    accessExpiredAction: "View access passes",
     accountTitle: "Your learning record is saving to your account.",
     accountBody: "The progress you started on this device is connected too.",
-    signOut: "Sign out",
+    signOut: "Parent dashboard",
     close: "Close",
-    claimed: "Your guest learning record is now connected.",
+    claimed: "Your learning record is connected to the family account.",
     shareAchievement: "Share today’s growth",
     sendChallenge: "Send a 5-word challenge",
     shareSuccess: "Ready to share.",
@@ -209,12 +215,7 @@ const copy = {
 } as const;
 
 function speak(text: string) {
-  if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "en-US";
-  utterance.rate = 0.78;
-  window.speechSynthesis.speak(utterance);
+  speakEnglish(text);
 }
 
 function rotateChoices(values: string[], wordIndex: number, stepIndex: number) {
@@ -259,8 +260,9 @@ export default function Home() {
   const [lastSaved, setLastSaved] = useState(false);
   const [account, setAccount] = useState<AccountResponse>({ authenticated: false });
   const [accountOpen, setAccountOpen] = useState(false);
-  const [accountPromptDismissed, setAccountPromptDismissed] = useState(false);
   const [accountNotice, setAccountNotice] = useState(false);
+  const [authToken, setAuthToken] = useState("");
+  const [accessBlocked, setAccessBlocked] = useState(false);
   const [shareNotice, setShareNotice] = useState("");
   const [challengeOpen, setChallengeOpen] = useState(false);
   const [challengeState, setChallengeState] = useState<ChallengeState>("intro");
@@ -276,6 +278,7 @@ export default function Home() {
   }, [queue, queueIndex]);
   const stepKey = skillOrder[stepIndex];
   const isDayComplete = completedToday >= dailyWords.length;
+  const isFamilyLearner = account.authenticated && !accessBlocked && /^child-[0-9a-f-]{36}$/i.test(learnerId);
 
   const weakest = useMemo(() => {
     return (Object.entries(scores) as [SkillKey, number][]).sort((a, b) => a[1] - b[1])[0];
@@ -330,8 +333,8 @@ export default function Home() {
           : "ko";
       setLocale(initialLocale);
       document.documentElement.lang = initialLocale;
-      setAccountPromptDismissed(window.sessionStorage.getItem("loopvoca-account-prompt-dismissed") === "1");
-      setLearnerId(getLearnerId());
+      const requestedLearner = params.get("learner")?.trim() ?? "";
+      setLearnerId(/^child-[0-9a-f-]{36}$/i.test(requestedLearner) ? requestedLearner : getLearnerId());
 
       const challengeIds = params.get("challenge")?.split(",").slice(0, 5) ?? [];
       const incomingWords = challengeIds
@@ -356,34 +359,33 @@ export default function Home() {
 
     const loadAccountAndProgress = async () => {
       try {
-        const accountResponse = await fetch("/api/account");
-        let accountData = accountResponse.ok
+        const supabase = getSupabaseBrowserClient();
+        const session = supabase ? (await supabase.auth.getSession()).data.session : null;
+        const token = session?.access_token ?? "";
+        setAuthToken(token);
+        const accountResponse = await fetch("/api/account", { headers: token ? { Authorization: `Bearer ${token}` } : undefined });
+        const accountData = accountResponse.ok
           ? await accountResponse.json() as AccountResponse
           : { authenticated: false };
-
-        if (accountData.authenticated) {
-          const claimResponse = await fetch("/api/account", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ guestLearnerId: learnerId }),
-          });
-          if (claimResponse.ok) {
-            accountData = await claimResponse.json() as AccountResponse;
-          }
-        }
 
         if (!active) return;
         setAccount(accountData);
 
         const welcome = new URLSearchParams(window.location.search).get("welcome") === "1";
-        if (accountData.authenticated && (accountData.claimed || welcome)) {
+        if (accountData.authenticated && welcome) {
           setAccountNotice(true);
           const url = new URL(window.location.href);
           url.searchParams.delete("welcome");
           window.history.replaceState({}, "", url);
         }
 
-        const progressResponse = await fetch(`/api/progress?learnerId=${encodeURIComponent(learnerId)}`);
+        const progressResponse = await fetch(`/api/progress?learnerId=${encodeURIComponent(learnerId)}`, {
+          headers: token ? { Authorization: `Bearer ${token}` } : undefined,
+        });
+        if (progressResponse.status === 402) {
+          setAccessBlocked(true);
+          setAccountOpen(true);
+        }
         const progressData = progressResponse.ok
           ? await progressResponse.json() as ProgressResponse
           : null;
@@ -427,9 +429,14 @@ export default function Home() {
     try {
       const response = await fetch("/api/progress", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}) },
         body: JSON.stringify({ learnerId, wordId: word.id, skill, correct, score, locale }),
       });
+      if (response.status === 402) {
+        setAccessBlocked(true);
+        setAccountOpen(true);
+        return;
+      }
       if (!response.ok) return;
       const data = (await response.json()) as ProgressResponse;
       if (data.profile) {
@@ -517,7 +524,7 @@ export default function Home() {
         setCompletedToday((current) => Math.min(dailyWords.length, current + 1));
       }
       setCompleted(true);
-      if (!account.authenticated && !accountPromptDismissed) setAccountOpen(true);
+      if (!isFamilyLearner) setAccountOpen(true);
       return;
     }
 
@@ -527,6 +534,10 @@ export default function Home() {
   };
 
   const nextWord = () => {
+    if (!isFamilyLearner) {
+      setAccountOpen(true);
+      return;
+    }
     setQueue((current) => {
       if (!wordHadError) return current;
       const next = [...current];
@@ -554,11 +565,6 @@ export default function Home() {
   const progressPercent = Math.round((completedToday / dailyWords.length) * 100);
   const displayName = account.user?.displayName || account.user?.email || "JY";
   const initials = displayName.split(/\s+/).map((part) => part[0]).join("").slice(0, 2).toUpperCase() || "JY";
-  const dismissAccountPrompt = () => {
-    setAccountOpen(false);
-    setAccountPromptDismissed(true);
-    window.sessionStorage.setItem("loopvoca-account-prompt-dismissed", "1");
-  };
 
   const shareContent = async (title: string, text: string, url: string) => {
     try {
@@ -609,7 +615,7 @@ export default function Home() {
     setChallengeScore(0);
     setChallengeChoice("");
     setChallengeState("playing");
-    window.setTimeout(() => challengeWords[0] && speak(challengeWords[0].word), 180);
+    if (challengeWords[0]) speak(challengeWords[0].word);
   };
 
   const chooseChallengeAnswer = (choice: string) => {
@@ -627,7 +633,7 @@ export default function Home() {
     const nextIndex = challengeIndex + 1;
     setChallengeIndex(nextIndex);
     setChallengeChoice("");
-    window.setTimeout(() => speak(challengeWords[nextIndex].word), 180);
+    speak(challengeWords[nextIndex].word);
   };
 
   const closeChallenge = () => {
@@ -647,6 +653,7 @@ export default function Home() {
         </a>
         <div className="topbar-actions">
           <div className="engine-pill"><span>✦</span> GPT-5.6</div>
+          <a className="topbar-link" href="/diagnosis">{locale === "ko" ? "무료 진단" : "Free check"}</a>
           <div className="language-toggle" role="group" aria-label="Language">
             <button className={locale === "ko" ? "active" : ""} onClick={() => changeLocale("ko")}>KO</button>
             <button className={locale === "en" ? "active" : ""} onClick={() => changeLocale("en")}>EN</button>
@@ -865,7 +872,7 @@ export default function Home() {
           <section className="account-modal" role="dialog" aria-modal="true" aria-labelledby="account-title">
             <button className="modal-close" onClick={() => setAccountOpen(false)} aria-label={t.close}>×</button>
             <span className="modal-kicker">LOOPVOCA PROFILE</span>
-            {account.authenticated ? (
+            {isFamilyLearner ? (
               <>
                 <div className="modal-avatar">{initials}</div>
                 <h2 id="account-title">{t.accountTitle}</h2>
@@ -874,15 +881,15 @@ export default function Home() {
                   <strong>{displayName}</strong>
                   <span>{account.user?.email}</span>
                 </div>
-                <a className="modal-secondary" href={account.signOutPath || "/signout-with-chatgpt?return_to=%2F"}>{t.signOut}</a>
+                <a className="modal-secondary" href="/parent">{t.signOut}</a>
               </>
             ) : (
               <>
                 <div className="modal-symbol">↻</div>
-                <h2 id="account-title">{t.saveTitle}</h2>
-                <p>{t.saveBody}</p>
-                <a className="modal-primary" href="/signin-with-chatgpt?return_to=%2F%3Fwelcome%3D1">{t.savePrimary} <span>→</span></a>
-                <button className="modal-secondary" onClick={dismissAccountPrompt}>{t.saveLater}</button>
+                <h2 id="account-title">{accessBlocked ? t.accessExpiredTitle : t.saveTitle}</h2>
+                <p>{accessBlocked ? t.accessExpiredBody : t.saveBody}</p>
+                <a className="modal-primary" href="/parent">{accessBlocked ? t.accessExpiredAction : t.savePrimary} <span>→</span></a>
+                {!accessBlocked && <a className="modal-secondary" href="/diagnosis">{t.saveLater}</a>}
                 <small>{t.saveTrust}</small>
               </>
             )}

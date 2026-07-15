@@ -7,7 +7,7 @@ LoopVoca is an adaptive English vocabulary learning engine for Korean middle-sch
 3. Context — can the learner use the word naturally in a sentence?
 4. Active recall — can the learner retrieve the full expression without a hint?
 
-The MVP provides a bilingual Korean/English experience, a 30-word daily loop, browser speech, randomized review, persistent learner profiles, privacy-first achievement sharing, five-word friend challenges, progressive account creation, and GPT-5.6-powered recall evaluation.
+The MVP provides a bilingual Korean/English experience, an adaptive 20–25 word free diagnostic, a 30-word learning loop, browser speech, randomized review, parent-owned family accounts, up to three child profiles, a seven-day trial, Toss Payments-ready 30-day passes, privacy-first friend challenges, and GPT-5.6-powered recall evaluation.
 
 ## Why it exists
 
@@ -46,18 +46,48 @@ OPENAI_MODEL=gpt-5.6
 
 `POST /api/evaluate` uses the OpenAI Responses API with strict Structured Outputs. The model returns correctness, a score, an error category, a canonical answer, and feedback in both Korean and English. Prompts contain only the submitted learning sentence and do not request personal information.
 
+## Commercial local setup
+
+Copy `.env.example` to `.env.local` and configure:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
+NEXT_PUBLIC_TOSS_CLIENT_KEY=
+TOSS_SECRET_KEY=
+APP_ORIGIN=http://localhost:3000
+```
+
+- **Parent authentication:** Create a Supabase project, enable Google and email authentication, and allow `http://localhost:3000/auth/callback` as a redirect URL. Email magic links require a production SMTP provider before public launch; Supabase's default sender is intended only for limited testing.
+- **Payments:** Use Toss Payments test client and secret keys locally. The browser opens Toss Standard Payments v2, while the server creates the authoritative order, verifies the returned amount, and confirms the payment using the secret key. The current products are non-renewing 30-day passes; automatic recurring billing is intentionally excluded until a separate billing contract is approved.
+- **Pricing:** KRW 12,900 for one learner and KRW 19,900 for up to three learners are initial beta hypotheses, not validated final prices.
+- **Legal launch gate:** Before collecting real customer data or money, add reviewed terms, privacy policy, refund policy, explicit consent, business/merchant information, and the required child-data safeguards.
+
 ## Persistence
 
 The Sites project declares a D1 binding named `DB`. Schema definitions live in `db/schema.ts`, and generated SQL migrations are stored in `drizzle/`. The browser stores only an anonymous device identifier and language preference; learning records remain authoritative in D1.
 
-## Progressive account flow
+## Parent and child flow
 
-- Learners start immediately without registration so the first value is the learning loop itself.
-- After completing the first word, LoopVoca offers an optional **Sign in with ChatGPT** step to save the learner profile.
-- The server derives account identity from authenticated request headers and never trusts a client-supplied email.
-- Anonymous progress is merged into the signed-in profile, including connection scores, word mastery, review timing, and evaluation history.
-- Returning learners continue at the learning screen without an onboarding survey. Public hackathon judging remains available without an account.
-- LoopVoca does not collect a separate password or school information.
+- A student completes a free 20-word diagnostic without registration. If a connection score is 60 or lower, five additional questions focus on the weakest connection.
+- The parent—not the student—creates the account through Google OAuth or an email magic link.
+- The first authenticated request creates a seven-day trial without card details. A parent can create up to three separate child profiles and attach the diagnostic to one child.
+- Child learning URLs require both a valid parent session and parent-child ownership. The server also rejects learning writes after the trial or paid access expires.
+- The server derives identity from a verified Supabase access token and never trusts a client-supplied parent email.
+- Anonymous users receive one learning sample and are then directed to the free diagnostic or parent account.
+
+## Payment safety
+
+- Product names and amounts come from server-owned plan definitions.
+- A payment order belongs to the authenticated parent and stores its expected amount before the payment window opens.
+- Confirmation verifies ownership, stored amount, Toss response order ID, total amount, and `DONE` status.
+- Toss secret keys never reach the browser, and the confirmation request uses an idempotency key.
+- An individual pass cannot be purchased while more than one child profile is linked.
+- The OpenAI evaluator accepts only server-known curriculum sentences. Daily AI-call quotas are enforced per anonymous network or authenticated family, with a local evaluator fallback when the quota or storage is unavailable.
+
+## Deployment path
+
+The current implementation is intentionally local. Once authentication, test payments, migrations, and legal copy are accepted, the next phase is to push the repository to GitHub, configure production secrets in the hosting provider, run the D1 migrations, deploy, and then attach the custom domain. No production domain or live payment key should be used before that checklist is complete.
 
 ## Verification
 
