@@ -11,6 +11,8 @@ type ProfileRow = {
   locale: string;
   streak: number;
   completedToday: number;
+  studySecondsToday: number;
+  dailySessionCompleted: boolean;
   lastStudyDate: string;
   seeScore: number;
   hearScore: number;
@@ -23,12 +25,14 @@ type ProfileRow = {
 type SkillKey = "see" | "hear" | "context" | "recall";
 
 type ProgressRequest = {
+  action?: "heartbeat";
   learnerId?: string;
   wordId?: string;
   skill?: SkillKey;
   correct?: boolean;
   score?: number;
   locale?: "ko" | "en";
+  studySeconds?: number;
 };
 
 type LearnerResolution = { learnerId: string; status: "ok" | "invalid" | "auth" | "expired" };
@@ -78,6 +82,8 @@ function profilePayload(profile: ProfileRow, nextDueAt?: string | null) {
   return {
     streak: profile.streak,
     completedToday: profile.completedToday,
+    studySecondsToday: profile.studySecondsToday,
+    dailySessionCompleted: profile.dailySessionCompleted,
     scores: {
       see: profile.seeScore,
       hear: profile.hearScore,
@@ -111,6 +117,8 @@ async function ensureProfile(db: Db, schema: Schema, learnerId: string, locale: 
     const continued = profile.lastStudyDate === yesterdayOf(today);
     const [updated] = await db.update(learnerProfiles).set({
       completedToday: 0,
+      studySecondsToday: 0,
+      dailySessionCompleted: false,
       streak: continued ? profile.streak + 1 : 1,
       lastStudyDate: today,
       locale,
@@ -162,6 +170,27 @@ export async function POST(request: Request) {
   const skill = body.skill;
   const locale = body.locale === "en" ? "en" : "ko";
   const score = clamp(Number(body.score ?? 0));
+
+  if (body.action === "heartbeat") {
+    const studySeconds = Number(body.studySeconds);
+    if (!Number.isInteger(studySeconds) || studySeconds < 1 || studySeconds > 60) {
+      return Response.json({ error: "invalid study heartbeat" }, { status: 400 });
+    }
+    try {
+      const { db, schema } = await getStorage();
+      const profile = await ensureProfile(db, schema, learnerId, locale);
+      const nextStudySeconds = Math.min(900, profile.studySecondsToday + studySeconds);
+      const [updatedProfile] = await db.update(schema.learnerProfiles).set({
+        locale,
+        studySecondsToday: nextStudySeconds,
+        dailySessionCompleted: nextStudySeconds >= 900,
+        updatedAt: new Date().toISOString(),
+      }).where(eq(schema.learnerProfiles.id, learnerId)).returning();
+      return Response.json({ profile: profilePayload(updatedProfile) });
+    } catch (error) {
+      return routeError(error);
+    }
+  }
 
   if (!wordId || wordId.length > 80 || !skill || !["see", "hear", "context", "recall"].includes(skill)) {
     return Response.json({ error: "invalid progress event" }, { status: 400 });

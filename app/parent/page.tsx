@@ -12,6 +12,8 @@ type Learner = {
   grade: string;
   streak: number;
   completedToday: number;
+  studySecondsToday: number;
+  dailySessionCompleted: boolean;
   scores: Record<"see" | "hear" | "context" | "recall", number>;
 };
 
@@ -327,6 +329,7 @@ export default function ParentPage() {
             <article className="learner-card" key={learner.id}>
               <div className="learner-avatar">{learner.displayName.slice(0, 1)}</div>
               <div><h3>{learner.displayName}</h3><p>{gradeLabel(learner.grade)} · {learner.streak}일 연속</p></div>
+              <p className="learner-today">오늘 {learner.completedToday}단어 · {Math.floor(learner.studySecondsToday / 60)}분{learner.dailySessionCompleted ? " 완료" : " 학습"}</p>
               <Link href={`/?learner=${encodeURIComponent(learner.id)}`}>이 아이로 학습 →</Link>
             </article>
           ))}

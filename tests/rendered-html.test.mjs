@@ -161,6 +161,25 @@ test("ships a complete 30-word learning dataset", async () => {
   assert.match(source, /definitionEn/);
 });
 
+test("uses a persisted 15-minute active learning target", async () => {
+  const [page, progressRoute, schema, parentPage] = await Promise.all([
+    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/api/progress/route.ts", import.meta.url), "utf8"),
+    readFile(new URL("../db/schema.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/parent/page.tsx", import.meta.url), "utf8"),
+  ]);
+  assert.match(page, /DAILY_SESSION_SECONDS = 15 \* 60/);
+  assert.match(page, /IDLE_PAUSE_SECONDS = 60/);
+  assert.match(page, /document\.visibilityState === "visible"/);
+  assert.match(page, /action: "heartbeat"/);
+  assert.match(page, /오늘의 15분 학습을 마쳤어요/);
+  assert.match(progressRoute, /body\.action === "heartbeat"/);
+  assert.match(progressRoute, /Math\.min\(900, profile\.studySecondsToday \+ studySeconds\)/);
+  assert.match(schema, /studySecondsToday/);
+  assert.match(schema, /dailySessionCompleted/);
+  assert.match(parentPage, /learner\.studySecondsToday/);
+});
+
 test("ships private achievement sharing and a five-word friend challenge", async () => {
   const [page, styles] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),

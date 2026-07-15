@@ -8,6 +8,8 @@ export const learnerProfiles = sqliteTable("learner_profiles", {
   locale: text("locale").notNull().default("ko"),
   streak: integer("streak").notNull().default(1),
   completedToday: integer("completed_today").notNull().default(0),
+  studySecondsToday: integer("study_seconds_today").notNull().default(0),
+  dailySessionCompleted: integer("daily_session_completed", { mode: "boolean" }).notNull().default(false),
   lastStudyDate: text("last_study_date").notNull(),
   seeScore: integer("see_score").notNull().default(50),
   hearScore: integer("hear_score").notNull().default(50),

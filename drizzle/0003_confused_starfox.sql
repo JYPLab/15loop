@@ -1,0 +1,2 @@
+ALTER TABLE `learner_profiles` ADD `study_seconds_today` integer DEFAULT 0 NOT NULL;--> statement-breakpoint
+ALTER TABLE `learner_profiles` ADD `daily_session_completed` integer DEFAULT false NOT NULL;

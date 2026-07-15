@@ -72,6 +72,8 @@ async function profilePayload(
       grade: learner.grade,
       streak: learner.streak,
       completedToday: learner.completedToday,
+      studySecondsToday: learner.studySecondsToday,
+      dailySessionCompleted: learner.dailySessionCompleted,
       scores: {
         see: learner.seeScore,
         hear: learner.hearScore,

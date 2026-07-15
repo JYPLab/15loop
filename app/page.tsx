@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { dailyWords, shuffledDailyWords, type VocaWord } from "../data/words";
 import { getSupabaseBrowserClient } from "../lib/supabase-browser";
 import { speakEnglish } from "../lib/speech";
@@ -17,6 +17,8 @@ type ProgressResponse = {
   profile?: {
     streak: number;
     completedToday: number;
+    studySecondsToday: number;
+    dailySessionCompleted: boolean;
     scores: Record<SkillKey, number>;
     nextDueAt?: string | null;
   };
@@ -31,6 +33,9 @@ type AccountResponse = {
 
 type ChallengeState = "intro" | "playing" | "complete";
 
+const DAILY_SESSION_SECONDS = 15 * 60;
+const HEARTBEAT_SECONDS = 30;
+const IDLE_PAUSE_SECONDS = 60;
 const skillOrder: SkillKey[] = ["see", "hear", "context", "recall"];
 const initialScores: Record<SkillKey, number> = {
   see: 50,
@@ -47,7 +52,12 @@ const copy = {
     headlineA: "외웠는지가 아니라,",
     headlineB: "정말 아는지",
     headlineC: "확인해요.",
-    today: "오늘",
+    today: "오늘의 집중시간",
+    wordsToday: (count: number) => `${count}단어 연결`,
+    timerRunning: "집중 시간 기록 중",
+    timerPaused: "탭 이탈·60초 미활동 시 자동 일시정지",
+    timerReady: "부모 계정의 아이 프로필에서 시작",
+    timerDone: "오늘의 집중 학습 완료",
     stages: ["보고 알기", "듣고 알기", "문맥 이해", "직접 인출"],
     eyebrows: ["01 · 보고 알기", "02 · 듣고 알기", "03 · 문맥 이해", "04 · 직접 인출"],
     seeTitle: (word: string) => `${word}의 뜻은 무엇일까요?`,
@@ -76,8 +86,8 @@ const copy = {
     resultBody: "네 가지 연결을 모두 확인했어요. 약한 연결은 잠시 뒤 새로운 문장으로 다시 만나요.",
     nextWord: "다음 단어 시작하기",
     reviewResult: "학습 결과 다시 보기",
-    dayComplete: "오늘의 30단어를 모두 연결했어요.",
-    dayCompleteBody: "AI가 기억 상태를 저장했어요. 약해지기 직전의 단어부터 다음 루프가 시작됩니다.",
+    dayComplete: "오늘의 15분 학습을 마쳤어요.",
+    dayCompleteBody: (count: number) => `${count}개 단어의 네 가지 연결을 확인했어요. AI가 약해지기 직전의 단어부터 다음 학습을 준비합니다.`,
     profile: "나의 영어 연결도",
     profileLabel: "LIVE PROFILE",
     gapTitle: "AI가 발견한 오늘의 빈틈",
@@ -133,7 +143,12 @@ const copy = {
     headlineA: "Do not just memorize it.",
     headlineB: "Prove you know it",
     headlineC: "in four connections.",
-    today: "Today",
+    today: "Today’s focus time",
+    wordsToday: (count: number) => `${count} words connected`,
+    timerRunning: "Focus time is running",
+    timerPaused: "Pauses off-tab or after 60 seconds idle",
+    timerReady: "Start from a child profile in the parent account",
+    timerDone: "Today’s focus session is complete",
     stages: ["Recognition", "Listening", "Context", "Recall"],
     eyebrows: ["01 · RECOGNITION", "02 · LISTENING", "03 · CONTEXT", "04 · ACTIVE RECALL"],
     seeTitle: (word: string) => `What does “${word}” mean?`,
@@ -162,8 +177,8 @@ const copy = {
     resultBody: "All four connections were checked. Weak connections return later in a new sentence.",
     nextWord: "Start next word",
     reviewResult: "Review result",
-    dayComplete: "You connected all 30 words for today.",
-    dayCompleteBody: "Your memory state is saved. The next loop starts with words just before they fade.",
+    dayComplete: "You completed today’s 15-minute session.",
+    dayCompleteBody: (count: number) => `You checked four memory connections across ${count} words. The next session starts with memories closest to fading.`,
     profile: "My connection profile",
     profileLabel: "LIVE PROFILE",
     gapTitle: "The gap AI found today",
@@ -227,6 +242,13 @@ function dateKey() {
   return new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date());
 }
 
+function formatRemainingTime(studySeconds: number) {
+  const remaining = Math.max(0, DAILY_SESSION_SECONDS - studySeconds);
+  const minutes = Math.floor(remaining / 60);
+  const seconds = remaining % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
 function getLearnerId() {
   const existing = window.localStorage.getItem("loopvoca-learner-id");
   if (existing) return existing;
@@ -253,6 +275,8 @@ export default function Home() {
   const [completed, setCompleted] = useState(false);
   const [completedIds, setCompletedIds] = useState<Set<string>>(() => new Set());
   const [completedToday, setCompletedToday] = useState(0);
+  const [studySecondsToday, setStudySecondsToday] = useState(0);
+  const [timerPaused, setTimerPaused] = useState(true);
   const [streak, setStreak] = useState(1);
   const [wordHadError, setWordHadError] = useState(false);
   const [isChecking, setIsChecking] = useState(false);
@@ -271,13 +295,17 @@ export default function Home() {
   const [challengeScore, setChallengeScore] = useState(0);
   const [challengeChoice, setChallengeChoice] = useState("");
   const [friendScore, setFriendScore] = useState<number | null>(null);
+  const pendingStudySeconds = useRef(0);
+  const heartbeatInFlight = useRef(false);
+  const lastInteractionAt = useRef(0);
+  const studySecondsRef = useRef(0);
 
   const t = copy[locale];
   const word = useMemo<VocaWord>(() => {
     return dailyWords.find((item) => item.id === queue[queueIndex]) ?? dailyWords[0];
   }, [queue, queueIndex]);
   const stepKey = skillOrder[stepIndex];
-  const isDayComplete = completedToday >= dailyWords.length;
+  const isDayComplete = studySecondsToday >= DAILY_SESSION_SECONDS;
   const isFamilyLearner = account.authenticated && !accessBlocked && /^child-[0-9a-f-]{36}$/i.test(learnerId);
 
   const weakest = useMemo(() => {
@@ -392,6 +420,10 @@ export default function Home() {
         if (!active || !progressData?.profile) return;
         setScores(progressData.profile.scores);
         setCompletedToday(Math.min(dailyWords.length, progressData.profile.completedToday));
+        const savedStudySeconds = Math.min(DAILY_SESSION_SECONDS, progressData.profile.studySecondsToday);
+        studySecondsRef.current = savedStudySeconds;
+        setStudySecondsToday(savedStudySeconds);
+        if (progressData.profile.dailySessionCompleted) setCompleted(true);
         setStreak(progressData.profile.streak);
       } catch {
         // Anonymous learning remains available if account discovery is interrupted.
@@ -413,6 +445,75 @@ export default function Home() {
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [accountOpen]);
+
+  const flushStudyTime = useCallback(async (keepalive = false) => {
+    if (!isFamilyLearner || heartbeatInFlight.current || pendingStudySeconds.current < 1) return;
+    const seconds = Math.min(60, pendingStudySeconds.current);
+    pendingStudySeconds.current -= seconds;
+    heartbeatInFlight.current = true;
+    try {
+      const response = await fetch("/api/progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}) },
+        body: JSON.stringify({ action: "heartbeat", learnerId, studySeconds: seconds, locale }),
+        keepalive,
+      });
+      if (response.status === 402) {
+        setAccessBlocked(true);
+        setAccountOpen(true);
+        return;
+      }
+      if (!response.ok) throw new Error("Study heartbeat failed");
+      const data = await response.json() as ProgressResponse;
+      if (data.profile) {
+        const saved = Math.min(DAILY_SESSION_SECONDS, data.profile.studySecondsToday);
+        const current = Math.max(studySecondsRef.current, saved);
+        studySecondsRef.current = current;
+        setStudySecondsToday(current);
+      }
+    } catch {
+      pendingStudySeconds.current += seconds;
+    } finally {
+      heartbeatInFlight.current = false;
+    }
+  }, [authToken, isFamilyLearner, learnerId, locale]);
+
+  useEffect(() => {
+    if (!isProgressLoaded || !isFamilyLearner || isDayComplete) return;
+
+    const markActive = () => { lastInteractionAt.current = Date.now(); };
+    markActive();
+    window.addEventListener("pointerdown", markActive);
+    window.addEventListener("keydown", markActive);
+    window.addEventListener("focus", markActive);
+
+    const interval = window.setInterval(() => {
+      const visible = document.visibilityState === "visible" && document.hasFocus();
+      const recentlyActive = Date.now() - lastInteractionAt.current < IDLE_PAUSE_SECONDS * 1000;
+      const active = visible && recentlyActive && !accountOpen && !challengeOpen;
+      setTimerPaused(!active);
+      if (!active || studySecondsRef.current >= DAILY_SESSION_SECONDS) return;
+
+      const next = Math.min(DAILY_SESSION_SECONDS, studySecondsRef.current + 1);
+      studySecondsRef.current = next;
+      pendingStudySeconds.current += 1;
+      setStudySecondsToday(next);
+      if (pendingStudySeconds.current >= HEARTBEAT_SECONDS) void flushStudyTime();
+    }, 1000);
+
+    const flushBeforeLeave = () => { void flushStudyTime(true); };
+    window.addEventListener("pagehide", flushBeforeLeave);
+    document.addEventListener("visibilitychange", flushBeforeLeave);
+    return () => {
+      window.clearInterval(interval);
+      window.removeEventListener("pointerdown", markActive);
+      window.removeEventListener("keydown", markActive);
+      window.removeEventListener("focus", markActive);
+      window.removeEventListener("pagehide", flushBeforeLeave);
+      document.removeEventListener("visibilitychange", flushBeforeLeave);
+      void flushStudyTime(true);
+    };
+  }, [accountOpen, challengeOpen, flushStudyTime, isDayComplete, isFamilyLearner, isProgressLoaded]);
 
   const changeLocale = (nextLocale: Locale) => {
     setLocale(nextLocale);
@@ -442,6 +543,9 @@ export default function Home() {
       if (data.profile) {
         setScores(data.profile.scores);
         setCompletedToday(Math.min(dailyWords.length, data.profile.completedToday));
+        const savedStudySeconds = Math.min(DAILY_SESSION_SECONDS, data.profile.studySecondsToday);
+        studySecondsRef.current = savedStudySeconds;
+        setStudySecondsToday(savedStudySeconds);
         setStreak(data.profile.streak);
       }
       setLastSaved(true);
@@ -538,14 +642,18 @@ export default function Home() {
       setAccountOpen(true);
       return;
     }
-    setQueue((current) => {
-      if (!wordHadError) return current;
-      const next = [...current];
-      const reviewAt = Math.min(next.length, queueIndex + 4);
-      next.splice(reviewAt, 0, word.id);
-      return next;
-    });
-    setQueueIndex((current) => Math.min(queue.length - 1, current + 1));
+    if (queueIndex >= queue.length - 1) {
+      setQueue(shuffledDailyWords(`${dateKey()}-${completedToday}`).map((item) => item.id));
+      setQueueIndex(0);
+    } else {
+      if (wordHadError) {
+        const next = [...queue];
+        const reviewAt = Math.min(next.length, queueIndex + 4);
+        next.splice(reviewAt, 0, word.id);
+        setQueue(next);
+      }
+      setQueueIndex((current) => current + 1);
+    }
     setStepIndex(0);
     setSelected("");
     setRecall("");
@@ -562,7 +670,15 @@ export default function Home() {
         ? word.exampleBlank
         : t.recallTitle(locale === "ko" ? word.contextKo : word.contextEn);
 
-  const progressPercent = Math.round((completedToday / dailyWords.length) * 100);
+  const focusProgressPercent = Math.round((studySecondsToday / DAILY_SESSION_SECONDS) * 100);
+  const remainingTime = formatRemainingTime(studySecondsToday);
+  const timerCaption = isDayComplete
+    ? t.timerDone
+    : !isFamilyLearner
+      ? t.timerReady
+      : timerPaused
+        ? t.timerPaused
+        : t.timerRunning;
   const displayName = account.user?.displayName || account.user?.email || "JY";
   const initials = displayName.split(/\s+/).map((part) => part[0]).join("").slice(0, 2).toUpperCase() || "JY";
 
@@ -590,8 +706,8 @@ export default function Home() {
   const shareAchievement = () => {
     const title = locale === "ko" ? "LoopVoca 오늘의 성장" : "My LoopVoca growth";
     const text = locale === "ko"
-      ? `오늘 ${completedToday}개 단어를 연결하고 ${streak}일째 학습 중이에요.`
-      : `I connected ${completedToday} words today and kept a ${streak}-day learning streak.`;
+      ? `오늘 ${Math.floor(studySecondsToday / 60)}분 동안 ${completedToday}개 단어를 연결하고 ${streak}일째 학습 중이에요.`
+      : `I connected ${completedToday} words in ${Math.floor(studySecondsToday / 60)} focused minutes and kept a ${streak}-day learning streak.`;
     const url = new URL(window.location.origin + window.location.pathname);
     url.searchParams.set("lang", locale);
     void shareContent(title, text, url.toString());
@@ -683,10 +799,11 @@ export default function Home() {
           <div className="kicker"><span>AI EVALUATION</span> {t.kicker}</div>
           <h1>{t.headlineA}<br /><em>{t.headlineB}</em> {t.headlineC}</h1>
         </div>
-        <div className="today-stat" aria-label={`${t.today} ${completedToday} / ${dailyWords.length}`}>
+        <div className="today-stat" aria-label={`${t.today} ${remainingTime}, ${t.wordsToday(completedToday)}`}>
           <span>{t.today}</span>
-          <strong>{String(completedToday).padStart(2, "0")} <small>/ {dailyWords.length}</small></strong>
-          <div className="mini-progress"><i style={{ width: `${progressPercent}%` }} /></div>
+          <strong>{remainingTime}</strong>
+          <small className="timer-caption">{t.wordsToday(completedToday)} · {timerCaption}</small>
+          <div className="mini-progress"><i style={{ width: `${focusProgressPercent}%` }} /></div>
         </div>
       </section>
 
@@ -707,9 +824,9 @@ export default function Home() {
           {isDayComplete && completed ? (
             <article className="result-card day-complete-card">
               <div className="result-badge">DAILY LOOP COMPLETE</div>
-              <p className="result-number">30</p>
+              <p className="result-number">{String(completedToday).padStart(2, "0")}</p>
               <h2>{t.dayComplete}</h2>
-              <p>{t.dayCompleteBody}</p>
+              <p>{t.dayCompleteBody(completedToday)}</p>
               <div className="result-actions">
                 <button className="primary-button" onClick={shareAchievement}>{t.shareAchievement} <span>↗</span></button>
                 <button className="ghost-button light-button" onClick={() => shareChallenge()}>{t.sendChallenge}</button>
