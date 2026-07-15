@@ -29,6 +29,8 @@ type AccountResponse = {
   claimed?: boolean;
 };
 
+type ChallengeState = "intro" | "playing" | "complete";
+
 const skillOrder: SkillKey[] = ["see", "hear", "context", "recall"];
 const initialScores: Record<SkillKey, number> = {
   see: 50,
@@ -99,6 +101,27 @@ const copy = {
     signOut: "로그아웃",
     close: "닫기",
     claimed: "익명 학습 기록을 계정으로 옮겼어요.",
+    shareAchievement: "오늘의 성장 공유",
+    sendChallenge: "친구에게 5단어 챌린지",
+    shareSuccess: "공유할 준비가 됐어요.",
+    copySuccess: "링크를 복사했어요.",
+    challengeBadge: "FRIEND CHALLENGE",
+    challengeTitle: "친구가 5단어 챌린지를 보냈어요!",
+    challengeBody: "실력 순위가 아니에요. 소리를 듣고 오늘의 나를 가볍게 시험해 보세요.",
+    challengeStart: "챌린지 시작",
+    challengeLater: "나중에 할게요",
+    challengeListen: "단어 소리 듣기",
+    challengePrompt: "방금 들은 단어의 뜻을 골라보세요.",
+    challengeNext: "다음 단어",
+    challengeFinish: "결과 확인",
+    challengeCorrect: "정확해요! 소리와 의미가 연결됐어요.",
+    challengeRetry: "괜찮아요. 정답을 듣고 다음 단어로 가볼까요?",
+    challengeComplete: "5단어 챌린지 완료!",
+    challengeScore: (score: number) => `${score} / 5 연결 성공`,
+    friendScore: (score: number) => `친구 기록 ${score} / 5`,
+    challengeShareBack: "내 결과로 다시 도전 보내기",
+    challengeClose: "학습으로 돌아가기",
+    challengePrivacy: "닉네임·학교·채팅 없이 링크로만 함께해요.",
   },
   en: {
     home: "LoopVoca home",
@@ -161,6 +184,27 @@ const copy = {
     signOut: "Sign out",
     close: "Close",
     claimed: "Your guest learning record is now connected.",
+    shareAchievement: "Share today’s growth",
+    sendChallenge: "Send a 5-word challenge",
+    shareSuccess: "Ready to share.",
+    copySuccess: "Challenge link copied.",
+    challengeBadge: "FRIEND CHALLENGE",
+    challengeTitle: "A friend sent you a 5-word challenge!",
+    challengeBody: "This is not a leaderboard. Listen and test today’s connections at your own pace.",
+    challengeStart: "Start challenge",
+    challengeLater: "Maybe later",
+    challengeListen: "Hear the word",
+    challengePrompt: "Choose the meaning of the word you just heard.",
+    challengeNext: "Next word",
+    challengeFinish: "See result",
+    challengeCorrect: "Correct! Sound and meaning are connected.",
+    challengeRetry: "That’s okay. Hear the answer and move to the next word.",
+    challengeComplete: "5-word challenge complete!",
+    challengeScore: (score: number) => `${score} / 5 connected`,
+    friendScore: (score: number) => `Friend’s score ${score} / 5`,
+    challengeShareBack: "Send a rematch with my result",
+    challengeClose: "Back to learning",
+    challengePrivacy: "No names, school details, or chat—just a private link.",
   },
 } as const;
 
@@ -190,6 +234,11 @@ function getLearnerId() {
   return next;
 }
 
+function buildChallengeWords(anchorId: string) {
+  const start = Math.max(0, dailyWords.findIndex((item) => item.id === anchorId));
+  return Array.from({ length: 5 }, (_, offset) => dailyWords[(start + offset) % dailyWords.length]);
+}
+
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("ko");
   const [learnerId, setLearnerId] = useState("");
@@ -212,6 +261,14 @@ export default function Home() {
   const [accountOpen, setAccountOpen] = useState(false);
   const [accountPromptDismissed, setAccountPromptDismissed] = useState(false);
   const [accountNotice, setAccountNotice] = useState(false);
+  const [shareNotice, setShareNotice] = useState("");
+  const [challengeOpen, setChallengeOpen] = useState(false);
+  const [challengeState, setChallengeState] = useState<ChallengeState>("intro");
+  const [challengeWords, setChallengeWords] = useState<VocaWord[]>([]);
+  const [challengeIndex, setChallengeIndex] = useState(0);
+  const [challengeScore, setChallengeScore] = useState(0);
+  const [challengeChoice, setChallengeChoice] = useState("");
+  const [friendScore, setFriendScore] = useState<number | null>(null);
 
   const t = copy[locale];
   const word = useMemo<VocaWord>(() => {
@@ -249,9 +306,22 @@ export default function Home() {
       ? word.contextChoices[0]
       : word.word;
 
+  const challengeWord = challengeWords[challengeIndex];
+  const challengeChoices = useMemo(() => {
+    if (!challengeWord) return [];
+    const values = locale === "ko"
+      ? [challengeWord.meaningKo, ...challengeWord.distractorsKo]
+      : [challengeWord.definitionEn, ...challengeWord.distractorsEn];
+    return rotateChoices(values, challengeIndex, 1);
+  }, [challengeIndex, challengeWord, locale]);
+  const challengeAnswer = challengeWord
+    ? (locale === "ko" ? challengeWord.meaningKo : challengeWord.definitionEn)
+    : "";
+
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
-      const queryLocale = new URLSearchParams(window.location.search).get("lang");
+      const params = new URLSearchParams(window.location.search);
+      const queryLocale = params.get("lang");
       const storedLocale = window.localStorage.getItem("loopvoca-locale");
       const initialLocale = queryLocale === "en" || queryLocale === "ko"
         ? queryLocale
@@ -262,6 +332,19 @@ export default function Home() {
       document.documentElement.lang = initialLocale;
       setAccountPromptDismissed(window.sessionStorage.getItem("loopvoca-account-prompt-dismissed") === "1");
       setLearnerId(getLearnerId());
+
+      const challengeIds = params.get("challenge")?.split(",").slice(0, 5) ?? [];
+      const incomingWords = challengeIds
+        .map((id) => dailyWords.find((item) => item.id === id))
+        .filter((item): item is VocaWord => Boolean(item));
+      if (incomingWords.length === 5) {
+        setChallengeWords(incomingWords);
+        setChallengeState("intro");
+        setChallengeOpen(true);
+        const sharedScoreParam = params.get("score");
+        const sharedScore = sharedScoreParam === null ? null : Number(sharedScoreParam);
+        if (sharedScore !== null && Number.isInteger(sharedScore) && sharedScore >= 0 && sharedScore <= 5) setFriendScore(sharedScore);
+      }
     });
 
     return () => window.cancelAnimationFrame(frame);
@@ -477,6 +560,84 @@ export default function Home() {
     window.sessionStorage.setItem("loopvoca-account-prompt-dismissed", "1");
   };
 
+  const shareContent = async (title: string, text: string, url: string) => {
+    try {
+      if (navigator.share) {
+        await navigator.share({ title, text, url });
+        setShareNotice(t.shareSuccess);
+      } else {
+        await navigator.clipboard.writeText(`${text}\n${url}`);
+        setShareNotice(t.copySuccess);
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      try {
+        await navigator.clipboard.writeText(url);
+        setShareNotice(t.copySuccess);
+      } catch {
+        setShareNotice(url);
+      }
+    }
+    window.setTimeout(() => setShareNotice(""), 2800);
+  };
+
+  const shareAchievement = () => {
+    const title = locale === "ko" ? "LoopVoca 오늘의 성장" : "My LoopVoca growth";
+    const text = locale === "ko"
+      ? `오늘 ${completedToday}개 단어를 연결하고 ${streak}일째 학습 중이에요.`
+      : `I connected ${completedToday} words today and kept a ${streak}-day learning streak.`;
+    const url = new URL(window.location.origin + window.location.pathname);
+    url.searchParams.set("lang", locale);
+    void shareContent(title, text, url.toString());
+  };
+
+  const shareChallenge = (score?: number) => {
+    const words = challengeWords.length === 5 ? challengeWords : buildChallengeWords(word.id);
+    const url = new URL(window.location.origin + window.location.pathname);
+    url.searchParams.set("challenge", words.map((item) => item.id).join(","));
+    url.searchParams.set("lang", locale);
+    if (typeof score === "number") url.searchParams.set("score", String(score));
+    const title = locale === "ko" ? "LoopVoca 5단어 챌린지" : "LoopVoca 5-word challenge";
+    const text = locale === "ko"
+      ? "소리만 듣고 5단어를 맞혀볼래? 실력 순위 없이 가볍게 도전해 봐!"
+      : "Can you connect 5 words from sound alone? No leaderboard—just a friendly challenge!";
+    void shareContent(title, text, url.toString());
+  };
+
+  const startChallenge = () => {
+    setChallengeIndex(0);
+    setChallengeScore(0);
+    setChallengeChoice("");
+    setChallengeState("playing");
+    window.setTimeout(() => challengeWords[0] && speak(challengeWords[0].word), 180);
+  };
+
+  const chooseChallengeAnswer = (choice: string) => {
+    if (challengeChoice || !challengeWord) return;
+    setChallengeChoice(choice);
+    if (choice === challengeAnswer) setChallengeScore((current) => current + 1);
+    speak(challengeWord.word);
+  };
+
+  const advanceChallenge = () => {
+    if (challengeIndex >= challengeWords.length - 1) {
+      setChallengeState("complete");
+      return;
+    }
+    const nextIndex = challengeIndex + 1;
+    setChallengeIndex(nextIndex);
+    setChallengeChoice("");
+    window.setTimeout(() => speak(challengeWords[nextIndex].word), 180);
+  };
+
+  const closeChallenge = () => {
+    setChallengeOpen(false);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("challenge");
+    url.searchParams.delete("score");
+    window.history.replaceState({}, "", url);
+  };
+
   return (
     <main className="app-shell">
       <header className="topbar">
@@ -501,6 +662,12 @@ export default function Home() {
       {accountNotice && (
         <button className="account-notice" onClick={() => setAccountNotice(false)} aria-label={t.close}>
           <span>✓</span> {t.claimed}
+        </button>
+      )}
+
+      {shareNotice && (
+        <button className="share-notice" onClick={() => setShareNotice("")} aria-label={t.close}>
+          <span>✓</span> {shareNotice}
         </button>
       )}
 
@@ -536,6 +703,10 @@ export default function Home() {
               <p className="result-number">30</p>
               <h2>{t.dayComplete}</h2>
               <p>{t.dayCompleteBody}</p>
+              <div className="result-actions">
+                <button className="primary-button" onClick={shareAchievement}>{t.shareAchievement} <span>↗</span></button>
+                <button className="ghost-button light-button" onClick={() => shareChallenge()}>{t.sendChallenge}</button>
+              </div>
             </article>
           ) : !completed ? (
             <article className="quiz-card">
@@ -639,6 +810,8 @@ export default function Home() {
               <div className="result-actions">
                 <button className="primary-button" onClick={nextWord}>{t.nextWord} <span>→</span></button>
                 <button className="ghost-button" onClick={() => setCompleted(false)}>{t.reviewResult}</button>
+                <button className="ghost-button" onClick={shareAchievement}>{t.shareAchievement}</button>
+                <button className="ghost-button challenge-button" onClick={() => shareChallenge()}>{t.sendChallenge}</button>
               </div>
             </article>
           )}
@@ -711,6 +884,78 @@ export default function Home() {
                 <a className="modal-primary" href="/signin-with-chatgpt?return_to=%2F%3Fwelcome%3D1">{t.savePrimary} <span>→</span></a>
                 <button className="modal-secondary" onClick={dismissAccountPrompt}>{t.saveLater}</button>
                 <small>{t.saveTrust}</small>
+              </>
+            )}
+          </section>
+        </div>
+      )}
+
+
+      {challengeOpen && (
+        <div className="challenge-backdrop" role="presentation">
+          <section className="challenge-modal" role="dialog" aria-modal="true" aria-labelledby="challenge-title">
+            {challengeState === "intro" && (
+              <>
+                <span className="challenge-kicker">{t.challengeBadge}</span>
+                <div className="challenge-orbit"><span>5</span></div>
+                <h2 id="challenge-title">{t.challengeTitle}</h2>
+                <p>{t.challengeBody}</p>
+                {friendScore !== null && <div className="friend-score">{t.friendScore(friendScore)}</div>}
+                <div className="challenge-facts"><span>5 WORDS</span><span>≈ 2 MIN</span><span>NO RANKING</span></div>
+                <button className="modal-primary" onClick={startChallenge}>{t.challengeStart} <span>→</span></button>
+                <button className="modal-secondary" onClick={closeChallenge}>{t.challengeLater}</button>
+                <small>{t.challengePrivacy}</small>
+              </>
+            )}
+
+            {challengeState === "playing" && challengeWord && (
+              <>
+                <div className="challenge-progress-row">
+                  <span>{t.challengeBadge}</span>
+                  <b>{challengeIndex + 1} / {challengeWords.length}</b>
+                </div>
+                <div className="challenge-progress"><i style={{ width: `${((challengeIndex + 1) / challengeWords.length) * 100}%` }} /></div>
+                <button className="challenge-audio" onClick={() => speak(challengeWord.word)} aria-label={t.challengeListen}>
+                  <span className="audio-ring"><span>▶</span></span>
+                  <b>{t.challengeListen}</b>
+                </button>
+                <h2 id="challenge-title">{t.challengePrompt}</h2>
+                <div className="challenge-choices">
+                  {challengeChoices.map((choice) => (
+                    <button
+                      key={choice}
+                      className={`${challengeChoice === choice ? "selected" : ""} ${challengeChoice && choice === challengeAnswer ? "answer" : ""}`}
+                      onClick={() => chooseChallengeAnswer(choice)}
+                    >
+                      {choice}
+                    </button>
+                  ))}
+                </div>
+                {challengeChoice && (
+                  <div className={`challenge-feedback ${challengeChoice === challengeAnswer ? "correct" : "retry"}`}>
+                    <div>
+                      <b>{challengeWord.word}</b>
+                      <span>{challengeAnswer}</span>
+                      <p>{challengeChoice === challengeAnswer ? t.challengeCorrect : t.challengeRetry}</p>
+                    </div>
+                    <button onClick={advanceChallenge}>
+                      {challengeIndex === challengeWords.length - 1 ? t.challengeFinish : t.challengeNext} →
+                    </button>
+                  </div>
+                )}
+              </>
+            )}
+
+            {challengeState === "complete" && (
+              <>
+                <span className="challenge-kicker">{t.challengeBadge}</span>
+                <p className="challenge-score-number">{challengeScore}</p>
+                <h2 id="challenge-title">{t.challengeComplete}</h2>
+                <div className="challenge-result-line">{t.challengeScore(challengeScore)}</div>
+                {friendScore !== null && <div className="friend-score">{t.friendScore(friendScore)}</div>}
+                <button className="modal-primary" onClick={() => shareChallenge(challengeScore)}>{t.challengeShareBack} <span>↗</span></button>
+                <button className="modal-secondary" onClick={closeChallenge}>{t.challengeClose}</button>
+                <small>{t.challengePrivacy}</small>
               </>
             )}
           </section>

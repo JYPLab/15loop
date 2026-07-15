@@ -7,7 +7,7 @@ LoopVoca is an adaptive English vocabulary learning engine for Korean middle-sch
 3. Context — can the learner use the word naturally in a sentence?
 4. Active recall — can the learner retrieve the full expression without a hint?
 
-The MVP provides a bilingual Korean/English experience, a 30-word daily loop, browser speech, randomized review, persistent learner profiles, progressive account creation, and GPT-5.6-powered recall evaluation.
+The MVP provides a bilingual Korean/English experience, a 30-word daily loop, browser speech, randomized review, persistent learner profiles, privacy-first achievement sharing, five-word friend challenges, progressive account creation, and GPT-5.6-powered recall evaluation.
 
 ## Why it exists
 
@@ -22,6 +22,7 @@ LoopVoca began with a simple parent story: a father realized that his child ente
 - D1 stores skill scores, word mastery, review intervals, due times, and event history.
 - GPT-5.6 evaluates semantic recall with structured bilingual feedback.
 - A deterministic local evaluator keeps the demo usable if the API is temporarily unavailable and clearly labels that fallback in the interface.
+- Learners can share a lightweight achievement message or invite a friend to a five-word listening challenge through a private URL. No public ranking, real name, school detail, or open chat is required.
 
 ## Run locally
 

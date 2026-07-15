@@ -98,6 +98,21 @@ test("ships a complete 30-word learning dataset", async () => {
   assert.match(source, /definitionEn/);
 });
 
+test("ships private achievement sharing and a five-word friend challenge", async () => {
+  const [page, styles] = await Promise.all([
+    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+  ]);
+
+  assert.match(page, /친구에게 5단어 챌린지/);
+  assert.match(page, /navigator\.share/);
+  assert.match(page, /url\.searchParams\.set\("challenge"/);
+  assert.match(page, /NO RANKING/);
+  assert.match(page, /닉네임·학교·채팅 없이/);
+  assert.match(styles, /\.challenge-modal/);
+  assert.match(styles, /\.challenge-choices/);
+});
+
 test("ships finished metadata and a project-bound social card", async () => {
   const [layout, packageJson] = await Promise.all([
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
