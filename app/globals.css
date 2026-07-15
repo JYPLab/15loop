@@ -36,6 +36,11 @@ button { color: inherit; }
 .brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 900; letter-spacing: .13em; }
 .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; background: var(--ink); color: var(--green); border-radius: 50%; font-size: 16px; letter-spacing: 0; }
 .topbar-actions { display: flex; align-items: center; gap: 14px; }
+.engine-pill { display: inline-flex; align-items: center; gap: 6px; padding: 9px 12px; border-radius: 999px; background: var(--ink); color: white; font-size: 11px; font-weight: 900; letter-spacing: .03em; }
+.engine-pill span { color: var(--green); }
+.language-toggle { display: inline-flex; padding: 3px; border: 1px solid rgba(21,24,20,.16); background: rgba(255,255,255,.52); border-radius: 999px; }
+.language-toggle button { width: 37px; height: 29px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); font-size: 10px; font-weight: 950; cursor: pointer; }
+.language-toggle button.active { background: var(--blue); color: white; }
 .streak { padding: 10px 14px; border: 1px solid rgba(21, 24, 20, .16); border-radius: 999px; background: rgba(255,255,255,.45); font-size: 13px; font-weight: 700; }
 .streak span { color: var(--coral); font-size: 10px; margin-right: 5px; }
 .profile { border: 0; width: 39px; height: 39px; border-radius: 50%; background: var(--blue); color: white; font-weight: 850; cursor: pointer; }
@@ -105,6 +110,8 @@ h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: 1px; 
 .feedback-row { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 18px; border-top: 1px solid #e8e7e0; padding-top: 18px; }
 .feedback { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
 .feedback.correct { color: var(--green-deep); font-weight: 800; }.feedback.retry { color: #a13a25; font-weight: 800; }
+.feedback-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
+.feedback-meta span { padding: 4px 7px; border-radius: 999px; background: #ecece6; color: var(--muted); font-size: 9px; font-weight: 900; letter-spacing: .03em; }
 .next-button, .primary-button { border: 0; border-radius: 9px; background: var(--ink); color: white; padding: 13px 17px; font-size: 12px; font-weight: 900; cursor: pointer; white-space: nowrap; }
 .next-button span, .primary-button span { color: var(--green); margin-left: 7px; }
 
@@ -128,6 +135,9 @@ h1 em::after { content: ""; position: absolute; left: 0; right: 0; bottom: 1px; 
 .next-loop b, .next-loop small { display: block; }.next-loop b { font-size: 13px; }.next-loop small { margin-top: 4px; color: var(--muted); font-size: 10px; line-height: 1.4; }
 
 .result-card { min-height: 620px; padding: 45px; display: flex; align-items: flex-start; justify-content: center; flex-direction: column; background: var(--green); position: relative; overflow: hidden; }
+.day-complete-card { background: var(--blue); color: white; }
+.day-complete-card .result-badge { background: var(--green); color: var(--ink); }
+.day-complete-card > p:not(.result-number) { color: rgba(255,255,255,.78); }
 .result-card::after { content: ""; position: absolute; width: 390px; height: 390px; border-radius: 50%; border: 70px solid rgba(255,255,255,.28); right: -140px; top: -150px; }
 .result-badge { padding: 6px 9px; background: var(--ink); color: var(--green); font-size: 10px; font-weight: 950; letter-spacing: .13em; border-radius: 4px; }
 .result-number { margin: 22px 0 0; font-size: 105px; line-height: .9; font-weight: 950; letter-spacing: -.08em; }
@@ -143,11 +153,13 @@ footer p { margin: 0; }
   .workspace { grid-template-columns: 1fr; }
   .insight-panel { min-height: 430px; }
   .hero { align-items: center; }
+  .engine-pill { display: none; }
 }
 
 @media (max-width: 640px) {
   .app-shell { padding: 0 14px; }
-  .topbar { height: 70px; }.streak { display: none; }
+  .topbar { height: 70px; }.streak { display: none; }.topbar-actions { gap: 7px; }.profile { display: none; }
+  .language-toggle button { width: 34px; }
   .hero { padding: 38px 4px 30px; align-items: flex-end; }
   h1 { font-size: 42px; }.today-stat { min-width: 90px; padding: 10px 0 10px 12px; }.today-stat strong { font-size: 28px; }
   .step-tab { padding: 8px 3px; justify-content: center; }.step-tab b { display: none; }

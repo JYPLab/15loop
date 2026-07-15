@@ -1,42 +1,69 @@
 # LoopVoca
 
-외웠는지가 아니라 정말 아는지를 평가하는 AI 영단어 학습 MVP입니다.
+LoopVoca is an adaptive English vocabulary learning engine for Korean middle-school students who have limited English exposure. Instead of asking only whether a learner memorized a definition, it evaluates four separate memory connections:
 
-## MVP flow
+1. Recognition — can the learner connect the written word to its meaning?
+2. Listening — can the learner identify the word from sound alone?
+3. Context — can the learner use the word naturally in a sentence?
+4. Active recall — can the learner retrieve the full expression without a hint?
 
-한 단어를 네 가지 연결로 평가합니다.
+The MVP provides a bilingual Korean/English experience, a 30-word daily loop, browser speech, randomized review, persistent learner profiles, and GPT-5.6-powered recall evaluation.
 
-1. 보고 뜻을 아는가
-2. 듣고 단어를 구별하는가
-3. 문맥 안에서 이해하는가
-4. 힌트 없이 직접 꺼낼 수 있는가
+## Why it exists
 
-각 결과는 학습자 프로필에 반영되고, 가장 약한 연결을 다음 반복 학습에 우선 배치합니다.
+LoopVoca began with a simple parent story: a father realized that his child entered middle school without years of English pre-study. The problem was not effort alone. Printed vocabulary books separated spelling, sound, meaning, context, and retrieval. LoopVoca reconnects those pieces and evaluates which connection is actually weak.
+
+## Product loop
+
+- A deterministic daily set contains 30 school-level words.
+- Every word passes through recognition, listening, context, and active recall.
+- Missed words are inserted back into the queue after other words, rather than repeated mechanically in place.
+- Each evaluation updates a learner-specific connection profile.
+- D1 stores skill scores, word mastery, review intervals, due times, and event history.
+- GPT-5.6 evaluates semantic recall with structured bilingual feedback.
+- A deterministic local evaluator keeps the demo usable if the API is temporarily unavailable and clearly labels that fallback in the interface.
 
 ## Run locally
 
+Requirements: Node.js 22.13 or newer.
+
 ```bash
 npm install
+cp .env.example .env.local
+npm run db:generate
 npm run dev
 ```
 
-로컬 기본 주소는 `http://localhost:3000`입니다.
+The local URL is printed by the development server.
 
-## OpenAI evaluation
-
-환경 변수가 없을 때도 해커톤 데모가 중단되지 않도록 결정론적 평가가 동작합니다. 실제 OpenAI 평가를 연결하려면 `.env.example`을 참고해 다음 값을 설정합니다.
+## OpenAI configuration
 
 ```bash
-OPENAI_API_KEY=
-OPENAI_MODEL=gpt-5.6-luna
+OPENAI_API_KEY=your_api_key
+OPENAI_MODEL=gpt-5.6
 ```
 
-서버의 `/api/evaluate` 경로가 Responses API의 Structured Outputs를 사용하며, 키나 네트워크에 문제가 있으면 로컬 평가로 안전하게 전환합니다.
+`POST /api/evaluate` uses the OpenAI Responses API with strict Structured Outputs. The model returns correctness, a score, an error category, a canonical answer, and feedback in both Korean and English. Prompts contain only the submitted learning sentence and do not request personal information.
 
-## Verify
+## Persistence
+
+The Sites project declares a D1 binding named `DB`. Schema definitions live in `db/schema.ts`, and generated SQL migrations are stored in `drizzle/`. The browser stores only an anonymous device identifier and language preference; learning records remain authoritative in D1.
+
+## Verification
 
 ```bash
 npm test
+npm run lint
 ```
 
-프로덕션 빌드, 첫 화면 서버 렌더링, 로컬 평가 API, 소셜 미리보기 자산을 함께 검증합니다.
+## How Codex and GPT-5.6 were used
+
+This project was built during OpenAI Build Week through a continuous Codex collaboration.
+
+- **Problem framing:** The founder described the real learning gap from a parent's point of view. Codex helped turn that story into a testable four-connection learning model.
+- **Product decisions:** The founder chose the LoopVoca name, the Korean middle-school audience, evaluation as the core differentiator, and randomized repetition as the long-term engine.
+- **Engineering acceleration:** Codex created the responsive vinext application, learning state machine, bilingual interface, word dataset, D1 data model, API routes, tests, and Sites deployment workflow.
+- **Human judgment:** The founder decided to preserve Korean as the authentic learner interface while adding a complete English mode for international judges.
+- **GPT-5.6 contribution:** GPT-5.6 is the runtime evaluator for active recall. It judges semantic equivalence more intelligently than string matching and produces structured bilingual feedback. GPT-5.6 was also the reasoning model used with Codex for architecture and implementation decisions.
+
+The git history and the Build Week Codex session provide timestamped evidence of the implementation completed during the submission period.

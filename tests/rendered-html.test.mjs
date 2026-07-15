@@ -35,10 +35,12 @@ test("server-renders the LoopVoca learning experience", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>LoopVoca \| 정말 아는지를 평가하는 AI 영단어<\/title>/i);
+  assert.match(html, /<title>LoopVoca \| AI Vocabulary Memory Evaluation<\/title>/i);
   assert.match(html, /LOOPVOCA/);
   assert.match(html, /외웠는지가 아니라/);
   assert.match(html, /오늘의 맞춤 루프/);
+  assert.match(html, /GPT-5\.6/);
+  assert.match(html, />EN</);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
 });
 
@@ -61,7 +63,17 @@ test("evaluates recall locally when no API key is configured", async () => {
   assert.equal(response.status, 200);
   const data = await response.json();
   assert.equal(data.correct, true);
-  assert.equal(data.source, "demo");
+  assert.equal(data.source, "local-fallback");
+  assert.equal(data.feedbackEn.length > 0, true);
+});
+
+test("ships a complete 30-word learning dataset", async () => {
+  const source = await readFile(new URL("../data/words.ts", import.meta.url), "utf8");
+  const entries = source.match(/\n    id: "/g) ?? [];
+  assert.equal(entries.length, 30);
+  assert.match(source, /shuffledDailyWords/);
+  assert.match(source, /meaningKo/);
+  assert.match(source, /definitionEn/);
 });
 
 test("ships finished metadata and a project-bound social card", async () => {

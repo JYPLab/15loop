@@ -18,8 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
-  const title = "LoopVoca | 정말 아는지를 평가하는 AI 영단어";
-  const description = "보고, 듣고, 문맥으로 이해하고, 직접 꺼낼 수 있는지 평가해 모르는 단어만 다시 연결하는 AI 영단어 학습.";
+  const title = "LoopVoca | AI Vocabulary Memory Evaluation";
+  const description = "An adaptive vocabulary learning loop that evaluates recognition, listening, context, and active recall with GPT-5.6.";
 
   return {
     title,
@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       type: "website",
-      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "LoopVoca AI 영단어 평가와 맞춤 반복 학습" }],
+      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "LoopVoca adaptive AI vocabulary learning loop" }],
     },
     twitter: {
       card: "summary_large_image",
