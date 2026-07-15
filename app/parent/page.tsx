@@ -273,7 +273,7 @@ export default function ParentPage() {
     return (
       <main className="commerce-shell">
         <header className="commerce-topbar">
-          <Link className="brand" href="/"><span className="brand-mark">L</span><span>LOOPVOCA</span></Link>
+          <Link className="brand" href="/"><span className="brand-mark">15</span><span>15LOOP</span></Link>
           <Link className="commerce-text-link" href="/diagnosis">무료 진단</Link>
         </header>
         <section className="parent-auth-grid">
@@ -312,7 +312,7 @@ export default function ParentPage() {
   return (
     <main className="commerce-shell parent-dashboard">
       <header className="commerce-topbar">
-        <Link className="brand" href="/"><span className="brand-mark">L</span><span>LOOPVOCA</span></Link>
+        <Link className="brand" href="/"><span className="brand-mark">15</span><span>15LOOP</span></Link>
         <div className="commerce-header-actions"><span>{profile?.account.email}</span><button onClick={() => getSupabaseBrowserClient()?.auth.signOut()}>로그아웃</button></div>
       </header>
       {message && <button className="commerce-banner" onClick={() => setMessage("")}>{message} ×</button>}

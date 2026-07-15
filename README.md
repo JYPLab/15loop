@@ -1,6 +1,6 @@
-# LoopVoca
+# 15Loop
 
-LoopVoca is an adaptive English vocabulary learning engine for Korean middle-school students who have limited English exposure. Instead of asking only whether a learner memorized a definition, it evaluates four separate memory connections:
+15Loop is an adaptive English vocabulary learning engine for Korean middle-school students who have limited English exposure. Instead of asking only whether a learner memorized a definition, it evaluates four separate memory connections:
 
 1. Recognition — can the learner connect the written word to its meaning?
 2. Listening — can the learner identify the word from sound alone?
@@ -9,9 +9,11 @@ LoopVoca is an adaptive English vocabulary learning engine for Korean middle-sch
 
 The MVP provides a bilingual Korean/English experience, an adaptive 20–25 word free diagnostic, a 15-minute active learning session, browser speech, randomized review, parent-owned family accounts, up to three child profiles, a seven-day trial, Toss Payments-ready 30-day passes, privacy-first friend challenges, and GPT-5.6-powered recall evaluation.
 
+**Brand promise:** 15 minutes. Words that stay. The proposed canonical domain is `15loop.com`; availability checks do not reserve a domain, so it must be registered before public deployment.
+
 ## Why it exists
 
-LoopVoca began with a simple parent story: a father realized that his child entered middle school without years of English pre-study. The problem was not effort alone. Printed vocabulary books separated spelling, sound, meaning, context, and retrieval. LoopVoca reconnects those pieces and evaluates which connection is actually weak.
+15Loop began with a simple parent story: a father realized that his child entered middle school without years of English pre-study. The problem was not effort alone. Printed vocabulary books separated spelling, sound, meaning, context, and retrieval. 15Loop reconnects those pieces and evaluates which connection is actually weak.
 
 ## Product loop
 
@@ -102,7 +104,7 @@ npm run lint
 This project was built during OpenAI Build Week through a continuous Codex collaboration.
 
 - **Problem framing:** The founder described the real learning gap from a parent's point of view. Codex helped turn that story into a testable four-connection learning model.
-- **Product decisions:** The founder chose the LoopVoca name, the Korean middle-school audience, evaluation as the core differentiator, and randomized repetition as the long-term engine.
+- **Product decisions:** The founder chose the 15Loop name, the Korean middle-school audience, evaluation as the core differentiator, and randomized repetition as the long-term engine.
 - **Engineering acceleration:** Codex created the responsive vinext application, learning state machine, bilingual interface, word dataset, D1 data model, API routes, tests, and Sites deployment workflow.
 - **Human judgment:** The founder decided to preserve Korean as the authentic learner interface while adding a complete English mode for international judges.
 - **GPT-5.6 contribution:** GPT-5.6 is the runtime evaluator for active recall. It judges semantic equivalence more intelligently than string matching and produces structured bilingual feedback. GPT-5.6 was also the reasoning model used with Codex for architecture and implementation decisions.

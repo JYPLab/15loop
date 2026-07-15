@@ -111,7 +111,7 @@ export async function POST(request: NextRequest) {
 
   const curriculumItem = dailyWords.find((item) => normalize(item.example) === normalize(submittedTarget));
   if (!curriculumItem) {
-    return NextResponse.json({ error: "only LoopVoca curriculum items can be evaluated" }, { status: 400 });
+    return NextResponse.json({ error: "only 15Loop curriculum items can be evaluated" }, { status: 400 });
   }
   const target = curriculumItem.example;
   const meaning = curriculumItem.contextKo;
@@ -142,7 +142,7 @@ export async function POST(request: NextRequest) {
         reasoning: { effort: "low" },
         max_output_tokens: 450,
         instructions: [
-          "You are LoopVoca's English recall evaluator for a Korean middle-school learner.",
+          "You are 15Loop's English recall evaluator for a Korean middle-school learner.",
           "Evaluate whether the learner preserved the target meaning and produced a natural sentence.",
           "Ignore capitalization and punctuation. Accept harmless article or contraction variations when meaning is intact.",
           "Be strict about a missing target word or a changed core meaning.",
@@ -157,7 +157,7 @@ export async function POST(request: NextRequest) {
         text: {
           format: {
             type: "json_schema",
-            name: "loopvoca_recall_evaluation",
+            name: "fifteenloop_recall_evaluation",
             strict: true,
             schema: {
               type: "object",

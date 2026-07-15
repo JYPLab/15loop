@@ -46,7 +46,7 @@ const initialScores: Record<SkillKey, number> = {
 
 const copy = {
   ko: {
-    home: "LoopVoca 홈",
+    home: "15Loop 홈",
     streak: (days: number) => `${days}일째 루프 중`,
     kicker: "오늘의 맞춤 루프",
     headlineA: "외웠는지가 아니라,",
@@ -137,7 +137,7 @@ const copy = {
     challengePrivacy: "닉네임·학교·채팅 없이 링크로만 함께해요.",
   },
   en: {
-    home: "LoopVoca home",
+    home: "15Loop home",
     streak: (days: number) => `${days}-day learning streak`,
     kicker: "Your adaptive daily loop",
     headlineA: "Do not just memorize it.",
@@ -704,7 +704,7 @@ export default function Home() {
   };
 
   const shareAchievement = () => {
-    const title = locale === "ko" ? "LoopVoca 오늘의 성장" : "My LoopVoca growth";
+    const title = locale === "ko" ? "15Loop 오늘의 성장" : "My 15Loop growth";
     const text = locale === "ko"
       ? `오늘 ${Math.floor(studySecondsToday / 60)}분 동안 ${completedToday}개 단어를 연결하고 ${streak}일째 학습 중이에요.`
       : `I connected ${completedToday} words in ${Math.floor(studySecondsToday / 60)} focused minutes and kept a ${streak}-day learning streak.`;
@@ -719,7 +719,7 @@ export default function Home() {
     url.searchParams.set("challenge", words.map((item) => item.id).join(","));
     url.searchParams.set("lang", locale);
     if (typeof score === "number") url.searchParams.set("score", String(score));
-    const title = locale === "ko" ? "LoopVoca 5단어 챌린지" : "LoopVoca 5-word challenge";
+    const title = locale === "ko" ? "15Loop 5단어 챌린지" : "15Loop 5-word challenge";
     const text = locale === "ko"
       ? "소리만 듣고 5단어를 맞혀볼래? 실력 순위 없이 가볍게 도전해 봐!"
       : "Can you connect 5 words from sound alone? No leaderboard—just a friendly challenge!";
@@ -764,8 +764,8 @@ export default function Home() {
     <main className="app-shell">
       <header className="topbar">
         <a className="brand" href="#top" aria-label={t.home}>
-          <span className="brand-mark">L</span>
-          <span>LOOPVOCA</span>
+          <span className="brand-mark">15</span>
+          <span>15LOOP</span>
         </a>
         <div className="topbar-actions">
           <div className="engine-pill"><span>✦</span> GPT-5.6</div>
@@ -978,7 +978,7 @@ export default function Home() {
       </section>
 
       <footer>
-        <span>LoopVoca Learning Loop Engine · GPT-5.6</span>
+        <span>15Loop Learning Loop Engine · GPT-5.6</span>
         <p>{t.footer}</p>
       </footer>
 
@@ -988,7 +988,7 @@ export default function Home() {
         }}>
           <section className="account-modal" role="dialog" aria-modal="true" aria-labelledby="account-title">
             <button className="modal-close" onClick={() => setAccountOpen(false)} aria-label={t.close}>×</button>
-            <span className="modal-kicker">LOOPVOCA PROFILE</span>
+            <span className="modal-kicker">15LOOP PROFILE</span>
             {isFamilyLearner ? (
               <>
                 <div className="modal-avatar">{initials}</div>

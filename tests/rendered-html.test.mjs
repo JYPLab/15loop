@@ -23,7 +23,7 @@ const context = {
   passThroughOnException() {},
 };
 
-test("server-renders the LoopVoca learning experience", async () => {
+test("server-renders the 15Loop learning experience", async () => {
   const app = await worker();
   const response = await app.fetch(
     new Request("http://localhost/", { headers: { accept: "text/html" } }),
@@ -35,8 +35,8 @@ test("server-renders the LoopVoca learning experience", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>LoopVoca \| AI Vocabulary Memory Evaluation<\/title>/i);
-  assert.match(html, /LOOPVOCA/);
+  assert.match(html, /<title>15Loop \| AI Vocabulary Memory Evaluation<\/title>/i);
+  assert.match(html, /15LOOP/);
   assert.match(html, /외웠는지가 아니라/);
   assert.match(html, /오늘의 맞춤 루프/);
   assert.match(html, /GPT-5\.6/);

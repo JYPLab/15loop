@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
-  const title = "LoopVoca | AI Vocabulary Memory Evaluation";
+  const title = "15Loop | AI Vocabulary Memory Evaluation";
   const description = "An adaptive vocabulary learning loop that evaluates recognition, listening, context, and active recall with GPT-5.6.";
 
   return {
@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title,
       description,
       type: "website",
-      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "LoopVoca adaptive AI vocabulary learning loop" }],
+      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "15Loop five-word friend challenge" }],
     },
     twitter: {
       card: "summary_large_image",

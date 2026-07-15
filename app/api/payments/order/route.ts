@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       id: orderId,
       guardianId: parent.id,
       planCode,
-      orderName: `LoopVoca ${plan.nameKo}`,
+      orderName: `15Loop ${plan.nameKo}`,
       amount: plan.amount,
       customerKey: account.customerKey,
       idempotencyKey,
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
 
     return Response.json({
       orderId,
-      orderName: `LoopVoca ${plan.nameKo}`,
+      orderName: `15Loop ${plan.nameKo}`,
       amount: plan.amount,
       currency: "KRW",
       customerKey: account.customerKey,
