@@ -27,6 +27,8 @@ export const wordProgress = sqliteTable("word_progress", {
   intervalHours: integer("interval_hours").notNull().default(6),
   dueAt: text("due_at").notNull(),
   lastResult: integer("last_result", { mode: "boolean" }).notNull().default(false),
+  cycleSkillMask: integer("cycle_skill_mask").notNull().default(0),
+  cycleHadError: integer("cycle_had_error", { mode: "boolean" }).notNull().default(false),
   completedOn: text("completed_on"),
   lastStudiedAt: text("last_studied_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [

@@ -2,6 +2,7 @@
 
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { dailyWords, shuffledDailyWords, type VocaWord } from "../data/words";
+import { insertBoundedRetry, prioritizedSkillOrder, type AdaptiveQueueItem } from "../lib/adaptive-queue";
 import { getSupabaseBrowserClient } from "../lib/supabase-browser";
 import { speakEnglish } from "../lib/speech";
 
@@ -22,6 +23,7 @@ type ProgressResponse = {
     scores: Record<SkillKey, number>;
     nextDueAt?: string | null;
   };
+  learningQueue?: AdaptiveQueueItem[];
 };
 type AccountResponse = {
   authenticated: boolean;
@@ -265,7 +267,13 @@ function buildChallengeWords(anchorId: string) {
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("ko");
   const [learnerId, setLearnerId] = useState("");
-  const [queue, setQueue] = useState(() => shuffledDailyWords(dateKey()).map((item) => item.id));
+  const [queue, setQueue] = useState<AdaptiveQueueItem[]>(() => shuffledDailyWords(dateKey()).map((item) => ({
+    wordId: item.id,
+    focusSkill: "see",
+    reason: "new",
+    mastery: null,
+    dueAt: null,
+  })));
   const [queueIndex, setQueueIndex] = useState(0);
   const [stepIndex, setStepIndex] = useState(0);
   const [selected, setSelected] = useState("");
@@ -297,14 +305,20 @@ export default function Home() {
   const [friendScore, setFriendScore] = useState<number | null>(null);
   const pendingStudySeconds = useRef(0);
   const heartbeatInFlight = useRef(false);
+  const retryCounts = useRef(new Map<string, number>());
   const lastInteractionAt = useRef(0);
   const studySecondsRef = useRef(0);
 
   const t = copy[locale];
+  const queueItem = queue[queueIndex] ?? queue[0];
   const word = useMemo<VocaWord>(() => {
-    return dailyWords.find((item) => item.id === queue[queueIndex]) ?? dailyWords[0];
-  }, [queue, queueIndex]);
-  const stepKey = skillOrder[stepIndex];
+    return dailyWords.find((item) => item.id === queueItem?.wordId) ?? dailyWords[0];
+  }, [queueItem?.wordId]);
+  const activeSkillOrder = useMemo(() => {
+    return prioritizedSkillOrder(queueItem?.focusSkill ?? "see");
+  }, [queueItem?.focusSkill]);
+  const stepKey = activeSkillOrder[stepIndex];
+  const copySkillIndex = skillOrder.indexOf(stepKey);
   const isDayComplete = studySecondsToday >= DAILY_SESSION_SECONDS;
   const isFamilyLearner = account.authenticated && !accessBlocked && /^child-[0-9a-f-]{36}$/i.test(learnerId);
 
@@ -418,6 +432,11 @@ export default function Home() {
           ? await progressResponse.json() as ProgressResponse
           : null;
         if (!active || !progressData?.profile) return;
+        if (progressData.learningQueue?.length) {
+          setQueue(progressData.learningQueue);
+          setQueueIndex(0);
+          setStepIndex(0);
+        }
         setScores(progressData.profile.scores);
         setCompletedToday(Math.min(dailyWords.length, progressData.profile.completedToday));
         const savedStudySeconds = Math.min(DAILY_SESSION_SECONDS, progressData.profile.studySecondsToday);
@@ -622,10 +641,10 @@ export default function Home() {
       return;
     }
 
-    if (stepIndex === skillOrder.length - 1) {
+    if (stepIndex === activeSkillOrder.length - 1) {
       if (!completedIds.has(word.id)) {
         setCompletedIds((current) => new Set(current).add(word.id));
-        setCompletedToday((current) => Math.min(dailyWords.length, current + 1));
+        if (!isFamilyLearner) setCompletedToday((current) => Math.min(dailyWords.length, current + 1));
       }
       setCompleted(true);
       if (!isFamilyLearner) setAccountOpen(true);
@@ -642,16 +661,24 @@ export default function Home() {
       setAccountOpen(true);
       return;
     }
-    if (queueIndex >= queue.length - 1) {
-      setQueue(shuffledDailyWords(`${dateKey()}-${completedToday}`).map((item) => item.id));
+    let nextQueue = queue;
+    if (wordHadError) {
+      const retryCount = retryCounts.current.get(word.id) ?? 0;
+      const retry = insertBoundedRetry(queue, queueIndex, retryCount);
+      nextQueue = retry.queue;
+      if (retry.inserted) retryCounts.current.set(word.id, retryCount + 1);
+    }
+    if (queueIndex >= nextQueue.length - 1) {
+      setQueue(shuffledDailyWords(`${dateKey()}-${completedToday}`).map((item) => ({
+        wordId: item.id,
+        focusSkill: weakest[0],
+        reason: "future",
+        mastery: null,
+        dueAt: null,
+      })));
       setQueueIndex(0);
     } else {
-      if (wordHadError) {
-        const next = [...queue];
-        const reviewAt = Math.min(next.length, queueIndex + 4);
-        next.splice(reviewAt, 0, word.id);
-        setQueue(next);
-      }
+      setQueue(nextQueue);
       setQueueIndex((current) => current + 1);
     }
     setStepIndex(0);
@@ -810,13 +837,13 @@ export default function Home() {
       <section className="workspace">
         <div className="learn-column">
           <div className="step-tabs" aria-label="Evaluation stages">
-            {skillOrder.map((item, index) => (
+            {activeSkillOrder.map((item, index) => (
               <div
                 className={`step-tab ${index === stepIndex && !completed ? "active" : ""} ${index < stepIndex || completed ? "done" : ""}`}
                 key={item}
               >
                 <span>{index < stepIndex || completed ? "✓" : index + 1}</span>
-                <b>{t.stages[index]}</b>
+                <b>{skillLabels[item]}</b>
               </div>
             ))}
           </div>
@@ -836,7 +863,7 @@ export default function Home() {
             <article className="quiz-card">
               <div className="quiz-heading">
                 <div>
-                  <p>{t.eyebrows[stepIndex]}</p>
+                  <p>{t.eyebrows[copySkillIndex]}</p>
                   <h2>{stepTitle}</h2>
                 </div>
                 {(stepKey === "hear" || stepKey === "context") && (
@@ -909,7 +936,7 @@ export default function Home() {
               <div className="feedback-row">
                 <div>
                   <p className={`feedback ${feedback.status}`} aria-live="polite">
-                    {feedback.status === "idle" ? t.helpers[stepIndex] : feedback.text}
+                    {feedback.status === "idle" ? t.helpers[copySkillIndex] : feedback.text}
                   </p>
                   {(feedback.source || lastSaved) && (
                     <div className="feedback-meta">
@@ -920,7 +947,7 @@ export default function Home() {
                 </div>
                 {feedback.status !== "idle" && (
                   <button className="next-button" onClick={advance}>
-                    {feedback.status === "retry" ? t.retryButton : stepIndex === skillOrder.length - 1 ? t.seeResult : t.nextStage} <span>→</span>
+                    {feedback.status === "retry" ? t.retryButton : stepIndex === activeSkillOrder.length - 1 ? t.seeResult : t.nextStage} <span>→</span>
                   </button>
                 )}
               </div>

@@ -1,4 +1,6 @@
 import { and, asc, eq } from "drizzle-orm";
+import { dailyWords } from "../../../data/words";
+import { applyEvaluationToReviewState, buildAdaptiveQueue } from "../../../lib/adaptive-queue";
 import { getOptionalParent } from "../../../lib/auth";
 import { guardianHasAccess } from "../../../lib/commercial";
 
@@ -149,13 +151,32 @@ export async function GET(request: Request) {
     const { db, schema } = await getStorage();
     const { wordProgress } = schema;
     const profile = await ensureProfile(db, schema, learnerId);
-    const [nextWord] = await db.select({ dueAt: wordProgress.dueAt })
+    const progress = await db.select({
+      wordId: wordProgress.wordId,
+      mastery: wordProgress.mastery,
+      dueAt: wordProgress.dueAt,
+    })
       .from(wordProgress)
-      .where(eq(wordProgress.learnerId, learnerId))
-      .orderBy(asc(wordProgress.dueAt))
-      .limit(1);
+      .where(eq(wordProgress.learnerId, learnerId));
+    const nextDueAt = progress
+      .map((item) => item.dueAt)
+      .filter((dueAt) => Number.isFinite(Date.parse(dueAt)))
+      .sort((left, right) => Date.parse(left) - Date.parse(right))[0];
+    const learningQueue = buildAdaptiveQueue({
+      learnerId,
+      dateKey: todayInSeoul(),
+      now: new Date(),
+      wordIds: dailyWords.map((item) => item.id),
+      progress,
+      scores: {
+        see: profile.seeScore,
+        hear: profile.hearScore,
+        context: profile.contextScore,
+        recall: profile.recallScore,
+      },
+    });
 
-    return Response.json({ profile: profilePayload(profile, nextWord?.dueAt) });
+    return Response.json({ profile: profilePayload(profile, nextDueAt), learningQueue });
   } catch (error) {
     return routeError(error);
   }
@@ -192,7 +213,10 @@ export async function POST(request: Request) {
     }
   }
 
-  if (!wordId || wordId.length > 80 || !skill || !["see", "hear", "context", "recall"].includes(skill)) {
+  if (
+    !wordId || wordId.length > 80 || !dailyWords.some((item) => item.id === wordId)
+    || !skill || !["see", "hear", "context", "recall"].includes(skill)
+  ) {
     return Response.json({ error: "invalid progress event" }, { status: 400 });
   }
 
@@ -201,19 +225,15 @@ export async function POST(request: Request) {
     const { evaluationEvents, learnerProfiles, wordProgress } = schema;
     const profile = await ensureProfile(db, schema, learnerId, locale);
     const today = todayInSeoul();
+    const now = new Date();
+    const nowIso = now.toISOString();
     const progressId = `${learnerId}:${wordId}`;
     const [existing] = await db.select().from(wordProgress)
       .where(and(eq(wordProgress.learnerId, learnerId), eq(wordProgress.wordId, wordId)))
       .limit(1);
 
     const correct = Boolean(body.correct);
-    const previousMastery = existing?.mastery ?? 40;
-    const mastery = clamp(previousMastery + (correct ? Math.max(4, Math.round(score / 15)) : -10));
-    const intervalHours = correct
-      ? mastery >= 85 ? 168 : mastery >= 70 ? 72 : mastery >= 55 ? 24 : 6
-      : 1;
-    const dueAt = new Date(Date.now() + intervalHours * 60 * 60 * 1000).toISOString();
-    const firstCompletionToday = skill === "recall" && correct && existing?.completedOn !== today;
+    const review = applyEvaluationToReviewState({ existing, skill, correct, score, now, today });
 
     const currentScores = {
       see: profile.seeScore,
@@ -229,26 +249,30 @@ export async function POST(request: Request) {
         id: progressId,
         learnerId,
         wordId,
-        mastery,
-        intervalHours,
-        dueAt,
+        mastery: review.mastery,
+        intervalHours: review.intervalHours,
+        dueAt: review.dueAt,
         lastResult: correct,
-        completedOn: firstCompletionToday ? today : existing?.completedOn ?? null,
-        lastStudiedAt: new Date().toISOString(),
+        cycleSkillMask: review.cycleSkillMask,
+        cycleHadError: review.cycleHadError,
+        completedOn: review.completedOn,
+        lastStudiedAt: nowIso,
       }).onConflictDoUpdate({
         target: wordProgress.id,
         set: {
-          mastery,
-          intervalHours,
-          dueAt,
+          mastery: review.mastery,
+          intervalHours: review.intervalHours,
+          dueAt: review.dueAt,
           lastResult: correct,
-          completedOn: firstCompletionToday ? today : existing?.completedOn ?? null,
-          lastStudiedAt: new Date().toISOString(),
+          cycleSkillMask: review.cycleSkillMask,
+          cycleHadError: review.cycleHadError,
+          completedOn: review.completedOn,
+          lastStudiedAt: nowIso,
         },
       }),
       db.update(learnerProfiles).set({
         locale,
-        completedToday: clamp(profile.completedToday + (firstCompletionToday ? 1 : 0), 0, 30),
+        completedToday: clamp(profile.completedToday + (review.firstCompletionToday ? 1 : 0), 0, 30),
         seeScore: currentScores.see,
         hearScore: currentScores.hear,
         contextScore: currentScores.context,
