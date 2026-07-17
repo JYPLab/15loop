@@ -89,6 +89,7 @@ function gradeLabel(grade: string) {
 
 export default function ParentPage() {
   const configured = isSupabaseConfigured();
+  const googleAuthEnabled = process.env.NEXT_PUBLIC_GOOGLE_AUTH_ENABLED === "true";
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<ParentProfile | null>(null);
   const [loading, setLoading] = useState(configured);
@@ -281,13 +282,13 @@ export default function ParentPage() {
             <span className="commerce-kicker">PARENT ACCOUNT</span>
             <h1>아이의 영어 연결을<br /><em>7일 동안</em> 확인해보세요.</h1>
             <p>가입 즉시 결제정보 없이 무료 체험이 시작됩니다. 진단 결과, 맞춤 학습, 변화 리포트를 한 곳에서 확인하세요.</p>
-            <ul><li>아이 최대 3명까지 분리 관리</li><li>Google 또는 이메일 링크로 간단 가입</li><li>체험 종료 전 자동 결제 없음</li></ul>
+            <ul><li>아이 최대 3명까지 분리 관리</li><li>이메일 링크로 간단 가입</li><li>체험 종료 전 자동 결제 없음</li></ul>
           </div>
           <section className="parent-auth-card">
             <h2>부모 계정 만들기</h2>
             <p>아이에게 계정을 만들게 하지 않습니다.</p>
             {!configured && <div className="commerce-setup-note"><b>로컬 인증 설정 필요</b><span>.env.local에 Supabase URL과 공개 키를 입력하면 실제 가입이 활성화됩니다.</span></div>}
-            <button className="google-button" onClick={signInWithGoogle} disabled={!configured || Boolean(busy)}><span>G</span>{busy === "google" ? "Google 연결 중…" : "Google로 계속"}</button>
+            <button className="google-button" onClick={signInWithGoogle} disabled={!configured || !googleAuthEnabled || Boolean(busy)}><span>G</span>{busy === "google" ? "Google 연결 중…" : googleAuthEnabled ? "Google로 계속" : "Google 가입 준비 중"}</button>
             <div className="auth-divider"><span>또는</span></div>
             {emailSent ? (
               <div className="email-sent"><b>이메일을 확인해주세요.</b><p>{email}로 로그인 링크를 보냈습니다.</p><button onClick={() => setEmailSent(false)}>다른 이메일 사용</button></div>
@@ -298,7 +299,7 @@ export default function ParentPage() {
                 <button disabled={!configured || !email.trim() || Boolean(busy)}>{busy === "email" ? "링크 보내는 중…" : "이메일 링크 받기"}</button>
               </form>
             )}
-            <small>현재는 로컬 테스트입니다. 실제 가입을 받기 전 이용약관·개인정보 처리방침과 명시적 동의 절차를 확정해야 합니다.</small>
+            <small>현재 베타 운영 중입니다. 가입 전 이용약관과 개인정보 처리방침을 확인해주세요.</small>
             {message && <p className="commerce-error">{message}</p>}
           </section>
         </section>
