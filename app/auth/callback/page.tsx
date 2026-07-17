@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getSupabaseBrowserClient } from "../../../lib/supabase-browser";
+import { authNextStorageKey, getSupabaseBrowserClient } from "../../../lib/supabase-browser";
+
+function safeNext(value: string | null) {
+  return value?.startsWith("/") && !value.startsWith("//") ? value : "/parent";
+}
 
 export default function AuthCallbackPage() {
   const [message, setMessage] = useState("로그인을 확인하고 있어요…");
@@ -15,7 +19,8 @@ export default function AuthCallbackPage() {
       }
       const params = new URLSearchParams(window.location.search);
       const code = params.get("code");
-      const next = params.get("next")?.startsWith("/") ? params.get("next")! : "/parent";
+      const next = safeNext(params.get("next") ?? window.localStorage.getItem(authNextStorageKey));
+      window.localStorage.removeItem(authNextStorageKey);
       if (code) {
         const { error } = await client.auth.exchangeCodeForSession(code);
         if (error) {

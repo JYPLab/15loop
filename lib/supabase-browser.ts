@@ -2,6 +2,8 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 let browserClient: SupabaseClient | null | undefined;
 
+export const authNextStorageKey = "15loop:auth-next";
+
 export function isSupabaseConfigured() {
   return Boolean(
     process.env.NEXT_PUBLIC_SUPABASE_URL &&

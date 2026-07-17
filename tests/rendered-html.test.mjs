@@ -97,9 +97,10 @@ test("uses parent-owned Google or email authentication", async () => {
   assert.equal(response.status, 200);
   assert.deepEqual(await response.json(), { authenticated: false });
 
-  const [page, parentPage, accountRoute, progressRoute] = await Promise.all([
+  const [page, parentPage, callbackPage, accountRoute, progressRoute] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/parent/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/auth/callback/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/api/account/route.ts", import.meta.url), "utf8"),
     readFile(new URL("../app/api/progress/route.ts", import.meta.url), "utf8"),
   ]);
@@ -107,6 +108,10 @@ test("uses parent-owned Google or email authentication", async () => {
   assert.match(page, /무료 진단 먼저 하기/);
   assert.match(parentPage, /signInWithOAuth/);
   assert.match(parentPage, /signInWithOtp/);
+  assert.match(parentPage, /localStorage\.setItem\(authNextStorageKey, next\)/);
+  assert.match(parentPage, /window\.location\.origin}\/auth\/callback`/);
+  assert.match(callbackPage, /!value\.startsWith\("\/\/"\)/);
+  assert.match(callbackPage, /exchangeCodeForSession/);
   assert.match(accountRoute, /getOptionalParent/);
   assert.match(progressRoute, /guardianHasAccess/);
   assert.doesNotMatch(page + parentPage + accountRoute, /signin-with-chatgpt|Sign in with ChatGPT/);

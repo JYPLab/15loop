@@ -4,7 +4,7 @@ import { FormEvent, useCallback, useEffect, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
 import Link from "next/link";
 import { commercialPlans, type CommercialPlanCode } from "../../lib/plans";
-import { getSupabaseBrowserClient, isSupabaseConfigured } from "../../lib/supabase-browser";
+import { authNextStorageKey, getSupabaseBrowserClient, isSupabaseConfigured } from "../../lib/supabase-browser";
 
 type Learner = {
   id: string;
@@ -195,7 +195,8 @@ export default function ParentPage() {
     if (!client) return;
     setBusy("google");
     const next = `/parent${diagnosticId ? `?diagnostic=${encodeURIComponent(diagnosticId)}` : ""}`;
-    const redirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
+    window.localStorage.setItem(authNextStorageKey, next);
+    const redirectTo = `${window.location.origin}/auth/callback`;
     const { error } = await client.auth.signInWithOAuth({ provider: "google", options: { redirectTo } });
     if (error) {
       setMessage(error.message);
@@ -209,7 +210,8 @@ export default function ParentPage() {
     if (!client || !email.trim()) return;
     setBusy("email");
     const next = `/parent${diagnosticId ? `?diagnostic=${encodeURIComponent(diagnosticId)}` : ""}`;
-    const emailRedirectTo = `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`;
+    window.localStorage.setItem(authNextStorageKey, next);
+    const emailRedirectTo = `${window.location.origin}/auth/callback`;
     const { error } = await client.auth.signInWithOtp({ email: email.trim(), options: { emailRedirectTo, shouldCreateUser: true } });
     setBusy("");
     if (error) setMessage(error.message);
