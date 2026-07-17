@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   const origin = `${protocol}://${host}`;
   const title = "15Loop | AI Vocabulary Memory Evaluation";
-  const description = "An adaptive vocabulary learning loop that evaluates recognition, listening, context, and active recall with AI-assisted feedback.";
+  const description = "A seven-day open beta for Korean elementary grades 5–6 and middle school grade 1, with adaptive vocabulary and AI-assisted feedback.";
 
   return {
     title,

@@ -191,9 +191,9 @@ export default function DiagnosisPage() {
           <Link className="commerce-text-link" href="/parent">부모 로그인</Link>
         </header>
         <section className="diagnosis-hero">
-          <span className="commerce-kicker">FREE CONNECTION CHECK</span>
+          <span className="commerce-kicker">OPEN BETA · 초5·6 · 중1</span>
           <h1>단어를 외웠는지가 아니라,<br /><em>어디서 끊기는지</em> 확인해요.</h1>
-          <p>교육부 2022 개정 기본 어휘 3,000개를 기준 지도로 사용합니다. 이번 베타 진단은 그중 뜻·발음·문장을 검수한 30단어에서 20~25개를 확인해요.</p>
+          <p>초등 핵심부터 중1 과정까지, 교육부 2022 개정 기본 어휘 3,000개를 기준 지도로 사용합니다. 이번 베타 진단은 그중 뜻·발음·문장을 검수한 30단어에서 20~25개를 확인해요.</p>
           <div className="diagnosis-facts">
             <span><b>20~25</b> 단어</span><span><b>8~12</b> 분</span><span><b>가입 없이</b> 시작</span>
           </div>

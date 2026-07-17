@@ -195,6 +195,8 @@ test("ships an adaptive 20-to-25-word free diagnostic", async () => {
   assert.match(page, /scores\[weakest\] <= 60/);
   assert.match(page, /dailyWords\.slice\(20, 25\)/);
   assert.match(page, /20~25/);
+  assert.match(page, /OPEN BETA · 초5·6 · 중1/);
+  assert.match(page, /초등 핵심부터 중1 과정까지/);
   assert.match(route, /answers\.length >= 20 && answers\.length <= 25/);
 
   const app = await worker();
@@ -204,6 +206,19 @@ test("ships an adaptive 20-to-25-word free diagnostic", async () => {
     body: JSON.stringify({ answers: [] }),
   }), env(), context);
   assert.equal(response.status, 400);
+});
+
+test("limits new open-beta profiles to elementary grades 5-6 and middle school grade 1", async () => {
+  const [parentPage, profileRoute] = await Promise.all([
+    readFile(new URL("../app/parent/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/api/commercial/profile/route.ts", import.meta.url), "utf8"),
+  ]);
+  const profileOptions = parentPage.match(/<option value="[^"]+">[^<]+<\/option>/g) ?? [];
+  assert.equal(profileOptions.filter((option) => option.includes("elementary-") || option.includes("middle-")).length, 3);
+  assert.match(parentPage, /초5·6 · 중1 무료 프로그램/);
+  assert.match(parentPage, /결제정보를 받지 않습니다/);
+  assert.doesNotMatch(parentPage, /30일 이용권 결제|TossPayments/);
+  assert.match(profileRoute, /"middle-2", "middle-3"/);
 });
 
 test("connects reviewed content to the official 3,000-word curriculum map", async () => {

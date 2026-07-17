@@ -50,7 +50,7 @@ const copy = {
   ko: {
     home: "15Loop 홈",
     streak: (days: number) => `${days}일째 루프 중`,
-    kicker: "오늘의 맞춤 루프",
+    kicker: "초5·6 · 중1 오늘의 맞춤 루프",
     headlineA: "외웠는지가 아니라,",
     headlineB: "정말 아는지",
     headlineC: "확인해요.",
@@ -142,7 +142,7 @@ const copy = {
   en: {
     home: "15Loop home",
     streak: (days: number) => `${days}-day learning streak`,
-    kicker: "Your adaptive daily loop",
+    kicker: "Open beta for grades 5–7",
     headlineA: "Do not just memorize it.",
     headlineB: "Prove you know it",
     headlineC: "in four connections.",
