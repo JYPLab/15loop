@@ -95,7 +95,7 @@ function gradeLabel(grade: string) {
 
 export default function ParentPage() {
   const configured = isSupabaseConfigured();
-  const googleAuthEnabled = process.env.NEXT_PUBLIC_GOOGLE_AUTH_ENABLED === "true";
+  const googleAuthEnabled = configured;
   const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<ParentProfile | null>(null);
   const [loading, setLoading] = useState(configured);
