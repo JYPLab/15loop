@@ -1,4 +1,5 @@
 import { dailyWords } from "../../../data/words";
+import { contentCatalogSummary } from "../../../lib/content-catalog";
 import { curriculumSummary, summarizeCurriculumCoverage } from "../../../lib/curriculum";
 
 export async function GET() {
@@ -7,6 +8,7 @@ export async function GET() {
   return Response.json({
     ...curriculumSummary,
     reviewedContent,
+    candidateCatalog: contentCatalogSummary,
     contentStatus: "curriculum-indexed",
   });
 }

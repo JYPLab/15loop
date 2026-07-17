@@ -1,0 +1,1473 @@
+{
+  "metadata": {
+    "title": "15Loop middle-school daily expression candidates",
+    "phase": "candidate-selection-only",
+    "generatedOn": "2026-07-17",
+    "count": 100,
+    "categoryCounts": {
+      "communicative_pattern": 40,
+      "phrasal_verb": 25,
+      "collocation": 25,
+      "idiom": 10
+    },
+    "contentBoundary": "Canonical candidate forms and provenance only; no meanings, examples, questions, or copied source ordering.",
+    "frequencyCaveat": "Phrasal verbs are PHaVE-crosschecked. Collocations are provisional high-frequency candidates pending licensed/open corpus validation."
+  },
+  "items": [
+    {
+      "id": "mse-001",
+      "category": "communicative_pattern",
+      "canonicalForm": "Could you please [verb]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 request 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "request"
+    },
+    {
+      "id": "mse-002",
+      "category": "communicative_pattern",
+      "canonicalForm": "Would you like to [verb]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 offer_invitation 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "offer_invitation"
+    },
+    {
+      "id": "mse-003",
+      "category": "communicative_pattern",
+      "canonicalForm": "Why don't we [verb]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 suggestion 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "suggestion"
+    },
+    {
+      "id": "mse-004",
+      "category": "communicative_pattern",
+      "canonicalForm": "How about [verb]-ing?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 suggestion 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "suggestion"
+    },
+    {
+      "id": "mse-005",
+      "category": "communicative_pattern",
+      "canonicalForm": "Let's [verb].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 suggestion 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "suggestion"
+    },
+    {
+      "id": "mse-006",
+      "category": "communicative_pattern",
+      "canonicalForm": "Can I [verb]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 permission 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "permission"
+    },
+    {
+      "id": "mse-007",
+      "category": "communicative_pattern",
+      "canonicalForm": "May I [verb]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 permission 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "permission"
+    },
+    {
+      "id": "mse-008",
+      "category": "communicative_pattern",
+      "canonicalForm": "Do you mind if I [verb]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 permission 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "permission"
+    },
+    {
+      "id": "mse-009",
+      "category": "communicative_pattern",
+      "canonicalForm": "Would you mind [verb]-ing?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 polite_request 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "polite_request"
+    },
+    {
+      "id": "mse-010",
+      "category": "communicative_pattern",
+      "canonicalForm": "I'd like to [verb].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 want_intention 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "want_intention"
+    },
+    {
+      "id": "mse-011",
+      "category": "communicative_pattern",
+      "canonicalForm": "I need to [verb].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 need 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "need"
+    },
+    {
+      "id": "mse-012",
+      "category": "communicative_pattern",
+      "canonicalForm": "I have to [verb].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 obligation 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "obligation"
+    },
+    {
+      "id": "mse-013",
+      "category": "communicative_pattern",
+      "canonicalForm": "You should [verb].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 advice 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "advice"
+    },
+    {
+      "id": "mse-014",
+      "category": "communicative_pattern",
+      "canonicalForm": "You don't have to [verb].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 lack_of_obligation 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "lack_of_obligation"
+    },
+    {
+      "id": "mse-015",
+      "category": "communicative_pattern",
+      "canonicalForm": "I think [clause].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 opinion 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "opinion"
+    },
+    {
+      "id": "mse-016",
+      "category": "communicative_pattern",
+      "canonicalForm": "I don't think [clause].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 opinion 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "opinion"
+    },
+    {
+      "id": "mse-017",
+      "category": "communicative_pattern",
+      "canonicalForm": "In my opinion, [clause].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 opinion 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "opinion"
+    },
+    {
+      "id": "mse-018",
+      "category": "communicative_pattern",
+      "canonicalForm": "I agree with [someone].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 agreement 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "agreement"
+    },
+    {
+      "id": "mse-019",
+      "category": "communicative_pattern",
+      "canonicalForm": "I don't agree because [reason].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 disagreement 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "disagreement"
+    },
+    {
+      "id": "mse-020",
+      "category": "communicative_pattern",
+      "canonicalForm": "What do you think about [topic]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 asking_opinion 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "asking_opinion"
+    },
+    {
+      "id": "mse-021",
+      "category": "communicative_pattern",
+      "canonicalForm": "How do you feel about [topic]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 asking_feeling 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "asking_feeling"
+    },
+    {
+      "id": "mse-022",
+      "category": "communicative_pattern",
+      "canonicalForm": "Could you say that again?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 repetition_request 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "repetition_request"
+    },
+    {
+      "id": "mse-023",
+      "category": "communicative_pattern",
+      "canonicalForm": "What do you mean by [word]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 clarification 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "clarification"
+    },
+    {
+      "id": "mse-024",
+      "category": "communicative_pattern",
+      "canonicalForm": "How do you spell [word]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 language_repair 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "language_repair"
+    },
+    {
+      "id": "mse-025",
+      "category": "communicative_pattern",
+      "canonicalForm": "Could you speak more slowly?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 language_repair 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "language_repair"
+    },
+    {
+      "id": "mse-026",
+      "category": "communicative_pattern",
+      "canonicalForm": "Let me check.",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 confirmation 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "confirmation"
+    },
+    {
+      "id": "mse-027",
+      "category": "communicative_pattern",
+      "canonicalForm": "Do you mean [choice]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 confirmation 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "confirmation"
+    },
+    {
+      "id": "mse-028",
+      "category": "communicative_pattern",
+      "canonicalForm": "Is that right?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 confirmation 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "confirmation"
+    },
+    {
+      "id": "mse-029",
+      "category": "communicative_pattern",
+      "canonicalForm": "I'm sorry for [noun/-ing].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 apology 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "apology"
+    },
+    {
+      "id": "mse-030",
+      "category": "communicative_pattern",
+      "canonicalForm": "That's all right.",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 apology_response 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "apology_response"
+    },
+    {
+      "id": "mse-031",
+      "category": "communicative_pattern",
+      "canonicalForm": "Excuse me, where is [place]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 asking_location 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "asking_location"
+    },
+    {
+      "id": "mse-032",
+      "category": "communicative_pattern",
+      "canonicalForm": "How can I get to [place]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 asking_directions 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "asking_directions"
+    },
+    {
+      "id": "mse-033",
+      "category": "communicative_pattern",
+      "canonicalForm": "How much is [item]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 transaction 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "transaction"
+    },
+    {
+      "id": "mse-034",
+      "category": "communicative_pattern",
+      "canonicalForm": "What time does [event] start?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 asking_time 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "asking_time"
+    },
+    {
+      "id": "mse-035",
+      "category": "communicative_pattern",
+      "canonicalForm": "What's the matter?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 wellbeing 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "wellbeing"
+    },
+    {
+      "id": "mse-036",
+      "category": "communicative_pattern",
+      "canonicalForm": "Are you okay?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 wellbeing 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "wellbeing"
+    },
+    {
+      "id": "mse-037",
+      "category": "communicative_pattern",
+      "canonicalForm": "Can you help me with [thing]?",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 asking_help 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "asking_help"
+    },
+    {
+      "id": "mse-038",
+      "category": "communicative_pattern",
+      "canonicalForm": "Thank you for [noun/-ing].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 gratitude 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "gratitude"
+    },
+    {
+      "id": "mse-039",
+      "category": "communicative_pattern",
+      "canonicalForm": "You're welcome.",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 gratitude_response 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "gratitude_response"
+    },
+    {
+      "id": "mse-040",
+      "category": "communicative_pattern",
+      "canonicalForm": "See you [time].",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "moe-2022-33",
+        "cefr-companion-2020",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 예측 가능한 일상 상호작용에서 closing 기능을 재사용 가능한 틀로 연습하기 위한 후보.",
+      "licenseStatus": "15Loop-original-standard-frame; source concepts referenced; no curriculum/CEFR example copied; review-required",
+      "functionTag": "closing"
+    },
+    {
+      "id": "mse-041",
+      "category": "phrasal_verb",
+      "canonicalForm": "check out",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-042",
+      "category": "phrasal_verb",
+      "canonicalForm": "clean up",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-043",
+      "category": "phrasal_verb",
+      "canonicalForm": "come back",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-044",
+      "category": "phrasal_verb",
+      "canonicalForm": "fill out",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-045",
+      "category": "phrasal_verb",
+      "canonicalForm": "find out",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-046",
+      "category": "phrasal_verb",
+      "canonicalForm": "get back",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-047",
+      "category": "phrasal_verb",
+      "canonicalForm": "get off",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-048",
+      "category": "phrasal_verb",
+      "canonicalForm": "get on",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-049",
+      "category": "phrasal_verb",
+      "canonicalForm": "get up",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-050",
+      "category": "phrasal_verb",
+      "canonicalForm": "give back",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-051",
+      "category": "phrasal_verb",
+      "canonicalForm": "give up",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-052",
+      "category": "phrasal_verb",
+      "canonicalForm": "go ahead",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-053",
+      "category": "phrasal_verb",
+      "canonicalForm": "go out",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-054",
+      "category": "phrasal_verb",
+      "canonicalForm": "grow up",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-055",
+      "category": "phrasal_verb",
+      "canonicalForm": "hang out",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-056",
+      "category": "phrasal_verb",
+      "canonicalForm": "look up",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-057",
+      "category": "phrasal_verb",
+      "canonicalForm": "pick up",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-058",
+      "category": "phrasal_verb",
+      "canonicalForm": "put on",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-059",
+      "category": "phrasal_verb",
+      "canonicalForm": "run out",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-060",
+      "category": "phrasal_verb",
+      "canonicalForm": "sit down",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-061",
+      "category": "phrasal_verb",
+      "canonicalForm": "stand up",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-062",
+      "category": "phrasal_verb",
+      "canonicalForm": "take off",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-063",
+      "category": "phrasal_verb",
+      "canonicalForm": "turn off",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-064",
+      "category": "phrasal_verb",
+      "canonicalForm": "wake up",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-065",
+      "category": "phrasal_verb",
+      "canonicalForm": "work out",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "phave-2015",
+        "phave-crosscheck-umn",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "PHaVE 고빈도 연구군 포함 여부와 중학생 일상 사용성을 함께 고려한 표제 후보; 의미 sense는 후속 저작 단계에서 별도 결정.",
+      "licenseStatus": "PHaVE-basis-CC-BY-4.0-attribution-required; short lexical form only; no source definition/example/rank copied",
+      "functionTag": "high-frequency-daily-use"
+    },
+    {
+      "id": "mse-066",
+      "category": "collocation",
+      "canonicalForm": "make a decision",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-067",
+      "category": "collocation",
+      "canonicalForm": "make a mistake",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-068",
+      "category": "collocation",
+      "canonicalForm": "make a plan",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-069",
+      "category": "collocation",
+      "canonicalForm": "make friends",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-070",
+      "category": "collocation",
+      "canonicalForm": "take a break",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-071",
+      "category": "collocation",
+      "canonicalForm": "take a seat",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-072",
+      "category": "collocation",
+      "canonicalForm": "take a picture",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-073",
+      "category": "collocation",
+      "canonicalForm": "take notes",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-074",
+      "category": "collocation",
+      "canonicalForm": "have a good time",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-075",
+      "category": "collocation",
+      "canonicalForm": "have trouble [verb]-ing",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-076",
+      "category": "collocation",
+      "canonicalForm": "do homework",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-077",
+      "category": "collocation",
+      "canonicalForm": "do one's best",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-078",
+      "category": "collocation",
+      "canonicalForm": "get ready",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-079",
+      "category": "collocation",
+      "canonicalForm": "get dressed",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-080",
+      "category": "collocation",
+      "canonicalForm": "pay attention",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-081",
+      "category": "collocation",
+      "canonicalForm": "keep in touch",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-082",
+      "category": "collocation",
+      "canonicalForm": "spend time",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-083",
+      "category": "collocation",
+      "canonicalForm": "save time",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-084",
+      "category": "collocation",
+      "canonicalForm": "catch a bus",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-085",
+      "category": "collocation",
+      "canonicalForm": "miss a bus",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-086",
+      "category": "collocation",
+      "canonicalForm": "heavy rain",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-087",
+      "category": "collocation",
+      "canonicalForm": "strong wind",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-088",
+      "category": "collocation",
+      "canonicalForm": "fast food",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-089",
+      "category": "collocation",
+      "canonicalForm": "free time",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-090",
+      "category": "collocation",
+      "canonicalForm": "on time",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "중학생의 학교·이동·시간·일상 과업에서 결합 단위로 재사용할 가치가 큰 고빈도 우선 후보; 정량 코퍼스 검증은 통합 전 필요.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; corpus-validation-pending",
+      "functionTag": "provisional-high-frequency"
+    },
+    {
+      "id": "mse-091",
+      "category": "idiom",
+      "canonicalForm": "a piece of cake",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "15loop-original-curation"
+      ],
+      "selectionReason": "구성 단어만으로 전체 의미를 예측하기 어려우면서 일상 노출 가능성이 있는 표현을 제한적으로 포함한 후보.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; review-required",
+      "functionTag": "limited-everyday-idiom"
+    },
+    {
+      "id": "mse-092",
+      "category": "idiom",
+      "canonicalForm": "under the weather",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "15loop-original-curation"
+      ],
+      "selectionReason": "구성 단어만으로 전체 의미를 예측하기 어려우면서 일상 노출 가능성이 있는 표현을 제한적으로 포함한 후보.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; review-required",
+      "functionTag": "limited-everyday-idiom"
+    },
+    {
+      "id": "mse-093",
+      "category": "idiom",
+      "canonicalForm": "in hot water",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "15loop-original-curation"
+      ],
+      "selectionReason": "구성 단어만으로 전체 의미를 예측하기 어려우면서 일상 노출 가능성이 있는 표현을 제한적으로 포함한 후보.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; review-required",
+      "functionTag": "limited-everyday-idiom"
+    },
+    {
+      "id": "mse-094",
+      "category": "idiom",
+      "canonicalForm": "break the ice",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "15loop-original-curation"
+      ],
+      "selectionReason": "구성 단어만으로 전체 의미를 예측하기 어려우면서 일상 노출 가능성이 있는 표현을 제한적으로 포함한 후보.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; review-required",
+      "functionTag": "limited-everyday-idiom"
+    },
+    {
+      "id": "mse-095",
+      "category": "idiom",
+      "canonicalForm": "on the same page",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "15loop-original-curation"
+      ],
+      "selectionReason": "구성 단어만으로 전체 의미를 예측하기 어려우면서 일상 노출 가능성이 있는 표현을 제한적으로 포함한 후보.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; review-required",
+      "functionTag": "limited-everyday-idiom"
+    },
+    {
+      "id": "mse-096",
+      "category": "idiom",
+      "canonicalForm": "cost an arm and a leg",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "15loop-original-curation"
+      ],
+      "selectionReason": "구성 단어만으로 전체 의미를 예측하기 어려우면서 일상 노출 가능성이 있는 표현을 제한적으로 포함한 후보.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; review-required",
+      "functionTag": "limited-everyday-idiom"
+    },
+    {
+      "id": "mse-097",
+      "category": "idiom",
+      "canonicalForm": "once in a blue moon",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "15loop-original-curation"
+      ],
+      "selectionReason": "구성 단어만으로 전체 의미를 예측하기 어려우면서 일상 노출 가능성이 있는 표현을 제한적으로 포함한 후보.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; review-required",
+      "functionTag": "limited-everyday-idiom"
+    },
+    {
+      "id": "mse-098",
+      "category": "idiom",
+      "canonicalForm": "the tip of the iceberg",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "15loop-original-curation"
+      ],
+      "selectionReason": "구성 단어만으로 전체 의미를 예측하기 어려우면서 일상 노출 가능성이 있는 표현을 제한적으로 포함한 후보.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; review-required",
+      "functionTag": "limited-everyday-idiom"
+    },
+    {
+      "id": "mse-099",
+      "category": "idiom",
+      "canonicalForm": "call it a day",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "15loop-original-curation"
+      ],
+      "selectionReason": "구성 단어만으로 전체 의미를 예측하기 어려우면서 일상 노출 가능성이 있는 표현을 제한적으로 포함한 후보.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; review-required",
+      "functionTag": "limited-everyday-idiom"
+    },
+    {
+      "id": "mse-100",
+      "category": "idiom",
+      "canonicalForm": "out of the blue",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "expression-extension-not-official-tier",
+      "sourceBasis": [
+        "15loop-original-curation"
+      ],
+      "selectionReason": "구성 단어만으로 전체 의미를 예측하기 어려우면서 일상 노출 가능성이 있는 표현을 제한적으로 포함한 후보.",
+      "licenseStatus": "short-conventional-expression; 15Loop-original-curation; no third-party definition/example/order copied; review-required",
+      "functionTag": "limited-everyday-idiom"
+    }
+  ]
+}

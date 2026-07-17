@@ -1,5 +1,6 @@
 import { authErrorResponse, requireParent } from "../../../../lib/auth";
-import { commercialRouteError, ensureGuardian, getCommercialStorage } from "../../../../lib/commercial";
+import { recordBetaEvent } from "../../../../lib/beta-ops";
+import { commercialRouteError, ensureGuardian, getCommercialStorage, guardianHasConsent } from "../../../../lib/commercial";
 import { commercialPlans, isCommercialPlanCode } from "../../../../lib/plans";
 import { eq } from "drizzle-orm";
 
@@ -14,6 +15,9 @@ export async function POST(request: Request) {
 
     const { db, schema } = await getCommercialStorage();
     const account = await ensureGuardian(db, schema, parent);
+    if (!guardianHasConsent(account)) {
+      return Response.json({ error: "보호자 동의 후 이용권을 선택할 수 있습니다." }, { status: 403 });
+    }
     const plan = commercialPlans[planCode];
     const linkedLearners = await db.select({ id: schema.guardianLearners.id })
       .from(schema.guardianLearners)
@@ -33,6 +37,11 @@ export async function POST(request: Request) {
       amount: plan.amount,
       customerKey: account.customerKey,
       idempotencyKey,
+    });
+    await recordBetaEvent(db, schema, {
+      eventName: "payment_started",
+      guardianId: parent.id,
+      metadata: { planCode, amount: plan.amount },
     });
 
     return Response.json({

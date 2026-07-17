@@ -1,5 +1,6 @@
 import { eq } from "drizzle-orm";
 import type { ParentIdentity } from "./auth";
+import { hasCurrentGuardianConsent } from "./policies";
 
 type Db = ReturnType<typeof import("../db").getDb>;
 type Schema = typeof import("../db/schema");
@@ -50,6 +51,15 @@ export function guardianHasAccess(account: {
   const paidActive = account.planStatus === "active" && Boolean(account.paidUntil) &&
     new Date(account.paidUntil as string).getTime() > now.getTime();
   return trialActive || paidActive;
+}
+
+export function guardianHasConsent(account: {
+  termsVersion: string;
+  privacyVersion: string;
+  guardianConfirmed: boolean;
+  consentAcceptedAt: string | null;
+}) {
+  return hasCurrentGuardianConsent(account);
 }
 
 export function commercialRouteError(error: unknown) {

@@ -424,6 +424,10 @@ export default function Home() {
         const progressResponse = await fetch(`/api/progress?learnerId=${encodeURIComponent(learnerId)}`, {
           headers: token ? { Authorization: `Bearer ${token}` } : undefined,
         });
+        if ([401, 403].includes(progressResponse.status) && /^child-[0-9a-f-]{36}$/i.test(learnerId)) {
+          setAccountOpen(true);
+          return;
+        }
         if (progressResponse.status === 402) {
           setAccessBlocked(true);
           setAccountOpen(true);

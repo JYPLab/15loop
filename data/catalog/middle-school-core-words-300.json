@@ -1,0 +1,4812 @@
+{
+  "metadata": {
+    "title": "15Loop middle-school core word candidates",
+    "phase": "candidate-selection-only",
+    "generatedOn": "2026-07-17",
+    "count": 300,
+    "selectionOrder": "15Loop beta priority; not Ministry frequency/difficulty/order",
+    "contentBoundary": "No meanings, examples, questions, distractors, audio, or third-party ordering."
+  },
+  "items": [
+    {
+      "id": "msw-001",
+      "category": "core_word",
+      "canonicalForm": "accept",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 19,
+      "officialMarker": "**",
+      "betaPriority": 1
+    },
+    {
+      "id": "msw-002",
+      "category": "core_word",
+      "canonicalForm": "achieve",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 31,
+      "officialMarker": "**",
+      "betaPriority": 2
+    },
+    {
+      "id": "msw-003",
+      "category": "core_word",
+      "canonicalForm": "allow",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 91,
+      "officialMarker": "**",
+      "betaPriority": 3
+    },
+    {
+      "id": "msw-004",
+      "category": "core_word",
+      "canonicalForm": "appear",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 138,
+      "officialMarker": "**",
+      "betaPriority": 4
+    },
+    {
+      "id": "msw-005",
+      "category": "core_word",
+      "canonicalForm": "avoid",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 199,
+      "officialMarker": "**",
+      "betaPriority": 5
+    },
+    {
+      "id": "msw-006",
+      "category": "core_word",
+      "canonicalForm": "belong",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 263,
+      "officialMarker": "**",
+      "betaPriority": 6
+    },
+    {
+      "id": "msw-007",
+      "category": "core_word",
+      "canonicalForm": "breathe",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 342,
+      "officialMarker": "**",
+      "betaPriority": 7
+    },
+    {
+      "id": "msw-008",
+      "category": "core_word",
+      "canonicalForm": "cause",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 423,
+      "officialMarker": "**",
+      "betaPriority": 8
+    },
+    {
+      "id": "msw-009",
+      "category": "core_word",
+      "canonicalForm": "compare",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 547,
+      "officialMarker": "**",
+      "betaPriority": 9
+    },
+    {
+      "id": "msw-010",
+      "category": "core_word",
+      "canonicalForm": "complete",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 555,
+      "officialMarker": "**",
+      "betaPriority": 10
+    },
+    {
+      "id": "msw-011",
+      "category": "core_word",
+      "canonicalForm": "consider",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 592,
+      "officialMarker": "**",
+      "betaPriority": 11
+    },
+    {
+      "id": "msw-012",
+      "category": "core_word",
+      "canonicalForm": "continue",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 608,
+      "officialMarker": "**",
+      "betaPriority": 12
+    },
+    {
+      "id": "msw-013",
+      "category": "core_word",
+      "canonicalForm": "create",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 668,
+      "officialMarker": "**",
+      "betaPriority": 13
+    },
+    {
+      "id": "msw-014",
+      "category": "core_word",
+      "canonicalForm": "depend",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 764,
+      "officialMarker": "**",
+      "betaPriority": 14
+    },
+    {
+      "id": "msw-015",
+      "category": "core_word",
+      "canonicalForm": "describe",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 771,
+      "officialMarker": "**",
+      "betaPriority": 15
+    },
+    {
+      "id": "msw-016",
+      "category": "core_word",
+      "canonicalForm": "develop",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 789,
+      "officialMarker": "**",
+      "betaPriority": 16
+    },
+    {
+      "id": "msw-017",
+      "category": "core_word",
+      "canonicalForm": "explain",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 999,
+      "officialMarker": "**",
+      "betaPriority": 17
+    },
+    {
+      "id": "msw-018",
+      "category": "core_word",
+      "canonicalForm": "follow",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1112,
+      "officialMarker": "**",
+      "betaPriority": 18
+    },
+    {
+      "id": "msw-019",
+      "category": "core_word",
+      "canonicalForm": "happen",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1280,
+      "officialMarker": "**",
+      "betaPriority": 19
+    },
+    {
+      "id": "msw-020",
+      "category": "core_word",
+      "canonicalForm": "improve",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1390,
+      "officialMarker": "**",
+      "betaPriority": 20
+    },
+    {
+      "id": "msw-021",
+      "category": "core_word",
+      "canonicalForm": "include",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1395,
+      "officialMarker": "**",
+      "betaPriority": 21
+    },
+    {
+      "id": "msw-022",
+      "category": "core_word",
+      "canonicalForm": "lend",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1559,
+      "officialMarker": "**",
+      "betaPriority": 22
+    },
+    {
+      "id": "msw-023",
+      "category": "core_word",
+      "canonicalForm": "manage",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1623,
+      "officialMarker": "**",
+      "betaPriority": 23
+    },
+    {
+      "id": "msw-024",
+      "category": "core_word",
+      "canonicalForm": "mean",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1650,
+      "officialMarker": "**",
+      "betaPriority": 24
+    },
+    {
+      "id": "msw-025",
+      "category": "core_word",
+      "canonicalForm": "notice",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1802,
+      "officialMarker": "**",
+      "betaPriority": 25
+    },
+    {
+      "id": "msw-026",
+      "category": "core_word",
+      "canonicalForm": "offer",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1828,
+      "officialMarker": "**",
+      "betaPriority": 26
+    },
+    {
+      "id": "msw-027",
+      "category": "core_word",
+      "canonicalForm": "order",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1852,
+      "officialMarker": "**",
+      "betaPriority": 27
+    },
+    {
+      "id": "msw-028",
+      "category": "core_word",
+      "canonicalForm": "own",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1877,
+      "officialMarker": "**",
+      "betaPriority": 28
+    },
+    {
+      "id": "msw-029",
+      "category": "core_word",
+      "canonicalForm": "practice",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2020,
+      "officialMarker": "**",
+      "betaPriority": 29
+    },
+    {
+      "id": "msw-030",
+      "category": "core_word",
+      "canonicalForm": "prepare",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2032,
+      "officialMarker": "**",
+      "betaPriority": 30
+    },
+    {
+      "id": "msw-031",
+      "category": "core_word",
+      "canonicalForm": "prevent",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2043,
+      "officialMarker": "**",
+      "betaPriority": 31
+    },
+    {
+      "id": "msw-032",
+      "category": "core_word",
+      "canonicalForm": "promise",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2076,
+      "officialMarker": "**",
+      "betaPriority": 32
+    },
+    {
+      "id": "msw-033",
+      "category": "core_word",
+      "canonicalForm": "protect",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2087,
+      "officialMarker": "**",
+      "betaPriority": 33
+    },
+    {
+      "id": "msw-034",
+      "category": "core_word",
+      "canonicalForm": "provide",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2092,
+      "officialMarker": "**",
+      "betaPriority": 34
+    },
+    {
+      "id": "msw-035",
+      "category": "core_word",
+      "canonicalForm": "receive",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2153,
+      "officialMarker": "**",
+      "betaPriority": 35
+    },
+    {
+      "id": "msw-036",
+      "category": "core_word",
+      "canonicalForm": "repeat",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2196,
+      "officialMarker": "**",
+      "betaPriority": 36
+    },
+    {
+      "id": "msw-037",
+      "category": "core_word",
+      "canonicalForm": "reply",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2198,
+      "officialMarker": "**",
+      "betaPriority": 37
+    },
+    {
+      "id": "msw-038",
+      "category": "core_word",
+      "canonicalForm": "report",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2199,
+      "officialMarker": "**",
+      "betaPriority": 38
+    },
+    {
+      "id": "msw-039",
+      "category": "core_word",
+      "canonicalForm": "require",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2204,
+      "officialMarker": "**",
+      "betaPriority": 39
+    },
+    {
+      "id": "msw-040",
+      "category": "core_word",
+      "canonicalForm": "seem",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2338,
+      "officialMarker": "**",
+      "betaPriority": 40
+    },
+    {
+      "id": "msw-041",
+      "category": "core_word",
+      "canonicalForm": "share",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2370,
+      "officialMarker": "**",
+      "betaPriority": 41
+    },
+    {
+      "id": "msw-042",
+      "category": "core_word",
+      "canonicalForm": "solve",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2461,
+      "officialMarker": "**",
+      "betaPriority": 42
+    },
+    {
+      "id": "msw-043",
+      "category": "core_word",
+      "canonicalForm": "spend",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2490,
+      "officialMarker": "**",
+      "betaPriority": 43
+    },
+    {
+      "id": "msw-044",
+      "category": "core_word",
+      "canonicalForm": "suggest",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2590,
+      "officialMarker": "**",
+      "betaPriority": 44
+    },
+    {
+      "id": "msw-045",
+      "category": "core_word",
+      "canonicalForm": "support",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2605,
+      "officialMarker": "**",
+      "betaPriority": 45
+    },
+    {
+      "id": "msw-046",
+      "category": "core_word",
+      "canonicalForm": "suppose",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2606,
+      "officialMarker": "**",
+      "betaPriority": 46
+    },
+    {
+      "id": "msw-047",
+      "category": "core_word",
+      "canonicalForm": "throw",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2716,
+      "officialMarker": "**",
+      "betaPriority": 47
+    },
+    {
+      "id": "msw-048",
+      "category": "core_word",
+      "canonicalForm": "trust",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2798,
+      "officialMarker": "**",
+      "betaPriority": 48
+    },
+    {
+      "id": "msw-049",
+      "category": "core_word",
+      "canonicalForm": "wonder",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2973,
+      "officialMarker": "**",
+      "betaPriority": 49
+    },
+    {
+      "id": "msw-050",
+      "category": "core_word",
+      "canonicalForm": "accident",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 21,
+      "officialMarker": "**",
+      "betaPriority": 50
+    },
+    {
+      "id": "msw-051",
+      "category": "core_word",
+      "canonicalForm": "advice",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 55,
+      "officialMarker": "**",
+      "betaPriority": 51
+    },
+    {
+      "id": "msw-052",
+      "category": "core_word",
+      "canonicalForm": "airport",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 81,
+      "officialMarker": "**",
+      "betaPriority": 52
+    },
+    {
+      "id": "msw-053",
+      "category": "core_word",
+      "canonicalForm": "amount",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 111,
+      "officialMarker": "**",
+      "betaPriority": 53
+    },
+    {
+      "id": "msw-054",
+      "category": "core_word",
+      "canonicalForm": "article",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 159,
+      "officialMarker": "**",
+      "betaPriority": 54
+    },
+    {
+      "id": "msw-055",
+      "category": "core_word",
+      "canonicalForm": "attention",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 186,
+      "officialMarker": "**",
+      "betaPriority": 55
+    },
+    {
+      "id": "msw-056",
+      "category": "core_word",
+      "canonicalForm": "audience",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 191,
+      "officialMarker": "**",
+      "betaPriority": 56
+    },
+    {
+      "id": "msw-057",
+      "category": "core_word",
+      "canonicalForm": "choice",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 470,
+      "officialMarker": "**",
+      "betaPriority": 57
+    },
+    {
+      "id": "msw-058",
+      "category": "core_word",
+      "canonicalForm": "community",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 544,
+      "officialMarker": "**",
+      "betaPriority": 58
+    },
+    {
+      "id": "msw-059",
+      "category": "core_word",
+      "canonicalForm": "effect",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 896,
+      "officialMarker": "**",
+      "betaPriority": 59
+    },
+    {
+      "id": "msw-060",
+      "category": "core_word",
+      "canonicalForm": "event",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 965,
+      "officialMarker": "**",
+      "betaPriority": 60
+    },
+    {
+      "id": "msw-061",
+      "category": "core_word",
+      "canonicalForm": "experience",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 995,
+      "officialMarker": "**",
+      "betaPriority": 61
+    },
+    {
+      "id": "msw-062",
+      "category": "core_word",
+      "canonicalForm": "health",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1297,
+      "officialMarker": "**",
+      "betaPriority": 62
+    },
+    {
+      "id": "msw-063",
+      "category": "core_word",
+      "canonicalForm": "interest",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1446,
+      "officialMarker": "**",
+      "betaPriority": 63
+    },
+    {
+      "id": "msw-064",
+      "category": "core_word",
+      "canonicalForm": "language",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1525,
+      "officialMarker": "**",
+      "betaPriority": 64
+    },
+    {
+      "id": "msw-065",
+      "category": "core_word",
+      "canonicalForm": "message",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1675,
+      "officialMarker": "**",
+      "betaPriority": 65
+    },
+    {
+      "id": "msw-066",
+      "category": "core_word",
+      "canonicalForm": "opinion",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1842,
+      "officialMarker": "**",
+      "betaPriority": 66
+    },
+    {
+      "id": "msw-067",
+      "category": "core_word",
+      "canonicalForm": "reason",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2150,
+      "officialMarker": "**",
+      "betaPriority": 67
+    },
+    {
+      "id": "msw-068",
+      "category": "core_word",
+      "canonicalForm": "result",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2224,
+      "officialMarker": "**",
+      "betaPriority": 68
+    },
+    {
+      "id": "msw-069",
+      "category": "core_word",
+      "canonicalForm": "rule",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2278,
+      "officialMarker": "**",
+      "betaPriority": 69
+    },
+    {
+      "id": "msw-070",
+      "category": "core_word",
+      "canonicalForm": "society",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2452,
+      "officialMarker": "**",
+      "betaPriority": 70
+    },
+    {
+      "id": "msw-071",
+      "category": "core_word",
+      "canonicalForm": "stress",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2558,
+      "officialMarker": "**",
+      "betaPriority": 71
+    },
+    {
+      "id": "msw-072",
+      "category": "core_word",
+      "canonicalForm": "subject",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2573,
+      "officialMarker": "**",
+      "betaPriority": 72
+    },
+    {
+      "id": "msw-073",
+      "category": "core_word",
+      "canonicalForm": "success",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2583,
+      "officialMarker": "**",
+      "betaPriority": 73
+    },
+    {
+      "id": "msw-074",
+      "category": "core_word",
+      "canonicalForm": "technology",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2657,
+      "officialMarker": "**",
+      "betaPriority": 74
+    },
+    {
+      "id": "msw-075",
+      "category": "core_word",
+      "canonicalForm": "traffic",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2766,
+      "officialMarker": "**",
+      "betaPriority": 75
+    },
+    {
+      "id": "msw-076",
+      "category": "core_word",
+      "canonicalForm": "trouble",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2794,
+      "officialMarker": "**",
+      "betaPriority": 76
+    },
+    {
+      "id": "msw-077",
+      "category": "core_word",
+      "canonicalForm": "truth",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2799,
+      "officialMarker": "**",
+      "betaPriority": 77
+    },
+    {
+      "id": "msw-078",
+      "category": "core_word",
+      "canonicalForm": "value",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2852,
+      "officialMarker": "**",
+      "betaPriority": 78
+    },
+    {
+      "id": "msw-079",
+      "category": "core_word",
+      "canonicalForm": "view",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2874,
+      "officialMarker": "**",
+      "betaPriority": 79
+    },
+    {
+      "id": "msw-080",
+      "category": "core_word",
+      "canonicalForm": "able",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 3,
+      "officialMarker": "**",
+      "betaPriority": 80
+    },
+    {
+      "id": "msw-081",
+      "category": "core_word",
+      "canonicalForm": "alive",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 88,
+      "officialMarker": "**",
+      "betaPriority": 81
+    },
+    {
+      "id": "msw-082",
+      "category": "core_word",
+      "canonicalForm": "common",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 541,
+      "officialMarker": "**",
+      "betaPriority": 82
+    },
+    {
+      "id": "msw-083",
+      "category": "core_word",
+      "canonicalForm": "correct",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 636,
+      "officialMarker": "**",
+      "betaPriority": 83
+    },
+    {
+      "id": "msw-084",
+      "category": "core_word",
+      "canonicalForm": "general",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1191,
+      "officialMarker": "**",
+      "betaPriority": 84
+    },
+    {
+      "id": "msw-085",
+      "category": "core_word",
+      "canonicalForm": "local",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1590,
+      "officialMarker": "**",
+      "betaPriority": 85
+    },
+    {
+      "id": "msw-086",
+      "category": "core_word",
+      "canonicalForm": "main",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1617,
+      "officialMarker": "**",
+      "betaPriority": 86
+    },
+    {
+      "id": "msw-087",
+      "category": "core_word",
+      "canonicalForm": "modern",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1709,
+      "officialMarker": "**",
+      "betaPriority": 87
+    },
+    {
+      "id": "msw-088",
+      "category": "core_word",
+      "canonicalForm": "necessary",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1761,
+      "officialMarker": "**",
+      "betaPriority": 88
+    },
+    {
+      "id": "msw-089",
+      "category": "core_word",
+      "canonicalForm": "possible",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2011,
+      "officialMarker": "**",
+      "betaPriority": 89
+    },
+    {
+      "id": "msw-090",
+      "category": "core_word",
+      "canonicalForm": "popular",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2002,
+      "officialMarker": "**",
+      "betaPriority": 90
+    },
+    {
+      "id": "msw-091",
+      "category": "core_word",
+      "canonicalForm": "proud",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2090,
+      "officialMarker": "**",
+      "betaPriority": 91
+    },
+    {
+      "id": "msw-092",
+      "category": "core_word",
+      "canonicalForm": "real",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2148,
+      "officialMarker": "**",
+      "betaPriority": 92
+    },
+    {
+      "id": "msw-093",
+      "category": "core_word",
+      "canonicalForm": "serious",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2352,
+      "officialMarker": "**",
+      "betaPriority": 93
+    },
+    {
+      "id": "msw-094",
+      "category": "core_word",
+      "canonicalForm": "simple",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2405,
+      "officialMarker": "**",
+      "betaPriority": 94
+    },
+    {
+      "id": "msw-095",
+      "category": "core_word",
+      "canonicalForm": "strange",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2553,
+      "officialMarker": "**",
+      "betaPriority": 95
+    },
+    {
+      "id": "msw-096",
+      "category": "core_word",
+      "canonicalForm": "terrible",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2678,
+      "officialMarker": "**",
+      "betaPriority": 96
+    },
+    {
+      "id": "msw-097",
+      "category": "core_word",
+      "canonicalForm": "various",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2855,
+      "officialMarker": "**",
+      "betaPriority": 97
+    },
+    {
+      "id": "msw-098",
+      "category": "core_word",
+      "canonicalForm": "weak",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2915,
+      "officialMarker": "**",
+      "betaPriority": 98
+    },
+    {
+      "id": "msw-099",
+      "category": "core_word",
+      "canonicalForm": "although",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 103,
+      "officialMarker": "**",
+      "betaPriority": 99
+    },
+    {
+      "id": "msw-100",
+      "category": "core_word",
+      "canonicalForm": "therefore",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 foundation 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2695,
+      "officialMarker": "**",
+      "betaPriority": 100
+    },
+    {
+      "id": "msw-101",
+      "category": "core_word",
+      "canonicalForm": "except",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 979,
+      "officialMarker": "**",
+      "betaPriority": 101
+    },
+    {
+      "id": "msw-102",
+      "category": "core_word",
+      "canonicalForm": "instead",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1433,
+      "officialMarker": "**",
+      "betaPriority": 102
+    },
+    {
+      "id": "msw-103",
+      "category": "core_word",
+      "canonicalForm": "while",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2943,
+      "officialMarker": "**",
+      "betaPriority": 103
+    },
+    {
+      "id": "msw-104",
+      "category": "core_word",
+      "canonicalForm": "without",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2970,
+      "officialMarker": "**",
+      "betaPriority": 104
+    },
+    {
+      "id": "msw-105",
+      "category": "core_word",
+      "canonicalForm": "among",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 110,
+      "officialMarker": "**",
+      "betaPriority": 105
+    },
+    {
+      "id": "msw-106",
+      "category": "core_word",
+      "canonicalForm": "beyond",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 274,
+      "officialMarker": "**",
+      "betaPriority": 106
+    },
+    {
+      "id": "msw-107",
+      "category": "core_word",
+      "canonicalForm": "since",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2409,
+      "officialMarker": "**",
+      "betaPriority": 107
+    },
+    {
+      "id": "msw-108",
+      "category": "core_word",
+      "canonicalForm": "toward",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2756,
+      "officialMarker": "**",
+      "betaPriority": 108
+    },
+    {
+      "id": "msw-109",
+      "category": "core_word",
+      "canonicalForm": "account",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 26,
+      "officialMarker": "**",
+      "betaPriority": 109
+    },
+    {
+      "id": "msw-110",
+      "category": "core_word",
+      "canonicalForm": "advantage",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 51,
+      "officialMarker": "**",
+      "betaPriority": 110
+    },
+    {
+      "id": "msw-111",
+      "category": "core_word",
+      "canonicalForm": "adventure",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 52,
+      "officialMarker": "**",
+      "betaPriority": 111
+    },
+    {
+      "id": "msw-112",
+      "category": "core_word",
+      "canonicalForm": "affect",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 60,
+      "officialMarker": "**",
+      "betaPriority": 112
+    },
+    {
+      "id": "msw-113",
+      "category": "core_word",
+      "canonicalForm": "afford",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 61,
+      "officialMarker": "**",
+      "betaPriority": 113
+    },
+    {
+      "id": "msw-114",
+      "category": "core_word",
+      "canonicalForm": "aim",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 77,
+      "officialMarker": "**",
+      "betaPriority": 114
+    },
+    {
+      "id": "msw-115",
+      "category": "core_word",
+      "canonicalForm": "alarm",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 82,
+      "officialMarker": "**",
+      "betaPriority": 115
+    },
+    {
+      "id": "msw-116",
+      "category": "core_word",
+      "canonicalForm": "amaze",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 106,
+      "officialMarker": "**",
+      "betaPriority": 116
+    },
+    {
+      "id": "msw-117",
+      "category": "core_word",
+      "canonicalForm": "announce",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 123,
+      "officialMarker": "**",
+      "betaPriority": 117
+    },
+    {
+      "id": "msw-118",
+      "category": "core_word",
+      "canonicalForm": "argue",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 149,
+      "officialMarker": "**",
+      "betaPriority": 118
+    },
+    {
+      "id": "msw-119",
+      "category": "core_word",
+      "canonicalForm": "attend",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 185,
+      "officialMarker": "**",
+      "betaPriority": 119
+    },
+    {
+      "id": "msw-120",
+      "category": "core_word",
+      "canonicalForm": "attract",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 188,
+      "officialMarker": "**",
+      "betaPriority": 120
+    },
+    {
+      "id": "msw-121",
+      "category": "core_word",
+      "canonicalForm": "balance",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 215,
+      "officialMarker": "**",
+      "betaPriority": 121
+    },
+    {
+      "id": "msw-122",
+      "category": "core_word",
+      "canonicalForm": "beat",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 246,
+      "officialMarker": "**",
+      "betaPriority": 122
+    },
+    {
+      "id": "msw-123",
+      "category": "core_word",
+      "canonicalForm": "challenge",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 439,
+      "officialMarker": "**",
+      "betaPriority": 123
+    },
+    {
+      "id": "msw-124",
+      "category": "core_word",
+      "canonicalForm": "communicate",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 542,
+      "officialMarker": "**",
+      "betaPriority": 124
+    },
+    {
+      "id": "msw-125",
+      "category": "core_word",
+      "canonicalForm": "complain",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 553,
+      "officialMarker": "**",
+      "betaPriority": 125
+    },
+    {
+      "id": "msw-126",
+      "category": "core_word",
+      "canonicalForm": "connect",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 587,
+      "officialMarker": "**",
+      "betaPriority": 126
+    },
+    {
+      "id": "msw-127",
+      "category": "core_word",
+      "canonicalForm": "contact",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 600,
+      "officialMarker": "**",
+      "betaPriority": 127
+    },
+    {
+      "id": "msw-128",
+      "category": "core_word",
+      "canonicalForm": "copy",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 629,
+      "officialMarker": "**",
+      "betaPriority": 128
+    },
+    {
+      "id": "msw-129",
+      "category": "core_word",
+      "canonicalForm": "count",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 648,
+      "officialMarker": "**",
+      "betaPriority": 129
+    },
+    {
+      "id": "msw-130",
+      "category": "core_word",
+      "canonicalForm": "deal",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 724,
+      "officialMarker": "**",
+      "betaPriority": 130
+    },
+    {
+      "id": "msw-131",
+      "category": "core_word",
+      "canonicalForm": "deliver",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 754,
+      "officialMarker": "**",
+      "betaPriority": 131
+    },
+    {
+      "id": "msw-132",
+      "category": "core_word",
+      "canonicalForm": "destroy",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 783,
+      "officialMarker": "**",
+      "betaPriority": 132
+    },
+    {
+      "id": "msw-133",
+      "category": "core_word",
+      "canonicalForm": "divide",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 836,
+      "officialMarker": "**",
+      "betaPriority": 133
+    },
+    {
+      "id": "msw-134",
+      "category": "core_word",
+      "canonicalForm": "earn",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 887,
+      "officialMarker": "**",
+      "betaPriority": 134
+    },
+    {
+      "id": "msw-135",
+      "category": "core_word",
+      "canonicalForm": "educate",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 895,
+      "officialMarker": "**",
+      "betaPriority": 135
+    },
+    {
+      "id": "msw-136",
+      "category": "core_word",
+      "canonicalForm": "expect",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 993,
+      "officialMarker": "**",
+      "betaPriority": 136
+    },
+    {
+      "id": "msw-137",
+      "category": "core_word",
+      "canonicalForm": "feed",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1054,
+      "officialMarker": "**",
+      "betaPriority": 137
+    },
+    {
+      "id": "msw-138",
+      "category": "core_word",
+      "canonicalForm": "forgive",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1127,
+      "officialMarker": "**",
+      "betaPriority": 138
+    },
+    {
+      "id": "msw-139",
+      "category": "core_word",
+      "canonicalForm": "gather",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1186,
+      "officialMarker": "**",
+      "betaPriority": 139
+    },
+    {
+      "id": "msw-140",
+      "category": "core_word",
+      "canonicalForm": "handle",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1277,
+      "officialMarker": "**",
+      "betaPriority": 140
+    },
+    {
+      "id": "msw-141",
+      "category": "core_word",
+      "canonicalForm": "hear",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1298,
+      "officialMarker": "**",
+      "betaPriority": 141
+    },
+    {
+      "id": "msw-142",
+      "category": "core_word",
+      "canonicalForm": "hide",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1316,
+      "officialMarker": "**",
+      "betaPriority": 142
+    },
+    {
+      "id": "msw-143",
+      "category": "core_word",
+      "canonicalForm": "imagine",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1377,
+      "officialMarker": "**",
+      "betaPriority": 143
+    },
+    {
+      "id": "msw-144",
+      "category": "core_word",
+      "canonicalForm": "increase",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1398,
+      "officialMarker": "**",
+      "betaPriority": 144
+    },
+    {
+      "id": "msw-145",
+      "category": "core_word",
+      "canonicalForm": "influence",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1409,
+      "officialMarker": "**",
+      "betaPriority": 145
+    },
+    {
+      "id": "msw-146",
+      "category": "core_word",
+      "canonicalForm": "inform",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1410,
+      "officialMarker": "**",
+      "betaPriority": 146
+    },
+    {
+      "id": "msw-147",
+      "category": "core_word",
+      "canonicalForm": "laugh",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1532,
+      "officialMarker": "**",
+      "betaPriority": 147
+    },
+    {
+      "id": "msw-148",
+      "category": "core_word",
+      "canonicalForm": "lead",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1540,
+      "officialMarker": "**",
+      "betaPriority": 148
+    },
+    {
+      "id": "msw-149",
+      "category": "core_word",
+      "canonicalForm": "lose",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1599,
+      "officialMarker": "**",
+      "betaPriority": 149
+    },
+    {
+      "id": "msw-150",
+      "category": "core_word",
+      "canonicalForm": "matter",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1643,
+      "officialMarker": "**",
+      "betaPriority": 150
+    },
+    {
+      "id": "msw-151",
+      "category": "core_word",
+      "canonicalForm": "measure",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1652,
+      "officialMarker": "**",
+      "betaPriority": 151
+    },
+    {
+      "id": "msw-152",
+      "category": "core_word",
+      "canonicalForm": "mention",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1668,
+      "officialMarker": "**",
+      "betaPriority": 152
+    },
+    {
+      "id": "msw-153",
+      "category": "core_word",
+      "canonicalForm": "perform",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1935,
+      "officialMarker": "**",
+      "betaPriority": 153
+    },
+    {
+      "id": "msw-154",
+      "category": "core_word",
+      "canonicalForm": "prefer",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2028,
+      "officialMarker": "**",
+      "betaPriority": 154
+    },
+    {
+      "id": "msw-155",
+      "category": "core_word",
+      "canonicalForm": "produce",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2065,
+      "officialMarker": "**",
+      "betaPriority": 155
+    },
+    {
+      "id": "msw-156",
+      "category": "core_word",
+      "canonicalForm": "reach",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2144,
+      "officialMarker": "**",
+      "betaPriority": 156
+    },
+    {
+      "id": "msw-157",
+      "category": "core_word",
+      "canonicalForm": "record",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2158,
+      "officialMarker": "**",
+      "betaPriority": 157
+    },
+    {
+      "id": "msw-158",
+      "category": "core_word",
+      "canonicalForm": "reduce",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2163,
+      "officialMarker": "**",
+      "betaPriority": 158
+    },
+    {
+      "id": "msw-159",
+      "category": "core_word",
+      "canonicalForm": "refuse",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2169,
+      "officialMarker": "**",
+      "betaPriority": 159
+    },
+    {
+      "id": "msw-160",
+      "category": "core_word",
+      "canonicalForm": "relax",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2179,
+      "officialMarker": "**",
+      "betaPriority": 160
+    },
+    {
+      "id": "msw-161",
+      "category": "core_word",
+      "canonicalForm": "remain",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2187,
+      "officialMarker": "**",
+      "betaPriority": 161
+    },
+    {
+      "id": "msw-162",
+      "category": "core_word",
+      "canonicalForm": "remove",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2193,
+      "officialMarker": "**",
+      "betaPriority": 162
+    },
+    {
+      "id": "msw-163",
+      "category": "core_word",
+      "canonicalForm": "repair",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2195,
+      "officialMarker": "**",
+      "betaPriority": 163
+    },
+    {
+      "id": "msw-164",
+      "category": "core_word",
+      "canonicalForm": "replace",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2197,
+      "officialMarker": "**",
+      "betaPriority": 164
+    },
+    {
+      "id": "msw-165",
+      "category": "core_word",
+      "canonicalForm": "ride",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2243,
+      "officialMarker": "**",
+      "betaPriority": 165
+    },
+    {
+      "id": "msw-166",
+      "category": "core_word",
+      "canonicalForm": "rise",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2248,
+      "officialMarker": "**",
+      "betaPriority": 166
+    },
+    {
+      "id": "msw-167",
+      "category": "core_word",
+      "canonicalForm": "search",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2326,
+      "officialMarker": "**",
+      "betaPriority": 167
+    },
+    {
+      "id": "msw-168",
+      "category": "core_word",
+      "canonicalForm": "serve",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2353,
+      "officialMarker": "**",
+      "betaPriority": 168
+    },
+    {
+      "id": "msw-169",
+      "category": "core_word",
+      "canonicalForm": "shut",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2394,
+      "officialMarker": "**",
+      "betaPriority": 169
+    },
+    {
+      "id": "msw-170",
+      "category": "core_word",
+      "canonicalForm": "survive",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2614,
+      "officialMarker": "**",
+      "betaPriority": 170
+    },
+    {
+      "id": "msw-171",
+      "category": "core_word",
+      "canonicalForm": "vote",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2894,
+      "officialMarker": "**",
+      "betaPriority": 171
+    },
+    {
+      "id": "msw-172",
+      "category": "core_word",
+      "canonicalForm": "aid",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 76,
+      "officialMarker": "**",
+      "betaPriority": 172
+    },
+    {
+      "id": "msw-173",
+      "category": "core_word",
+      "canonicalForm": "award",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 202,
+      "officialMarker": "**",
+      "betaPriority": 173
+    },
+    {
+      "id": "msw-174",
+      "category": "core_word",
+      "canonicalForm": "background",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 209,
+      "officialMarker": "**",
+      "betaPriority": 174
+    },
+    {
+      "id": "msw-175",
+      "category": "core_word",
+      "canonicalForm": "character",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 446,
+      "officialMarker": "**",
+      "betaPriority": 175
+    },
+    {
+      "id": "msw-176",
+      "category": "core_word",
+      "canonicalForm": "coach",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 511,
+      "officialMarker": "**",
+      "betaPriority": 176
+    },
+    {
+      "id": "msw-177",
+      "category": "core_word",
+      "canonicalForm": "degree",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 746,
+      "officialMarker": "**",
+      "betaPriority": 177
+    },
+    {
+      "id": "msw-178",
+      "category": "core_word",
+      "canonicalForm": "detail",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 786,
+      "officialMarker": "**",
+      "betaPriority": 178
+    },
+    {
+      "id": "msw-179",
+      "category": "core_word",
+      "canonicalForm": "duty",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 880,
+      "officialMarker": "**",
+      "betaPriority": 179
+    },
+    {
+      "id": "msw-180",
+      "category": "core_word",
+      "canonicalForm": "force",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1120,
+      "officialMarker": "**",
+      "betaPriority": 180
+    },
+    {
+      "id": "msw-181",
+      "category": "core_word",
+      "canonicalForm": "hotel",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1346,
+      "officialMarker": "**",
+      "betaPriority": 181
+    },
+    {
+      "id": "msw-182",
+      "category": "core_word",
+      "canonicalForm": "journey",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1486,
+      "officialMarker": "**",
+      "betaPriority": 182
+    },
+    {
+      "id": "msw-183",
+      "category": "core_word",
+      "canonicalForm": "knowledge",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1512,
+      "officialMarker": "**",
+      "betaPriority": 183
+    },
+    {
+      "id": "msw-184",
+      "category": "core_word",
+      "canonicalForm": "law",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1535,
+      "officialMarker": "**",
+      "betaPriority": 184
+    },
+    {
+      "id": "msw-185",
+      "category": "core_word",
+      "canonicalForm": "level",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1563,
+      "officialMarker": "**",
+      "betaPriority": 185
+    },
+    {
+      "id": "msw-186",
+      "category": "core_word",
+      "canonicalForm": "machine",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1610,
+      "officialMarker": "**",
+      "betaPriority": 186
+    },
+    {
+      "id": "msw-187",
+      "category": "core_word",
+      "canonicalForm": "manner",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1626,
+      "officialMarker": "**",
+      "betaPriority": 187
+    },
+    {
+      "id": "msw-188",
+      "category": "core_word",
+      "canonicalForm": "meal",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1649,
+      "officialMarker": "**",
+      "betaPriority": 188
+    },
+    {
+      "id": "msw-189",
+      "category": "core_word",
+      "canonicalForm": "method",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1677,
+      "officialMarker": "**",
+      "betaPriority": 189
+    },
+    {
+      "id": "msw-190",
+      "category": "core_word",
+      "canonicalForm": "minute",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1696,
+      "officialMarker": "**",
+      "betaPriority": 190
+    },
+    {
+      "id": "msw-191",
+      "category": "core_word",
+      "canonicalForm": "moment",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1713,
+      "officialMarker": "**",
+      "betaPriority": 191
+    },
+    {
+      "id": "msw-192",
+      "category": "core_word",
+      "canonicalForm": "period",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1937,
+      "officialMarker": "**",
+      "betaPriority": 192
+    },
+    {
+      "id": "msw-193",
+      "category": "core_word",
+      "canonicalForm": "person",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1941,
+      "officialMarker": "**",
+      "betaPriority": 193
+    },
+    {
+      "id": "msw-194",
+      "category": "core_word",
+      "canonicalForm": "piece",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1957,
+      "officialMarker": "**",
+      "betaPriority": 194
+    },
+    {
+      "id": "msw-195",
+      "category": "core_word",
+      "canonicalForm": "price",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2046,
+      "officialMarker": "**",
+      "betaPriority": 195
+    },
+    {
+      "id": "msw-196",
+      "category": "core_word",
+      "canonicalForm": "purpose",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2108,
+      "officialMarker": "**",
+      "betaPriority": 196
+    },
+    {
+      "id": "msw-197",
+      "category": "core_word",
+      "canonicalForm": "quality",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2113,
+      "officialMarker": "**",
+      "betaPriority": 197
+    },
+    {
+      "id": "msw-198",
+      "category": "core_word",
+      "canonicalForm": "role",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2260,
+      "officialMarker": "**",
+      "betaPriority": 198
+    },
+    {
+      "id": "msw-199",
+      "category": "core_word",
+      "canonicalForm": "shape",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2369,
+      "officialMarker": "**",
+      "betaPriority": 199
+    },
+    {
+      "id": "msw-200",
+      "category": "core_word",
+      "canonicalForm": "skill",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 expansion 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2421,
+      "officialMarker": "**",
+      "betaPriority": 200
+    },
+    {
+      "id": "msw-201",
+      "category": "core_word",
+      "canonicalForm": "system",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2633,
+      "officialMarker": "**",
+      "betaPriority": 201
+    },
+    {
+      "id": "msw-202",
+      "category": "core_word",
+      "canonicalForm": "term",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2674,
+      "officialMarker": "**",
+      "betaPriority": 202
+    },
+    {
+      "id": "msw-203",
+      "category": "core_word",
+      "canonicalForm": "tradition",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2765,
+      "officialMarker": "**",
+      "betaPriority": 203
+    },
+    {
+      "id": "msw-204",
+      "category": "core_word",
+      "canonicalForm": "asleep",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 164,
+      "officialMarker": "**",
+      "betaPriority": 204
+    },
+    {
+      "id": "msw-205",
+      "category": "core_word",
+      "canonicalForm": "average",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 198,
+      "officialMarker": "**",
+      "betaPriority": 205
+    },
+    {
+      "id": "msw-206",
+      "category": "core_word",
+      "canonicalForm": "calm",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 388,
+      "officialMarker": "**",
+      "betaPriority": 206
+    },
+    {
+      "id": "msw-207",
+      "category": "core_word",
+      "canonicalForm": "curious",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 692,
+      "officialMarker": "**",
+      "betaPriority": 207
+    },
+    {
+      "id": "msw-208",
+      "category": "core_word",
+      "canonicalForm": "direct",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 811,
+      "officialMarker": "**",
+      "betaPriority": 208
+    },
+    {
+      "id": "msw-209",
+      "category": "core_word",
+      "canonicalForm": "equal",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 946,
+      "officialMarker": "**",
+      "betaPriority": 209
+    },
+    {
+      "id": "msw-210",
+      "category": "core_word",
+      "canonicalForm": "fair",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1027,
+      "officialMarker": "**",
+      "betaPriority": 210
+    },
+    {
+      "id": "msw-211",
+      "category": "core_word",
+      "canonicalForm": "familiar",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1032,
+      "officialMarker": "**",
+      "betaPriority": 211
+    },
+    {
+      "id": "msw-212",
+      "category": "core_word",
+      "canonicalForm": "fit",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1085,
+      "officialMarker": "**",
+      "betaPriority": 212
+    },
+    {
+      "id": "msw-213",
+      "category": "core_word",
+      "canonicalForm": "foreign",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1123,
+      "officialMarker": "**",
+      "betaPriority": 213
+    },
+    {
+      "id": "msw-214",
+      "category": "core_word",
+      "canonicalForm": "huge",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1353,
+      "officialMarker": "**",
+      "betaPriority": 214
+    },
+    {
+      "id": "msw-215",
+      "category": "core_word",
+      "canonicalForm": "major",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1619,
+      "officialMarker": "**",
+      "betaPriority": 215
+    },
+    {
+      "id": "msw-216",
+      "category": "core_word",
+      "canonicalForm": "medical",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1658,
+      "officialMarker": "**",
+      "betaPriority": 216
+    },
+    {
+      "id": "msw-217",
+      "category": "core_word",
+      "canonicalForm": "ordinary",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1853,
+      "officialMarker": "**",
+      "betaPriority": 217
+    },
+    {
+      "id": "msw-218",
+      "category": "core_word",
+      "canonicalForm": "perfect",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1934,
+      "officialMarker": "**",
+      "betaPriority": 218
+    },
+    {
+      "id": "msw-219",
+      "category": "core_word",
+      "canonicalForm": "physical",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1950,
+      "officialMarker": "**",
+      "betaPriority": 219
+    },
+    {
+      "id": "msw-220",
+      "category": "core_word",
+      "canonicalForm": "private",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2058,
+      "officialMarker": "**",
+      "betaPriority": 220
+    },
+    {
+      "id": "msw-221",
+      "category": "core_word",
+      "canonicalForm": "public",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2097,
+      "officialMarker": "**",
+      "betaPriority": 221
+    },
+    {
+      "id": "msw-222",
+      "category": "core_word",
+      "canonicalForm": "recent",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2154,
+      "officialMarker": "**",
+      "betaPriority": 222
+    },
+    {
+      "id": "msw-223",
+      "category": "core_word",
+      "canonicalForm": "rude",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2276,
+      "officialMarker": "**",
+      "betaPriority": 223
+    },
+    {
+      "id": "msw-224",
+      "category": "core_word",
+      "canonicalForm": "secret",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2330,
+      "officialMarker": "**",
+      "betaPriority": 224
+    },
+    {
+      "id": "msw-225",
+      "category": "core_word",
+      "canonicalForm": "similar",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2404,
+      "officialMarker": "**",
+      "betaPriority": 225
+    },
+    {
+      "id": "msw-226",
+      "category": "core_word",
+      "canonicalForm": "smart",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2436,
+      "officialMarker": "**",
+      "betaPriority": 226
+    },
+    {
+      "id": "msw-227",
+      "category": "core_word",
+      "canonicalForm": "social",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2451,
+      "officialMarker": "**",
+      "betaPriority": 227
+    },
+    {
+      "id": "msw-228",
+      "category": "core_word",
+      "canonicalForm": "sweet",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2623,
+      "officialMarker": "**",
+      "betaPriority": 228
+    },
+    {
+      "id": "msw-229",
+      "category": "core_word",
+      "canonicalForm": "total",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2752,
+      "officialMarker": "**",
+      "betaPriority": 229
+    },
+    {
+      "id": "msw-230",
+      "category": "core_word",
+      "canonicalForm": "whole",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2949,
+      "officialMarker": "**",
+      "betaPriority": 230
+    },
+    {
+      "id": "msw-231",
+      "category": "core_word",
+      "canonicalForm": "wide",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2952,
+      "officialMarker": "**",
+      "betaPriority": 231
+    },
+    {
+      "id": "msw-232",
+      "category": "core_word",
+      "canonicalForm": "even",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 963,
+      "officialMarker": "**",
+      "betaPriority": 232
+    },
+    {
+      "id": "msw-233",
+      "category": "core_word",
+      "canonicalForm": "ever",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 966,
+      "officialMarker": "**",
+      "betaPriority": 233
+    },
+    {
+      "id": "msw-234",
+      "category": "core_word",
+      "canonicalForm": "forward",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1136,
+      "officialMarker": "**",
+      "betaPriority": 234
+    },
+    {
+      "id": "msw-235",
+      "category": "core_word",
+      "canonicalForm": "maybe",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1647,
+      "officialMarker": "**",
+      "betaPriority": 235
+    },
+    {
+      "id": "msw-236",
+      "category": "core_word",
+      "canonicalForm": "once",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1836,
+      "officialMarker": "**",
+      "betaPriority": 236
+    },
+    {
+      "id": "msw-237",
+      "category": "core_word",
+      "canonicalForm": "perhaps",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 1936,
+      "officialMarker": "**",
+      "betaPriority": 237
+    },
+    {
+      "id": "msw-238",
+      "category": "core_word",
+      "canonicalForm": "quite",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2122,
+      "officialMarker": "**",
+      "betaPriority": 238
+    },
+    {
+      "id": "msw-239",
+      "category": "core_word",
+      "canonicalForm": "rather",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2141,
+      "officialMarker": "**",
+      "betaPriority": 239
+    },
+    {
+      "id": "msw-240",
+      "category": "core_word",
+      "canonicalForm": "soon",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2466,
+      "officialMarker": "**",
+      "betaPriority": 240
+    },
+    {
+      "id": "msw-241",
+      "category": "core_word",
+      "canonicalForm": "still",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2539,
+      "officialMarker": "**",
+      "betaPriority": 241
+    },
+    {
+      "id": "msw-242",
+      "category": "core_word",
+      "canonicalForm": "yet",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 2993,
+      "officialMarker": "**",
+      "betaPriority": 242
+    },
+    {
+      "id": "msw-243",
+      "category": "core_word",
+      "canonicalForm": "access",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 20,
+      "officialMarker": "**",
+      "betaPriority": 243
+    },
+    {
+      "id": "msw-244",
+      "category": "core_word",
+      "canonicalForm": "adapt",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 38,
+      "officialMarker": "**",
+      "betaPriority": 244
+    },
+    {
+      "id": "msw-245",
+      "category": "core_word",
+      "canonicalForm": "admire",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 45,
+      "officialMarker": "**",
+      "betaPriority": 245
+    },
+    {
+      "id": "msw-246",
+      "category": "core_word",
+      "canonicalForm": "admit",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 46,
+      "officialMarker": "**",
+      "betaPriority": 246
+    },
+    {
+      "id": "msw-247",
+      "category": "core_word",
+      "canonicalForm": "adopt",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 48,
+      "officialMarker": "**",
+      "betaPriority": 247
+    },
+    {
+      "id": "msw-248",
+      "category": "core_word",
+      "canonicalForm": "advance",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 50,
+      "officialMarker": "**",
+      "betaPriority": 248
+    },
+    {
+      "id": "msw-249",
+      "category": "core_word",
+      "canonicalForm": "advise",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 56,
+      "officialMarker": "**",
+      "betaPriority": 249
+    },
+    {
+      "id": "msw-250",
+      "category": "core_word",
+      "canonicalForm": "agent",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 70,
+      "officialMarker": "**",
+      "betaPriority": 250
+    },
+    {
+      "id": "msw-251",
+      "category": "core_word",
+      "canonicalForm": "airline",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 79,
+      "officialMarker": "**",
+      "betaPriority": 251
+    },
+    {
+      "id": "msw-252",
+      "category": "core_word",
+      "canonicalForm": "alter",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 101,
+      "officialMarker": "**",
+      "betaPriority": 252
+    },
+    {
+      "id": "msw-253",
+      "category": "core_word",
+      "canonicalForm": "ambulance",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 109,
+      "officialMarker": "**",
+      "betaPriority": 253
+    },
+    {
+      "id": "msw-254",
+      "category": "core_word",
+      "canonicalForm": "anger",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 119,
+      "officialMarker": "**",
+      "betaPriority": 254
+    },
+    {
+      "id": "msw-255",
+      "category": "core_word",
+      "canonicalForm": "anxious",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 131,
+      "officialMarker": "**",
+      "betaPriority": 255
+    },
+    {
+      "id": "msw-256",
+      "category": "core_word",
+      "canonicalForm": "appeal",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 137,
+      "officialMarker": "**",
+      "betaPriority": 256
+    },
+    {
+      "id": "msw-257",
+      "category": "core_word",
+      "canonicalForm": "apply",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 140,
+      "officialMarker": "**",
+      "betaPriority": 257
+    },
+    {
+      "id": "msw-258",
+      "category": "core_word",
+      "canonicalForm": "appreciate",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 142,
+      "officialMarker": "**",
+      "betaPriority": 258
+    },
+    {
+      "id": "msw-259",
+      "category": "core_word",
+      "canonicalForm": "approach",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 143,
+      "officialMarker": "**",
+      "betaPriority": 259
+    },
+    {
+      "id": "msw-260",
+      "category": "core_word",
+      "canonicalForm": "arrange",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 154,
+      "officialMarker": "**",
+      "betaPriority": 260
+    },
+    {
+      "id": "msw-261",
+      "category": "core_word",
+      "canonicalForm": "assist",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 173,
+      "officialMarker": "**",
+      "betaPriority": 261
+    },
+    {
+      "id": "msw-262",
+      "category": "core_word",
+      "canonicalForm": "assume",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 175,
+      "officialMarker": "**",
+      "betaPriority": 262
+    },
+    {
+      "id": "msw-263",
+      "category": "core_word",
+      "canonicalForm": "attitude",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 187,
+      "officialMarker": "**",
+      "betaPriority": 263
+    },
+    {
+      "id": "msw-264",
+      "category": "core_word",
+      "canonicalForm": "aware",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 203,
+      "officialMarker": "**",
+      "betaPriority": 264
+    },
+    {
+      "id": "msw-265",
+      "category": "core_word",
+      "canonicalForm": "benefit",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 269,
+      "officialMarker": "**",
+      "betaPriority": 265
+    },
+    {
+      "id": "msw-266",
+      "category": "core_word",
+      "canonicalForm": "brain",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 332,
+      "officialMarker": "**",
+      "betaPriority": 266
+    },
+    {
+      "id": "msw-267",
+      "category": "core_word",
+      "canonicalForm": "budget",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 358,
+      "officialMarker": "**",
+      "betaPriority": 267
+    },
+    {
+      "id": "msw-268",
+      "category": "core_word",
+      "canonicalForm": "calculate",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 385,
+      "officialMarker": "**",
+      "betaPriority": 268
+    },
+    {
+      "id": "msw-269",
+      "category": "core_word",
+      "canonicalForm": "capable",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 399,
+      "officialMarker": "**",
+      "betaPriority": 269
+    },
+    {
+      "id": "msw-270",
+      "category": "core_word",
+      "canonicalForm": "career",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 407,
+      "officialMarker": "**",
+      "betaPriority": 270
+    },
+    {
+      "id": "msw-271",
+      "category": "core_word",
+      "canonicalForm": "category",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 420,
+      "officialMarker": "**",
+      "betaPriority": 271
+    },
+    {
+      "id": "msw-272",
+      "category": "core_word",
+      "canonicalForm": "citizen",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 483,
+      "officialMarker": "**",
+      "betaPriority": 272
+    },
+    {
+      "id": "msw-273",
+      "category": "core_word",
+      "canonicalForm": "climate",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 499,
+      "officialMarker": "**",
+      "betaPriority": 273
+    },
+    {
+      "id": "msw-274",
+      "category": "core_word",
+      "canonicalForm": "code",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 515,
+      "officialMarker": "**",
+      "betaPriority": 274
+    },
+    {
+      "id": "msw-275",
+      "category": "core_word",
+      "canonicalForm": "combine",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 530,
+      "officialMarker": "**",
+      "betaPriority": 275
+    },
+    {
+      "id": "msw-276",
+      "category": "core_word",
+      "canonicalForm": "command",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 535,
+      "officialMarker": "**",
+      "betaPriority": 276
+    },
+    {
+      "id": "msw-277",
+      "category": "core_word",
+      "canonicalForm": "comment",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 536,
+      "officialMarker": "**",
+      "betaPriority": 277
+    },
+    {
+      "id": "msw-278",
+      "category": "core_word",
+      "canonicalForm": "concept",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 568,
+      "officialMarker": "**",
+      "betaPriority": 278
+    },
+    {
+      "id": "msw-279",
+      "category": "core_word",
+      "canonicalForm": "concern",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 569,
+      "officialMarker": "**",
+      "betaPriority": 279
+    },
+    {
+      "id": "msw-280",
+      "category": "core_word",
+      "canonicalForm": "confirm",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 580,
+      "officialMarker": "**",
+      "betaPriority": 280
+    },
+    {
+      "id": "msw-281",
+      "category": "core_word",
+      "canonicalForm": "conflict",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 581,
+      "officialMarker": "**",
+      "betaPriority": 281
+    },
+    {
+      "id": "msw-282",
+      "category": "core_word",
+      "canonicalForm": "confuse",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 584,
+      "officialMarker": "**",
+      "betaPriority": 282
+    },
+    {
+      "id": "msw-283",
+      "category": "core_word",
+      "canonicalForm": "contain",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 601,
+      "officialMarker": "**",
+      "betaPriority": 283
+    },
+    {
+      "id": "msw-284",
+      "category": "core_word",
+      "canonicalForm": "content",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 604,
+      "officialMarker": "**",
+      "betaPriority": 284
+    },
+    {
+      "id": "msw-285",
+      "category": "core_word",
+      "canonicalForm": "contribute",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 613,
+      "officialMarker": "**",
+      "betaPriority": 285
+    },
+    {
+      "id": "msw-286",
+      "category": "core_word",
+      "canonicalForm": "convince",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 621,
+      "officialMarker": "**",
+      "betaPriority": 286
+    },
+    {
+      "id": "msw-287",
+      "category": "core_word",
+      "canonicalForm": "crime",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 673,
+      "officialMarker": "**",
+      "betaPriority": 287
+    },
+    {
+      "id": "msw-288",
+      "category": "core_word",
+      "canonicalForm": "damage",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 709,
+      "officialMarker": "**",
+      "betaPriority": 288
+    },
+    {
+      "id": "msw-289",
+      "category": "core_word",
+      "canonicalForm": "debate",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 726,
+      "officialMarker": "**",
+      "betaPriority": 289
+    },
+    {
+      "id": "msw-290",
+      "category": "core_word",
+      "canonicalForm": "define",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 744,
+      "officialMarker": "**",
+      "betaPriority": 290
+    },
+    {
+      "id": "msw-291",
+      "category": "core_word",
+      "canonicalForm": "demand",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 755,
+      "officialMarker": "**",
+      "betaPriority": 291
+    },
+    {
+      "id": "msw-292",
+      "category": "core_word",
+      "canonicalForm": "demonstrate",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 759,
+      "officialMarker": "**",
+      "betaPriority": 292
+    },
+    {
+      "id": "msw-293",
+      "category": "core_word",
+      "canonicalForm": "deserve",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 773,
+      "officialMarker": "**",
+      "betaPriority": 293
+    },
+    {
+      "id": "msw-294",
+      "category": "core_word",
+      "canonicalForm": "desire",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 776,
+      "officialMarker": "**",
+      "betaPriority": 294
+    },
+    {
+      "id": "msw-295",
+      "category": "core_word",
+      "canonicalForm": "despite",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 780,
+      "officialMarker": "**",
+      "betaPriority": 295
+    },
+    {
+      "id": "msw-296",
+      "category": "core_word",
+      "canonicalForm": "determine",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 788,
+      "officialMarker": "**",
+      "betaPriority": 296
+    },
+    {
+      "id": "msw-297",
+      "category": "core_word",
+      "canonicalForm": "document",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 841,
+      "officialMarker": "**",
+      "betaPriority": 297
+    },
+    {
+      "id": "msw-298",
+      "category": "core_word",
+      "canonicalForm": "economy",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 892,
+      "officialMarker": "**",
+      "betaPriority": 298
+    },
+    {
+      "id": "msw-299",
+      "category": "core_word",
+      "canonicalForm": "effort",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 898,
+      "officialMarker": "**",
+      "betaPriority": 299
+    },
+    {
+      "id": "msw-300",
+      "category": "core_word",
+      "canonicalForm": "either",
+      "gradeBand": "KR-middle-school-1-3",
+      "curriculumTier": "secondary-common",
+      "sourceBasis": [
+        "ko-2022-basic-english",
+        "15loop-original-curation"
+      ],
+      "selectionReason": "교육부 ** 중·고 공통 권장 대표형이며, 베타 bridge 구간에서 일상 의사소통과 4기능 전이가 높은 핵심어 후보로 독립 선별함.",
+      "licenseStatus": "reference-only-headword-fact; 15Loop-original-selection; no meanings/examples/order copied",
+      "officialIndex": 901,
+      "officialMarker": "**",
+      "betaPriority": 300
+    }
+  ]
+}

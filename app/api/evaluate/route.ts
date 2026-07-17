@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { and, eq, sql } from "drizzle-orm";
 import { dailyWords } from "../../../data/words";
 import { getOptionalParent } from "../../../lib/auth";
-import { guardianHasAccess } from "../../../lib/commercial";
+import { guardianHasAccess, guardianHasConsent } from "../../../lib/commercial";
 
 type EvaluationRequest = {
   learnerId?: string;
@@ -70,7 +70,7 @@ async function consumeAiAllowance(request: NextRequest, learnerId: string) {
     )).limit(1);
     const [account] = await db.select().from(schema.guardianAccounts)
       .where(eq(schema.guardianAccounts.id, parent.id)).limit(1);
-    if (!ownership || !account || !guardianHasAccess(account)) return false;
+    if (!ownership || !account || !guardianHasAccess(account) || !guardianHasConsent(account)) return false;
     actorType = "guardian";
     actorId = parent.id;
     limit = 200;

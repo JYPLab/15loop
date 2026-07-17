@@ -2,7 +2,8 @@ import { and, asc, eq } from "drizzle-orm";
 import { dailyWords } from "../../../data/words";
 import { applyEvaluationToReviewState, buildAdaptiveQueue } from "../../../lib/adaptive-queue";
 import { getOptionalParent } from "../../../lib/auth";
-import { guardianHasAccess } from "../../../lib/commercial";
+import { recordBetaEvent } from "../../../lib/beta-ops";
+import { guardianHasAccess, guardianHasConsent } from "../../../lib/commercial";
 
 type Db = ReturnType<typeof import("../../../db").getDb>;
 type Schema = typeof import("../../../db/schema");
@@ -37,7 +38,11 @@ type ProgressRequest = {
   studySeconds?: number;
 };
 
-type LearnerResolution = { learnerId: string; status: "ok" | "invalid" | "auth" | "expired" };
+type LearnerResolution = {
+  learnerId: string;
+  guardianId?: string;
+  status: "ok" | "invalid" | "auth" | "consent" | "expired";
+};
 
 async function resolveLearnerId(request: Request, fallbackLearnerId: string): Promise<LearnerResolution> {
   if (/^learner-[0-9a-f-]{36}$/i.test(fallbackLearnerId)) return { learnerId: fallbackLearnerId, status: "ok" };
@@ -53,7 +58,8 @@ async function resolveLearnerId(request: Request, fallbackLearnerId: string): Pr
   const [account] = await db.select().from(schema.guardianAccounts)
     .where(eq(schema.guardianAccounts.id, parent.id)).limit(1);
   if (!account || !guardianHasAccess(account)) return { learnerId: "", status: "expired" };
-  return { learnerId: fallbackLearnerId, status: "ok" };
+  if (!guardianHasConsent(account)) return { learnerId: "", status: "consent" };
+  return { learnerId: fallbackLearnerId, guardianId: parent.id, status: "ok" };
 }
 
 function learnerResolutionError(resolution: LearnerResolution) {
@@ -62,6 +68,9 @@ function learnerResolutionError(resolution: LearnerResolution) {
   }
   if (resolution.status === "auth") {
     return Response.json({ error: "이 학습자에 접근할 권한이 없습니다." }, { status: 401 });
+  }
+  if (resolution.status === "consent") {
+    return Response.json({ error: "부모 계정에서 보호자 동의가 필요합니다." }, { status: 403 });
   }
   return Response.json({ error: "valid learnerId is required" }, { status: 400 });
 }
@@ -207,6 +216,14 @@ export async function POST(request: Request) {
         dailySessionCompleted: nextStudySeconds >= 900,
         updatedAt: new Date().toISOString(),
       }).where(eq(schema.learnerProfiles.id, learnerId)).returning();
+      if (profile.studySecondsToday < 900 && nextStudySeconds >= 900 && resolution.guardianId) {
+        await recordBetaEvent(db, schema, {
+          eventName: "daily_session_completed",
+          guardianId: resolution.guardianId,
+          learnerId,
+          metadata: { studySeconds: nextStudySeconds },
+        });
+      }
       return Response.json({ profile: profilePayload(updatedProfile) });
     } catch (error) {
       return routeError(error);

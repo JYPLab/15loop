@@ -25,6 +25,11 @@ type ParentProfile = {
     planCode: string;
     planStatus: string;
     paidUntil: string | null;
+    termsVersion: string;
+    privacyVersion: string;
+    guardianConfirmed: boolean;
+    consentAcceptedAt: string | null;
+    hasAcceptedPolicies: boolean;
   };
   learners: Learner[];
   diagnostics: Array<{
@@ -39,6 +44,7 @@ type ParentProfile = {
     completedAt: string;
   }>;
   orders: Array<{ id: string; orderName: string; amount: number; status: string; receiptUrl: string | null; createdAt: string }>;
+  createdLearnerId?: string | null;
 };
 
 type TossPaymentInstance = {
@@ -99,6 +105,11 @@ export default function ParentPage() {
   const [grade, setGrade] = useState("middle-1");
   const [busy, setBusy] = useState("");
   const [message, setMessage] = useState("");
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [guardianConfirmed, setGuardianConfirmed] = useState(false);
+  const [feedbackCategory, setFeedbackCategory] = useState("suggestion");
+  const [feedbackMessage, setFeedbackMessage] = useState("");
   const [diagnosticId] = useState(() => {
     if (typeof window === "undefined") return "";
     const params = new URLSearchParams(window.location.search);
@@ -140,7 +151,9 @@ export default function ParentPage() {
       headers: authHeaders(activeSession),
       body: JSON.stringify({ action: "claimDiagnostic", diagnosticId: id, guestLearnerId: local.guestLearnerId, learnerId }),
     });
-    if (response.ok) setProfile(await response.json() as ParentProfile);
+    const data = await response.json() as ParentProfile & { error?: string };
+    if (!response.ok) throw new Error(data.error || "진단 결과를 연결하지 못했습니다.");
+    setProfile(data);
   }, []);
 
   useEffect(() => {
@@ -155,8 +168,10 @@ export default function ParentPage() {
       setSession(data.session);
       if (data.session) {
         try {
-          await fetchProfile(data.session);
-          if (requestedDiagnostic) await claimDiagnostic(data.session, requestedDiagnostic);
+          const loaded = await fetchProfile(data.session);
+          if (requestedDiagnostic && loaded.account.hasAcceptedPolicies) {
+            await claimDiagnostic(data.session, requestedDiagnostic);
+          }
         } catch (error) {
           setMessage(error instanceof Error ? error.message : "계정을 불러오지 못했습니다.");
         }
@@ -220,9 +235,67 @@ export default function ParentPage() {
     setProfile(data);
     setNickname("");
     if (diagnosticId) {
-      const newest = data.learners.at(-1);
-      if (newest) await claimDiagnostic(session, diagnosticId, newest.id);
+      const createdLearnerId = data.createdLearnerId;
+      if (createdLearnerId) {
+        try {
+          await claimDiagnostic(session, diagnosticId, createdLearnerId);
+          setMessage("진단과 가입 전 학습 기록을 이 아이에게 연결했습니다.");
+        } catch (error) {
+          setMessage(error instanceof Error ? error.message : "진단 결과를 연결하지 못했습니다.");
+        }
+      }
     }
+  };
+
+  const acceptPolicies = async (event: FormEvent) => {
+    event.preventDefault();
+    if (!session || !termsAccepted || !privacyAccepted || !guardianConfirmed) return;
+    setBusy("consent");
+    setMessage("");
+    const response = await fetch("/api/commercial/profile", {
+      method: "POST",
+      headers: authHeaders(session),
+      body: JSON.stringify({
+        action: "acceptPolicies",
+        termsAccepted,
+        privacyAccepted,
+        guardianConfirmed,
+      }),
+    });
+    const data = await response.json() as ParentProfile & { error?: string };
+    setBusy("");
+    if (!response.ok) {
+      setMessage(data.error || "보호자 동의를 저장하지 못했습니다.");
+      return;
+    }
+    setProfile(data);
+    if (diagnosticId) {
+      try {
+        await claimDiagnostic(session, diagnosticId);
+      } catch (error) {
+        setMessage(error instanceof Error ? error.message : "진단 결과를 연결하지 못했습니다.");
+      }
+    }
+  };
+
+  const submitFeedback = async (event: FormEvent) => {
+    event.preventDefault();
+    if (!session || feedbackMessage.trim().length < 5) return;
+    setBusy("feedback");
+    setMessage("");
+    const response = await fetch("/api/feedback", {
+      method: "POST",
+      headers: authHeaders(session),
+      body: JSON.stringify({ category: feedbackCategory, message: feedbackMessage }),
+    });
+    const data = await response.json() as { error?: string };
+    setBusy("");
+    if (!response.ok) {
+      setMessage(data.error || "피드백을 저장하지 못했습니다.");
+      return;
+    }
+    setFeedbackMessage("");
+    setMessage("피드백을 저장했습니다. 오픈 베타 개선에 반영하겠습니다.");
   };
 
   const startPayment = async (planCode: CommercialPlanCode) => {
@@ -299,9 +372,36 @@ export default function ParentPage() {
                 <button disabled={!configured || !email.trim() || Boolean(busy)}>{busy === "email" ? "링크 보내는 중…" : "이메일 링크 받기"}</button>
               </form>
             )}
-            <small>현재 베타 운영 중입니다. 가입 전 이용약관과 개인정보 처리방침을 확인해주세요.</small>
+            <small>현재 베타 운영 중입니다. 가입 전 <Link href="/terms">이용약관</Link>과 <Link href="/privacy">개인정보 처리방침</Link>을 확인해주세요.</small>
             {message && <p className="commerce-error">{message}</p>}
           </section>
+        </section>
+      </main>
+    );
+  }
+
+  if (!profile) {
+    return <main className="commerce-shell commerce-centered"><section className="commerce-message-card"><span className="commerce-spinner" /><h1>가족 학습 공간을 불러오고 있어요…</h1></section></main>;
+  }
+
+  if (!profile.account.hasAcceptedPolicies) {
+    return (
+      <main className="commerce-shell">
+        <header className="commerce-topbar">
+          <Link className="brand" href="/"><span className="brand-mark">15</span><span>15LOOP</span></Link>
+          <button className="commerce-text-link" onClick={() => getSupabaseBrowserClient()?.auth.signOut()}>로그아웃</button>
+        </header>
+        <section className="consent-shell">
+          <div><span className="commerce-kicker">PARENT FIRST</span><h1>아이의 학습 정보를 연결하기 전에<br />보호자 확인이 필요해요.</h1><p>아이에게 이메일이나 비밀번호를 요구하지 않습니다. 닉네임·학년·진단·학습 기록만 부모 계정 아래에서 관리합니다.</p></div>
+          <form className="consent-card" onSubmit={acceptPolicies}>
+            <h2>보호자 동의</h2>
+            <label><input type="checkbox" checked={termsAccepted} onChange={(event) => setTermsAccepted(event.target.checked)} /><span><Link href="/terms" target="_blank">이용약관</Link>을 확인하고 동의합니다.</span></label>
+            <label><input type="checkbox" checked={privacyAccepted} onChange={(event) => setPrivacyAccepted(event.target.checked)} /><span><Link href="/privacy" target="_blank">개인정보 처리방침</Link>과 수집·이용 내용을 확인하고 동의합니다.</span></label>
+            <label><input type="checkbox" checked={guardianConfirmed} onChange={(event) => setGuardianConfirmed(event.target.checked)} /><span>본인은 등록할 아이의 보호자이며 학습 정보 처리에 동의할 권한이 있음을 확인합니다.</span></label>
+            <button disabled={!termsAccepted || !privacyAccepted || !guardianConfirmed || busy === "consent"}>{busy === "consent" ? "동의 저장 중…" : "동의하고 가족 학습 시작"}</button>
+            <small>동의하지 않으면 부모 계정에 아이 프로필과 진단 결과를 연결하지 않습니다.</small>
+            {message && <p className="commerce-error">{message}</p>}
+          </form>
         </section>
       </main>
     );
@@ -369,6 +469,17 @@ export default function ParentPage() {
           <article><h3>최근 진단</h3>{profile?.diagnostics.length ? profile.diagnostics.map((item) => <p key={item.id}>{item.itemCount}단어 · 듣기 {item.hearScore} · 인출 {item.recallScore}<span>{new Date(item.completedAt).toLocaleDateString("ko-KR")}</span></p>) : <small>아직 연결된 진단이 없습니다.</small>}</article>
           <article><h3>결제 내역</h3>{profile?.orders.length ? profile.orders.map((item) => <p key={item.id}>{item.orderName} · {item.amount.toLocaleString("ko-KR")}원<span>{item.status}</span></p>) : <small>아직 결제 내역이 없습니다.</small>}</article>
         </div>
+      </section>
+
+      <section className="parent-section">
+        <div className="parent-section-head"><div><span>OPEN BETA</span><h2>사용하면서 불편했던 점</h2></div><small>부모 의견만 저장합니다</small></div>
+        <form className="beta-feedback-form" onSubmit={submitFeedback}>
+          <select value={feedbackCategory} onChange={(event) => setFeedbackCategory(event.target.value)} aria-label="피드백 종류">
+            <option value="suggestion">개선 제안</option><option value="bug">오류</option><option value="learning">학습 내용</option><option value="account">계정</option><option value="payment">결제</option>
+          </select>
+          <textarea value={feedbackMessage} onChange={(event) => setFeedbackMessage(event.target.value)} minLength={5} maxLength={2000} placeholder="어떤 부분이 불편했는지 알려주세요. 아이의 실명·학교·연락처는 적지 마세요." required />
+          <button disabled={busy === "feedback" || feedbackMessage.trim().length < 5}>{busy === "feedback" ? "저장 중…" : "피드백 보내기"}</button>
+        </form>
       </section>
     </main>
   );

@@ -1,0 +1,61 @@
+{
+  "generatedOn": "2026-07-17",
+  "sources": [
+    {
+      "id": "moe-2022-33",
+      "title": "교육부 고시 제2022-33호 초중등학교 교육과정 총론 및 각론",
+      "authority": "대한민국 교육부",
+      "url": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=93458&lev=0&searchType=null&status=",
+      "use": "영어과 교육과정 [별책 14]의 공식 고시와 학교급 적용 근거 확인",
+      "licenseStatus": "official-notice-reference-only; page-specific KOGL type not confirmed; do not reproduce annex prose/examples without review"
+    },
+    {
+      "id": "ko-2022-basic-english",
+      "title": "2022 개정 영어과 교육과정 [별표 3] 기본 어휘 / KICE Word Lister",
+      "authority": "교육부·한국교육과정평가원 교과서검정연구기획단",
+      "url": "https://www.goe.go.kr/resource/old/BBSMSTR_000000030136/BBS_202307111028067791.pdf",
+      "use": "3,000 대표형과 *, ** 권장군 사실 확인; 300개 후보는 ** 대표형에서 독립 재선정",
+      "licenseStatus": "reference-only; short headword facts and tier markers only; full compilation/order, guidance prose, examples not reproduced"
+    },
+    {
+      "id": "repo-ko-2022-basic-words",
+      "title": "15loop repository ko-2022-basic-words.json",
+      "authority": "15Loop generated dataset derived from official Ministry/KICE source",
+      "path": "/Users/joonymacair15/Documents/code/15loop/data/curriculum/ko-2022-basic-words.json",
+      "use": "후보의 공식 대표형·index·** marker를 기계적으로 검증",
+      "licenseStatus": "internal-reference-only; retains upstream source boundary; no learner-facing meanings/examples"
+    },
+    {
+      "id": "cefr-companion-2020",
+      "title": "CEFR Companion Volume (2020)",
+      "authority": "Council of Europe",
+      "url": "https://www.coe.int/en/web/common-european-framework-reference-languages/cefr-companion-volume-and-its-language-versions",
+      "use": "상호작용·의사소통 전략·매개 기능의 범주를 참고하되 진술문은 복제하지 않음",
+      "licenseStatus": "copyrighted-reference-only; no descriptor text or examples copied"
+    },
+    {
+      "id": "phave-2015",
+      "title": "The PHaVE List: a pedagogical list of phrasal verbs and their most frequent meaning senses",
+      "authority": "Mélodie Garnier and Norbert Schmitt",
+      "url": "https://nottingham-repository.worktribe.com/index.php/output/762398/the-phave-list-a-pedagogical-list-of-phrasal-verbs-and-their-mostfrequent-meaning-senses",
+      "doi": "https://doi.org/10.1177/1362168814559798",
+      "use": "25개 구동사 표제 후보의 고빈도 연구 신호만 사용; 뜻·예문·sense 비율·원래 순위는 미수집",
+      "licenseStatus": "CC BY 4.0 per institutional repository; attribution required if basis retained"
+    },
+    {
+      "id": "phave-crosscheck-umn",
+      "title": "150 Most Common Phrasal Verbs",
+      "authority": "University of Minnesota CCAPS",
+      "url": "https://ccaps.umn.edu/esl-resources/students/vocabulary/150-most-common-phrasal-verbs",
+      "use": "선택한 25개 표제가 PHaVE 계열 150개 목록에 포함되는지만 교차 확인",
+      "licenseStatus": "all-rights-reserved reference-only; definitions and page ordering not copied"
+    },
+    {
+      "id": "15loop-original-curation",
+      "title": "15Loop beta candidate curation",
+      "authority": "15Loop",
+      "use": "공식 목록 내 300개 베타 우선순위와 100개 표현의 독립 후보 선정",
+      "licenseStatus": "original-candidate-metadata; meanings/examples/questions not created in this phase"
+    }
+  ]
+}

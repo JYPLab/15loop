@@ -36,6 +36,20 @@
       "when": 1784241826423,
       "tag": "0004_pretty_leo",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1784252610474,
+      "tag": "0005_breezy_doctor_strange",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "6",
+      "when": 1784253367837,
+      "tag": "0006_thankful_menace",
+      "breakpoints": true
     }
   ]
 }

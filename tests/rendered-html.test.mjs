@@ -112,6 +112,50 @@ test("uses parent-owned Google or email authentication", async () => {
   assert.doesNotMatch(page + parentPage + accountRoute, /signin-with-chatgpt|Sign in with ChatGPT/);
 });
 
+test("moves pre-signup learning into the exact child profile selected by the parent", async () => {
+  const [page, parentPage, profileRoute] = await Promise.all([
+    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/parent/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/api/commercial/profile/route.ts", import.meta.url), "utf8"),
+  ]);
+  assert.match(profileRoute, /migrateGuestProgress/);
+  assert.match(profileRoute, /createdLearnerId/);
+  assert.match(profileRoute, /evaluationEvents/);
+  assert.match(profileRoute, /wordProgress/);
+  assert.match(profileRoute, /이미 다른 아이에게 연결된 진단/);
+  assert.match(parentPage, /data\.createdLearnerId/);
+  assert.match(parentPage, /가입 전 학습 기록/);
+  assert.match(page, /\[401, 403\]\.includes\(progressResponse\.status\)/);
+});
+
+test("requires recorded guardian consent and provides beta feedback without child contact data", async () => {
+  const app = await worker();
+  const [termsResponse, privacyResponse, feedbackResponse] = await Promise.all([
+    app.fetch(new Request("http://localhost/terms", { headers: { accept: "text/html" } }), env(), context),
+    app.fetch(new Request("http://localhost/privacy", { headers: { accept: "text/html" } }), env(), context),
+    app.fetch(new Request("http://localhost/api/feedback"), env(), context),
+  ]);
+  assert.equal(termsResponse.status, 200);
+  assert.equal(privacyResponse.status, 200);
+  assert.equal(feedbackResponse.status, 401);
+  assert.match(await termsResponse.text(), /오픈 베타 이용약관/);
+  assert.match(await privacyResponse.text(), /아이에게 이메일·전화번호·학교명 입력을 요구하지 않습니다/);
+
+  const [parentPage, profileRoute, feedbackRoute, schema] = await Promise.all([
+    readFile(new URL("../app/parent/page.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/api/commercial/profile/route.ts", import.meta.url), "utf8"),
+    readFile(new URL("../app/api/feedback/route.ts", import.meta.url), "utf8"),
+    readFile(new URL("../db/schema.ts", import.meta.url), "utf8"),
+  ]);
+  assert.match(parentPage, /guardianConfirmed/);
+  assert.match(parentPage, /아이의 실명·학교·연락처는 적지 마세요/);
+  assert.match(profileRoute, /guardian_consent_accepted/);
+  assert.match(profileRoute, /guardianHasConsent/);
+  assert.match(feedbackRoute, /message\.length < 5 \|\| message\.length > 2000/);
+  assert.match(schema, /betaFeedback/);
+  assert.match(schema, /betaEvents/);
+});
+
 test("ships an adaptive 20-to-25-word free diagnostic", async () => {
   const [page, route] = await Promise.all([
     readFile(new URL("../app/diagnosis/page.tsx", import.meta.url), "utf8"),
@@ -154,6 +198,30 @@ test("connects reviewed content to the official 3,000-word curriculum map", asyn
   assert.match(diagnosisPage, /검수한 30단어/);
 });
 
+test("keeps AI-generated content behind validation and a separate human publication gate", async () => {
+  const app = await worker();
+  const response = await app.fetch(new Request("http://localhost/api/admin/content", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ catalogId: "msw-001" }),
+  }), env(), context);
+  assert.equal(response.status, 503);
+
+  const [route, pipeline, schema] = await Promise.all([
+    readFile(new URL("../app/api/admin/content/route.ts", import.meta.url), "utf8"),
+    readFile(new URL("../lib/content-pipeline.ts", import.meta.url), "utf8"),
+    readFile(new URL("../db/schema.ts", import.meta.url), "utf8"),
+  ]);
+  assert.match(route, /contentAdminError/);
+  assert.match(route, /ready_for_review/);
+  assert.match(route, /current\.status !== "reviewed"/);
+  assert.match(pipeline, /store: false/);
+  assert.match(pipeline, /json_schema/);
+  assert.match(pipeline, /validateGeneratedContent/);
+  assert.match(schema, /contentDrafts/);
+  assert.match(schema, /contentReviews/);
+});
+
 test("keeps payment amounts server-owned and confirms with Toss on the server", async () => {
   const [plans, orderRoute, confirmRoute, schema] = await Promise.all([
     readFile(new URL("../lib/plans.ts", import.meta.url), "utf8"),
@@ -169,6 +237,8 @@ test("keeps payment amounts server-owned and confirms with Toss on the server", 
   assert.match(confirmRoute, /api\.tosspayments\.com\/v1\/payments\/confirm/);
   assert.match(confirmRoute, /TOSS_SECRET_KEY/);
   assert.match(confirmRoute, /Idempotency-Key/);
+  assert.match(confirmRoute, /guardianHasConsent/);
+  assert.match(confirmRoute, /payment_completed/);
   assert.match(schema, /guardianAccounts/);
   assert.match(schema, /guardianLearners/);
   assert.match(schema, /paymentOrders/);

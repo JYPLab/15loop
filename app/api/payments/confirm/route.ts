@@ -1,6 +1,7 @@
 import { and, eq } from "drizzle-orm";
 import { authErrorResponse, requireParent } from "../../../../lib/auth";
-import { commercialRouteError, getCommercialStorage } from "../../../../lib/commercial";
+import { recordBetaEvent } from "../../../../lib/beta-ops";
+import { commercialRouteError, getCommercialStorage, guardianHasConsent } from "../../../../lib/commercial";
 import { commercialPlans, isCommercialPlanCode } from "../../../../lib/plans";
 
 type TossPayment = {
@@ -64,6 +65,9 @@ export async function POST(request: Request) {
     }
     const [guardian] = await db.select().from(schema.guardianAccounts)
       .where(eq(schema.guardianAccounts.id, parent.id)).limit(1);
+    if (!guardian || !guardianHasConsent(guardian)) {
+      return Response.json({ error: "보호자 동의 상태를 확인할 수 없습니다." }, { status: 403 });
+    }
     const now = new Date();
     const currentPaidUntil = guardian?.paidUntil ? new Date(guardian.paidUntil) : null;
     const base = currentPaidUntil && currentPaidUntil > now ? currentPaidUntil : now;
@@ -84,6 +88,11 @@ export async function POST(request: Request) {
         updatedAt: approvedAt,
       }).where(eq(schema.guardianAccounts.id, parent.id)),
     ]);
+    await recordBetaEvent(db, schema, {
+      eventName: "payment_completed",
+      guardianId: parent.id,
+      metadata: { planCode: order.planCode, amount: order.amount },
+    });
 
     return Response.json({ paid: true, orderId, paidUntil: paidUntil.toISOString(), receiptUrl: payment.receipt?.url || null });
   } catch (error) {
