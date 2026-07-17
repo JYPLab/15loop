@@ -131,6 +131,7 @@ test("moves pre-signup learning into the exact child profile selected by the par
   assert.match(parentPage, /data\.createdLearnerId/);
   assert.match(parentPage, /가입 전 학습 기록/);
   assert.match(page, /\[401, 403\]\.includes\(progressResponse\.status\)/);
+  assert.match(page, /fetch\("\/api\/evaluate"[\s\S]*Authorization: `Bearer \$\{authToken\}`/);
 });
 
 test("requires recorded guardian consent and provides beta feedback without child contact data", async () => {
