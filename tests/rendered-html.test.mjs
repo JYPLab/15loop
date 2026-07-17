@@ -39,9 +39,33 @@ test("server-renders the 15Loop learning experience", async () => {
   assert.match(html, /15LOOP/);
   assert.match(html, /외웠는지가 아니라/);
   assert.match(html, /오늘의 맞춤 루프/);
-  assert.match(html, /GPT-5\.6/);
+  assert.match(html, /AI EVALUATION/);
+  assert.doesNotMatch(html, /with GPT-5\.6/);
   assert.match(html, />EN</);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+});
+
+test("adds baseline browser security headers without forcing HSTS on local HTTP", async () => {
+  const app = await worker();
+  const response = await app.fetch(
+    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    env(),
+    context,
+  );
+
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(response.headers.get("x-frame-options"), "DENY");
+  assert.equal(response.headers.get("referrer-policy"), "strict-origin-when-cross-origin");
+  assert.equal(response.headers.get("permissions-policy"), "camera=(), geolocation=(), microphone=()");
+  assert.match(response.headers.get("content-security-policy") ?? "", /frame-ancestors 'none'/);
+  assert.equal(response.headers.get("strict-transport-security"), null);
+
+  const secureResponse = await app.fetch(
+    new Request("https://15loop.com/", { headers: { accept: "text/html" } }),
+    env(),
+    context,
+  );
+  assert.equal(secureResponse.headers.get("strict-transport-security"), "max-age=31536000; includeSubDomains");
 });
 
 test("evaluates recall locally when no API key is configured", async () => {

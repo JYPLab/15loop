@@ -101,6 +101,7 @@ const copy = {
     saved: "학습 기록 저장됨",
     local: "로컬 안전 평가",
     model: "GPT-5.6 평가",
+    engine: "AI EVALUATION",
     saveProfile: "결과 저장",
     account: "학습 계정",
     saveTitle: "방금 발견한 영어 연결도를 저장할까요?",
@@ -192,6 +193,7 @@ const copy = {
     saved: "Progress saved",
     local: "Local safety evaluation",
     model: "GPT-5.6 evaluation",
+    engine: "AI EVALUATION",
     saveProfile: "Save results",
     account: "Learning account",
     saveTitle: "Save the English connections you just discovered?",
@@ -816,7 +818,10 @@ export default function Home() {
           <span>15LOOP</span>
         </a>
         <div className="topbar-actions">
-          <div className="engine-pill"><span>✦</span> GPT-5.6</div>
+          <div className="engine-pill">
+            <span>✦</span>{" "}
+            {feedback.source === "openai" ? t.model : feedback.source === "local-fallback" ? t.local : t.engine}
+          </div>
           <a className="topbar-link" href="/diagnosis">{locale === "ko" ? "무료 진단" : "Free check"}</a>
           <div className="language-toggle" role="group" aria-label="Language">
             <button className={locale === "ko" ? "active" : ""} onClick={() => changeLocale("ko")}>KO</button>
