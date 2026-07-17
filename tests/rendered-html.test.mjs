@@ -159,6 +159,9 @@ test("ships a complete 30-word learning dataset", async () => {
   assert.match(source, /shuffledDailyWords/);
   assert.match(source, /meaningKo/);
   assert.match(source, /definitionEn/);
+  assert.equal((source.match(/\n    exampleKo: "/g) ?? []).length, 30);
+  assert.match(source, /exampleKo: "나는 네가 해낼 수 있다고 믿어\."/);
+  assert.doesNotMatch(source, /exampleKo: ".*상황"/);
 });
 
 test("uses a persisted 15-minute active learning target", async () => {

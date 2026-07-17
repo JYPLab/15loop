@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "only 15Loop curriculum items can be evaluated" }, { status: 400 });
   }
   const target = curriculumItem.example;
-  const meaning = curriculumItem.contextKo;
+  const meaning = curriculumItem.exampleKo;
   const word = curriculumItem.word;
 
   const apiKey = process.env.OPENAI_API_KEY;
@@ -150,7 +150,7 @@ export async function POST(request: NextRequest) {
         ].join(" "),
         input: [
           `Target word: ${word}`,
-          `Korean learning context: ${meaning}`,
+          `Korean sentence cue: ${meaning}`,
           `Canonical English: ${target}`,
           `Learner answer: ${answer}`,
         ].join("\n"),

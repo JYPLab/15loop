@@ -64,7 +64,7 @@ const copy = {
     eyebrows: ["01 · 보고 알기", "02 · 듣고 알기", "03 · 문맥 이해", "04 · 직접 인출"],
     seeTitle: (word: string) => `${word}의 뜻은 무엇일까요?`,
     hearTitle: "방금 들은 단어를 골라보세요.",
-    recallTitle: (meaning: string) => `‘${meaning}’ 문장을 영어로 써보세요.`,
+    recallTitle: (sentence: string) => `‘${sentence}’를 영어로 써보세요.`,
     helpers: [
       "생각나는 답을 골라보세요. 틀린 단어는 다음 루프에 다시 나와요.",
       "글자를 보지 않고 소리만으로 구별할 수 있는지 확인해요.",
@@ -155,7 +155,7 @@ const copy = {
     eyebrows: ["01 · RECOGNITION", "02 · LISTENING", "03 · CONTEXT", "04 · ACTIVE RECALL"],
     seeTitle: (word: string) => `What does “${word}” mean?`,
     hearTitle: "Choose the word you just heard.",
-    recallTitle: (meaning: string) => `Type the full English sentence for “${meaning}”.`,
+    recallTitle: (sentence: string) => `Write this sentence in English: “${sentence}”`,
     helpers: [
       "Choose the answer you remember. Missed words return in a later loop.",
       "Test whether sound alone is enough to recognize the word.",
@@ -607,7 +607,7 @@ export default function Home() {
           word: word.word,
           target: word.example,
           answer: recall,
-          meaning: word.contextKo,
+          meaning: word.exampleKo,
           locale,
         }),
       });
@@ -695,7 +695,7 @@ export default function Home() {
       ? t.hearTitle
       : stepKey === "context"
         ? word.exampleBlank
-        : t.recallTitle(locale === "ko" ? word.contextKo : word.contextEn);
+        : t.recallTitle(word.exampleKo);
 
   const focusProgressPercent = Math.round((studySecondsToday / DAILY_SESSION_SECONDS) * 100);
   const remainingTime = formatRemainingTime(studySecondsToday);
