@@ -1,0 +1,27 @@
+{
+  "ko-2022-basic-english": {
+    "title": "2022 개정 영어과 교육과정 [별표 3] 기본 어휘 목록",
+    "authority": "대한민국 교육부",
+    "notice": "교육부 고시 제2022-33호 [별책 14]",
+    "sourceUrl": "https://www.goe.go.kr/resource/old/BBSMSTR_000000030136/BBS_202307111028067791.pdf",
+    "canonicalNoticeUrl": "https://www.moe.go.kr/boardCnts/viewRenew.do?boardID=141&boardSeq=93458&lev=0&searchType=null&status=",
+    "expectedHeadwords": 3000,
+    "tiers": {
+      "elementary": {
+        "marker": "*",
+        "expectedHeadwords": 800,
+        "description": "초등학교 사용 권장"
+      },
+      "secondary-common": {
+        "marker": "**",
+        "expectedHeadwords": 1200,
+        "description": "중학교 및 고등학교 공통과목 사용 권장"
+      },
+      "advanced": {
+        "marker": "",
+        "expectedHeadwords": 1000,
+        "description": "그 외 고등학교 과목 사용 권장"
+      }
+    }
+  }
+}

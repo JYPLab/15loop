@@ -193,7 +193,7 @@ export default function DiagnosisPage() {
         <section className="diagnosis-hero">
           <span className="commerce-kicker">FREE CONNECTION CHECK</span>
           <h1>단어를 외웠는지가 아니라,<br /><em>어디서 끊기는지</em> 확인해요.</h1>
-          <p>기본 20단어를 보고·듣고·문맥에서 이해하고·직접 꺼내봅니다. 결과가 불안정하면 AI가 약한 연결을 5단어 더 확인해요.</p>
+          <p>교육부 2022 개정 기본 어휘 3,000개를 기준 지도로 사용합니다. 이번 베타 진단은 그중 뜻·발음·문장을 검수한 30단어에서 20~25개를 확인해요.</p>
           <div className="diagnosis-facts">
             <span><b>20~25</b> 단어</span><span><b>8~12</b> 분</span><span><b>가입 없이</b> 시작</span>
           </div>
@@ -221,7 +221,7 @@ export default function DiagnosisPage() {
             <span className="commerce-kicker">CONNECTION RESULT</span>
             <p className="diagnosis-big-score">{overall}</p>
             <h1>가장 먼저 보강할 연결은<br /><em>{labels[weakest]}</em>예요.</h1>
-            <p>{result.answers.length}단어의 실제 응답을 바탕으로 다음 7일 학습의 우선순위를 만들었습니다.</p>
+            <p>교육과정 3,000단어 지도에 연결된 {result.answers.length}단어의 실제 응답으로 다음 7일 학습의 우선순위를 만들었습니다.</p>
           </article>
           <aside className="diagnosis-report-card">
             <h2>영어 연결도</h2>

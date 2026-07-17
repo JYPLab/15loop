@@ -132,6 +132,28 @@ test("ships an adaptive 20-to-25-word free diagnostic", async () => {
   assert.equal(response.status, 400);
 });
 
+test("connects reviewed content to the official 3,000-word curriculum map", async () => {
+  const app = await worker();
+  const response = await app.fetch(new Request("http://localhost/api/curriculum"), env(), context);
+
+  assert.equal(response.status, 200);
+  const data = await response.json();
+  assert.deepEqual(data.counts, {
+    total: 3000,
+    elementary: 800,
+    "secondary-common": 1200,
+    advanced: 1000,
+  });
+  assert.equal(data.reviewedContent.total, 30);
+  assert.equal(data.reviewedContent.matched, 30);
+  assert.deepEqual(data.reviewedContent.missing, []);
+  assert.equal(Object.values(data.reviewedContent.byTier).reduce((sum, count) => sum + count, 0), 30);
+
+  const diagnosisPage = await readFile(new URL("../app/diagnosis/page.tsx", import.meta.url), "utf8");
+  assert.match(diagnosisPage, /교육부 2022 개정 기본 어휘 3,000개/);
+  assert.match(diagnosisPage, /검수한 30단어/);
+});
+
 test("keeps payment amounts server-owned and confirms with Toss on the server", async () => {
   const [plans, orderRoute, confirmRoute, schema] = await Promise.all([
     readFile(new URL("../lib/plans.ts", import.meta.url), "utf8"),
