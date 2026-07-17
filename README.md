@@ -1,6 +1,6 @@
 # 15Loop
 
-15Loop is an adaptive English vocabulary learning engine for Korean middle-school students who have limited English exposure. Instead of asking only whether a learner memorized a definition, it evaluates four separate memory connections:
+15Loop is an adaptive English vocabulary learning engine for Korean students who have limited English exposure. Instead of asking only whether a learner memorized a definition, it evaluates four separate memory connections:
 
 1. Recognition — can the learner connect the written word to its meaning?
 2. Listening — can the learner identify the word from sound alone?
