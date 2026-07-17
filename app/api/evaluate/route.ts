@@ -13,6 +13,17 @@ type EvaluationRequest = {
   locale?: "ko" | "en";
 };
 
+type EvaluationResult = ReturnType<typeof localEvaluation> | {
+  correct: boolean;
+  score: number;
+  feedbackKo: string;
+  feedbackEn: string;
+  errorType: string;
+  canonicalAnswer: string;
+  source: "openai";
+  model: string;
+};
+
 function normalize(value: string) {
   return value
     .toLowerCase()
@@ -52,6 +63,49 @@ function usageDate() {
 async function sha256(value: string) {
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value));
   return Array.from(new Uint8Array(digest)).map((byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+
+async function evaluationResponse(
+  request: NextRequest,
+  learnerId: string,
+  wordId: string,
+  result: EvaluationResult & { limited?: boolean },
+) {
+  if (!/^(learner|child)-[0-9a-f-]{36}$/i.test(learnerId)) {
+    return NextResponse.json(result);
+  }
+
+  try {
+    const [{ getDb }, schema] = await Promise.all([import("../../../db"), import("../../../db/schema")]);
+    const db = getDb();
+    if (/^child-/i.test(learnerId)) {
+      const parent = await getOptionalParent(request);
+      if (!parent) return NextResponse.json(result);
+      const [[ownership], [account]] = await Promise.all([
+        db.select().from(schema.guardianLearners).where(and(
+          eq(schema.guardianLearners.guardianId, parent.id),
+          eq(schema.guardianLearners.learnerId, learnerId),
+        )).limit(1),
+        db.select().from(schema.guardianAccounts).where(eq(schema.guardianAccounts.id, parent.id)).limit(1),
+      ]);
+      if (!ownership || !account || !guardianHasAccess(account) || !guardianHasConsent(account)) {
+        return NextResponse.json(result);
+      }
+    }
+
+    const evaluationReceiptId = `eval-${crypto.randomUUID()}`;
+    await db.insert(schema.evaluationReceipts).values({
+      id: evaluationReceiptId,
+      learnerId,
+      wordId,
+      correct: result.correct,
+      score: Math.min(100, Math.max(0, Math.round(result.score))),
+      expiresAt: new Date(Date.now() + 10 * 60 * 1000).toISOString(),
+    });
+    return NextResponse.json({ ...result, evaluationReceiptId });
+  } catch {
+    return NextResponse.json(result);
+  }
 }
 
 async function consumeAiAllowance(request: NextRequest, learnerId: string) {
@@ -118,13 +172,19 @@ export async function POST(request: NextRequest) {
   const word = curriculumItem.word;
 
   const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) return NextResponse.json(localEvaluation(target, answer));
+  if (!apiKey) return evaluationResponse(request, learnerId, curriculumItem.id, localEvaluation(target, answer));
 
   try {
     const allowed = await consumeAiAllowance(request, learnerId);
-    if (!allowed) return NextResponse.json({ ...localEvaluation(target, answer), limited: true });
+    if (!allowed) return evaluationResponse(request, learnerId, curriculumItem.id, {
+      ...localEvaluation(target, answer),
+      limited: true,
+    });
   } catch {
-    return NextResponse.json({ ...localEvaluation(target, answer), limited: true });
+    return evaluationResponse(request, learnerId, curriculumItem.id, {
+      ...localEvaluation(target, answer),
+      limited: true,
+    });
   }
 
   const model = process.env.OPENAI_MODEL ?? "gpt-5.6";
@@ -180,7 +240,7 @@ export async function POST(request: NextRequest) {
       }),
     });
 
-    if (!response.ok) return NextResponse.json(localEvaluation(target, answer));
+    if (!response.ok) return evaluationResponse(request, learnerId, curriculumItem.id, localEvaluation(target, answer));
 
     const data = (await response.json()) as {
       output?: Array<{ content?: Array<{ type?: string; text?: string }> }>;
@@ -190,14 +250,14 @@ export async function POST(request: NextRequest) {
       .find((item) => item.type === "output_text")
       ?.text;
 
-    if (!outputText) return NextResponse.json(localEvaluation(target, answer));
+    if (!outputText) return evaluationResponse(request, learnerId, curriculumItem.id, localEvaluation(target, answer));
 
-    return NextResponse.json({
+    return evaluationResponse(request, learnerId, curriculumItem.id, {
       ...JSON.parse(outputText),
       source: "openai",
       model,
     });
   } catch {
-    return NextResponse.json(localEvaluation(target, answer));
+    return evaluationResponse(request, learnerId, curriculumItem.id, localEvaluation(target, answer));
   }
 }

@@ -275,7 +275,9 @@ test("uses a persisted 15-minute active learning target", async () => {
   assert.match(page, /action: "heartbeat"/);
   assert.match(page, /오늘의 15분 학습을 마쳤어요/);
   assert.match(progressRoute, /body\.action === "heartbeat"/);
-  assert.match(progressRoute, /Math\.min\(900, profile\.studySecondsToday \+ studySeconds\)/);
+  assert.match(progressRoute, /allowedHeartbeatSeconds/);
+  assert.match(progressRoute, /profile\.studySecondsToday \+ acceptedStudySeconds/);
+  assert.match(progressRoute, /evaluationReceiptId/);
   assert.match(schema, /studySecondsToday/);
   assert.match(schema, /dailySessionCompleted/);
   assert.match(parentPage, /learner\.studySecondsToday/);

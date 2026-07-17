@@ -10,6 +10,7 @@ export const learnerProfiles = sqliteTable("learner_profiles", {
   completedToday: integer("completed_today").notNull().default(0),
   studySecondsToday: integer("study_seconds_today").notNull().default(0),
   dailySessionCompleted: integer("daily_session_completed", { mode: "boolean" }).notNull().default(false),
+  lastHeartbeatAt: text("last_heartbeat_at"),
   lastStudyDate: text("last_study_date").notNull(),
   seeScore: integer("see_score").notNull().default(50),
   hearScore: integer("hear_score").notNull().default(50),
@@ -42,9 +43,24 @@ export const evaluationEvents = sqliteTable("evaluation_events", {
   skill: text("skill").notNull(),
   correct: integer("correct", { mode: "boolean" }).notNull(),
   score: integer("score").notNull(),
+  evaluationReceiptId: text("evaluation_receipt_id"),
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [
   index("evaluation_events_learner_created_idx").on(table.learnerId, table.createdAt),
+  uniqueIndex("evaluation_events_receipt_idx").on(table.evaluationReceiptId),
+]);
+
+export const evaluationReceipts = sqliteTable("evaluation_receipts", {
+  id: text("id").primaryKey(),
+  learnerId: text("learner_id").notNull(),
+  wordId: text("word_id").notNull(),
+  correct: integer("correct", { mode: "boolean" }).notNull(),
+  score: integer("score").notNull(),
+  expiresAt: text("expires_at").notNull(),
+  consumedAt: text("consumed_at"),
+  createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
+}, (table) => [
+  index("evaluation_receipts_learner_created_idx").on(table.learnerId, table.createdAt),
 ]);
 
 export const guardianAccounts = sqliteTable("guardian_accounts", {

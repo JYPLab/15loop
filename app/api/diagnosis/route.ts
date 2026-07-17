@@ -1,3 +1,4 @@
+import { and, eq, isNull } from "drizzle-orm";
 import { commercialRouteError, getCommercialStorage } from "../../../lib/commercial";
 
 type DiagnosticAnswer = {
@@ -53,7 +54,7 @@ export async function POST(request: Request) {
 
   try {
     const { db, schema } = await getCommercialStorage();
-    await db.insert(schema.diagnosticSessions).values({
+    const rows = await db.insert(schema.diagnosticSessions).values({
       id: sessionId,
       guestLearnerId,
       itemCount: answers.length,
@@ -76,7 +77,15 @@ export async function POST(request: Request) {
         recommendedLevel,
         completedAt,
       },
-    });
+      setWhere: and(
+        eq(schema.diagnosticSessions.guestLearnerId, guestLearnerId),
+        isNull(schema.diagnosticSessions.guardianId),
+        isNull(schema.diagnosticSessions.claimedAt),
+      ),
+    }).returning({ id: schema.diagnosticSessions.id });
+    if (!rows.length) {
+      return Response.json({ error: "이미 가족 계정에 연결된 진단은 변경할 수 없습니다." }, { status: 409 });
+    }
     return Response.json({ saved: true, sessionId });
   } catch (error) {
     return commercialRouteError(error);

@@ -21,7 +21,7 @@
       "id": "repo-ko-2022-basic-words",
       "title": "15loop repository ko-2022-basic-words.json",
       "authority": "15Loop generated dataset derived from official Ministry/KICE source",
-      "path": "/Users/joonymacair15/Documents/code/15loop/data/curriculum/ko-2022-basic-words.json",
+      "path": "data/curriculum/ko-2022-basic-words.json",
       "use": "후보의 공식 대표형·index·** marker를 기계적으로 검증",
       "licenseStatus": "internal-reference-only; retains upstream source boundary; no learner-facing meanings/examples"
     },

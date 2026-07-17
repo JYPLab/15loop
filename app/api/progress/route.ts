@@ -1,9 +1,10 @@
-import { and, asc, eq } from "drizzle-orm";
+import { and, asc, eq, isNull } from "drizzle-orm";
 import { dailyWords } from "../../../data/words";
 import { applyEvaluationToReviewState, buildAdaptiveQueue } from "../../../lib/adaptive-queue";
 import { getOptionalParent } from "../../../lib/auth";
 import { recordBetaEvent } from "../../../lib/beta-ops";
 import { guardianHasAccess, guardianHasConsent } from "../../../lib/commercial";
+import { allowedHeartbeatSeconds, evaluateChoice } from "../../../lib/learning-integrity";
 
 type Db = ReturnType<typeof import("../../../db").getDb>;
 type Schema = typeof import("../../../db/schema");
@@ -16,6 +17,7 @@ type ProfileRow = {
   completedToday: number;
   studySecondsToday: number;
   dailySessionCompleted: boolean;
+  lastHeartbeatAt: string | null;
   lastStudyDate: string;
   seeScore: number;
   hearScore: number;
@@ -32,8 +34,8 @@ type ProgressRequest = {
   learnerId?: string;
   wordId?: string;
   skill?: SkillKey;
-  correct?: boolean;
-  score?: number;
+  answer?: string;
+  evaluationReceiptId?: string;
   locale?: "ko" | "en";
   studySeconds?: number;
 };
@@ -90,11 +92,12 @@ function clamp(value: number, min = 0, max = 100) {
 }
 
 function profilePayload(profile: ProfileRow, nextDueAt?: string | null) {
+  const currentDay = profile.lastStudyDate === todayInSeoul();
   return {
     streak: profile.streak,
-    completedToday: profile.completedToday,
-    studySecondsToday: profile.studySecondsToday,
-    dailySessionCompleted: profile.dailySessionCompleted,
+    completedToday: currentDay ? profile.completedToday : 0,
+    studySecondsToday: currentDay ? profile.studySecondsToday : 0,
+    dailySessionCompleted: currentDay ? profile.dailySessionCompleted : false,
     scores: {
       see: profile.seeScore,
       hear: profile.hearScore,
@@ -113,25 +116,32 @@ async function getStorage() {
   return { db: getDb(), schema };
 }
 
-async function ensureProfile(db: Db, schema: Schema, learnerId: string, locale: "ko" | "en" = "ko") {
+async function ensureProfile(
+  db: Db,
+  schema: Schema,
+  learnerId: string,
+  locale: "ko" | "en" = "ko",
+  activate = false,
+) {
   const { learnerProfiles } = schema;
   const today = todayInSeoul();
   await db.insert(learnerProfiles).values({
     id: learnerId,
     locale,
-    lastStudyDate: today,
+    lastStudyDate: activate ? today : "",
   }).onConflictDoNothing();
 
   let [profile] = await db.select().from(learnerProfiles).where(eq(learnerProfiles.id, learnerId)).limit(1);
 
-  if (profile.lastStudyDate !== today) {
-    const continued = profile.lastStudyDate === yesterdayOf(today);
+  if (activate && profile.lastStudyDate !== today) {
+    const continued = Boolean(profile.lastStudyDate) && profile.lastStudyDate === yesterdayOf(today);
     const [updated] = await db.update(learnerProfiles).set({
       completedToday: 0,
       studySecondsToday: 0,
       dailySessionCompleted: false,
       streak: continued ? profile.streak + 1 : 1,
       lastStudyDate: today,
+      lastHeartbeatAt: null,
       locale,
       updatedAt: new Date().toISOString(),
     }).where(eq(learnerProfiles.id, learnerId)).returning();
@@ -199,8 +209,6 @@ export async function POST(request: Request) {
   const wordId = body.wordId?.trim() ?? "";
   const skill = body.skill;
   const locale = body.locale === "en" ? "en" : "ko";
-  const score = clamp(Number(body.score ?? 0));
-
   if (body.action === "heartbeat") {
     const studySeconds = Number(body.studySeconds);
     if (!Number.isInteger(studySeconds) || studySeconds < 1 || studySeconds > 60) {
@@ -208,13 +216,27 @@ export async function POST(request: Request) {
     }
     try {
       const { db, schema } = await getStorage();
-      const profile = await ensureProfile(db, schema, learnerId, locale);
-      const nextStudySeconds = Math.min(900, profile.studySecondsToday + studySeconds);
+      const profile = await ensureProfile(db, schema, learnerId, locale, true);
+      const now = new Date();
+      const acceptedStudySeconds = allowedHeartbeatSeconds({
+        requestedSeconds: studySeconds,
+        lastHeartbeatAt: profile.lastHeartbeatAt,
+        now,
+      });
+      if (acceptedStudySeconds < 1) {
+        return Response.json({
+          error: "study heartbeat arrived too quickly",
+          acceptedStudySeconds: 0,
+          profile: profilePayload(profile),
+        }, { status: 429 });
+      }
+      const nextStudySeconds = Math.min(900, profile.studySecondsToday + acceptedStudySeconds);
       const [updatedProfile] = await db.update(schema.learnerProfiles).set({
         locale,
         studySecondsToday: nextStudySeconds,
         dailySessionCompleted: nextStudySeconds >= 900,
-        updatedAt: new Date().toISOString(),
+        lastHeartbeatAt: now.toISOString(),
+        updatedAt: now.toISOString(),
       }).where(eq(schema.learnerProfiles.id, learnerId)).returning();
       if (profile.studySecondsToday < 900 && nextStudySeconds >= 900 && resolution.guardianId) {
         await recordBetaEvent(db, schema, {
@@ -224,14 +246,15 @@ export async function POST(request: Request) {
           metadata: { studySeconds: nextStudySeconds },
         });
       }
-      return Response.json({ profile: profilePayload(updatedProfile) });
+      return Response.json({ acceptedStudySeconds, profile: profilePayload(updatedProfile) });
     } catch (error) {
       return routeError(error);
     }
   }
 
+  const curriculumWord = dailyWords.find((item) => item.id === wordId);
   if (
-    !wordId || wordId.length > 80 || !dailyWords.some((item) => item.id === wordId)
+    !wordId || wordId.length > 80 || !curriculumWord
     || !skill || !["see", "hear", "context", "recall"].includes(skill)
   ) {
     return Response.json({ error: "invalid progress event" }, { status: 400 });
@@ -240,7 +263,7 @@ export async function POST(request: Request) {
   try {
     const { db, schema } = await getStorage();
     const { evaluationEvents, learnerProfiles, wordProgress } = schema;
-    const profile = await ensureProfile(db, schema, learnerId, locale);
+    const profile = await ensureProfile(db, schema, learnerId, locale, true);
     const today = todayInSeoul();
     const now = new Date();
     const nowIso = now.toISOString();
@@ -249,8 +272,35 @@ export async function POST(request: Request) {
       .where(and(eq(wordProgress.learnerId, learnerId), eq(wordProgress.wordId, wordId)))
       .limit(1);
 
-    const correct = Boolean(body.correct);
-    const review = applyEvaluationToReviewState({ existing, skill, correct, score, now, today });
+    let correct: boolean;
+    let verifiedScore: number;
+    let evaluationReceiptId: string | null = null;
+    if (skill === "recall") {
+      evaluationReceiptId = String(body.evaluationReceiptId || "").trim();
+      if (!/^eval-[0-9a-f-]{36}$/i.test(evaluationReceiptId)) {
+        return Response.json({ error: "a valid recall evaluation receipt is required" }, { status: 400 });
+      }
+      const [receipt] = await db.select().from(schema.evaluationReceipts).where(and(
+        eq(schema.evaluationReceipts.id, evaluationReceiptId),
+        eq(schema.evaluationReceipts.learnerId, learnerId),
+        eq(schema.evaluationReceipts.wordId, wordId),
+        isNull(schema.evaluationReceipts.consumedAt),
+      )).limit(1);
+      if (!receipt || Date.parse(receipt.expiresAt) <= now.getTime()) {
+        return Response.json({ error: "recall evaluation receipt is invalid or expired" }, { status: 409 });
+      }
+      correct = receipt.correct;
+      verifiedScore = clamp(receipt.score);
+    } else {
+      const answer = String(body.answer || "");
+      if (!answer || answer.length > 300) {
+        return Response.json({ error: "a valid answer is required" }, { status: 400 });
+      }
+      const verified = evaluateChoice({ word: curriculumWord, skill, locale, answer });
+      correct = verified.correct;
+      verifiedScore = verified.score;
+    }
+    const review = applyEvaluationToReviewState({ existing, skill, correct, score: verifiedScore, now, today });
 
     const currentScores = {
       see: profile.seeScore,
@@ -258,10 +308,17 @@ export async function POST(request: Request) {
       context: profile.contextScore,
       recall: profile.recallScore,
     };
-    currentScores[skill] = clamp(currentScores[skill] * 0.78 + score * 0.22, 20, 98);
+    currentScores[skill] = clamp(currentScores[skill] * 0.78 + verifiedScore * 0.22, 20, 98);
 
-    await db.batch([
-      db.insert(evaluationEvents).values({ learnerId, wordId, skill, correct, score }),
+    const statements = [
+      db.insert(evaluationEvents).values({
+        learnerId,
+        wordId,
+        skill,
+        correct,
+        score: verifiedScore,
+        evaluationReceiptId,
+      }),
       db.insert(wordProgress).values({
         id: progressId,
         learnerId,
@@ -296,7 +353,14 @@ export async function POST(request: Request) {
         recallScore: currentScores.recall,
         updatedAt: new Date().toISOString(),
       }).where(eq(learnerProfiles.id, learnerId)),
-    ]);
+    ];
+    if (evaluationReceiptId) {
+      statements.push(db.update(schema.evaluationReceipts).set({ consumedAt: nowIso }).where(and(
+        eq(schema.evaluationReceipts.id, evaluationReceiptId),
+        isNull(schema.evaluationReceipts.consumedAt),
+      )));
+    }
+    await db.batch(statements);
 
     const [updatedProfile] = await db.select().from(learnerProfiles).where(eq(learnerProfiles.id, learnerId)).limit(1);
     const [nextWord] = await db.select({ dueAt: wordProgress.dueAt })

@@ -209,9 +209,8 @@ export async function POST(request: Request) {
       }
       const learnerId = `child-${crypto.randomUUID()}`;
       createdLearnerId = learnerId;
-      const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date());
       await db.batch([
-        db.insert(schema.learnerProfiles).values({ id: learnerId, displayName: nickname, grade, lastStudyDate: today }),
+        db.insert(schema.learnerProfiles).values({ id: learnerId, displayName: nickname, grade, lastStudyDate: "" }),
         db.insert(schema.guardianLearners).values({ id: `${parent.id}:${learnerId}`, guardianId: parent.id, learnerId }),
       ]);
       await recordBetaEvent(db, schema, {

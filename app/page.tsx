@@ -487,7 +487,9 @@ export default function Home() {
         return;
       }
       if (!response.ok) throw new Error("Study heartbeat failed");
-      const data = await response.json() as ProgressResponse;
+      const data = await response.json() as ProgressResponse & { acceptedStudySeconds?: number };
+      const acceptedStudySeconds = Math.max(0, Math.min(seconds, data.acceptedStudySeconds ?? seconds));
+      if (acceptedStudySeconds < seconds) pendingStudySeconds.current += seconds - acceptedStudySeconds;
       if (data.profile) {
         const saved = Math.min(DAILY_SESSION_SECONDS, data.profile.studySecondsToday);
         const current = Math.max(studySecondsRef.current, saved);
@@ -547,14 +549,17 @@ export default function Home() {
     window.history.replaceState({}, "", url);
   };
 
-  const saveResult = async (skill: SkillKey, correct: boolean, score: number) => {
+  const saveResult = async (
+    skill: SkillKey,
+    verification: { answer?: string; evaluationReceiptId?: string } = {},
+  ) => {
     if (!learnerId) return;
     setLastSaved(false);
     try {
       const response = await fetch("/api/progress", {
         method: "POST",
         headers: { "Content-Type": "application/json", ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}) },
-        body: JSON.stringify({ learnerId, wordId: word.id, skill, correct, score, locale }),
+        body: JSON.stringify({ learnerId, wordId: word.id, skill, locale, ...verification }),
       });
       if (response.status === 402) {
         setAccessBlocked(true);
@@ -577,7 +582,13 @@ export default function Home() {
     }
   };
 
-  const applyResult = (correct: boolean, evaluationScore = correct ? 92 : 42, text?: string, source?: FeedbackState["source"]) => {
+  const applyResult = (
+    correct: boolean,
+    evaluationScore = correct ? 92 : 42,
+    text?: string,
+    source?: FeedbackState["source"],
+    verification: { answer?: string; evaluationReceiptId?: string } = {},
+  ) => {
     setFeedback({
       status: correct ? "correct" : "retry",
       text: text || (correct ? t.correct : t.retry),
@@ -588,13 +599,13 @@ export default function Home() {
       ...current,
       [stepKey]: Math.round(Math.min(98, Math.max(20, current[stepKey] * 0.78 + evaluationScore * 0.22))),
     }));
-    void saveResult(stepKey, correct, evaluationScore);
+    void saveResult(stepKey, verification);
   };
 
   const chooseAnswer = (choice: string) => {
     if (feedback.status !== "idle") return;
     setSelected(choice);
-    applyResult(choice === correctChoice);
+    applyResult(choice === correctChoice, choice === correctChoice ? 92 : 42, undefined, undefined, { answer: choice });
   };
 
   const checkRecall = async (event: FormEvent) => {
@@ -624,12 +635,15 @@ export default function Home() {
         feedbackKo?: string;
         feedbackEn?: string;
         source?: "openai" | "local-fallback";
+        evaluationReceiptId?: string;
       };
+      if (!response.ok) throw new Error("Recall evaluation failed");
       applyResult(
         Boolean(result.correct),
         result.score ?? (result.correct ? 92 : 42),
         locale === "ko" ? result.feedbackKo : result.feedbackEn,
         result.source,
+        { evaluationReceiptId: result.evaluationReceiptId },
       );
     } catch {
       const normalized = recall.toLowerCase().replace(/[^a-z\s]/g, "").replace(/\s+/g, " ").trim();
