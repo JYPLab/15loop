@@ -170,6 +170,13 @@ export async function GET(request: Request) {
     const { db, schema } = await getStorage();
     const { wordProgress } = schema;
     const profile = await ensureProfile(db, schema, learnerId);
+    const completionRows = await db.select({ eventDate: schema.betaEvents.eventDate })
+      .from(schema.betaEvents)
+      .where(and(
+        eq(schema.betaEvents.learnerId, learnerId),
+        eq(schema.betaEvents.eventName, "daily_session_completed"),
+      ));
+    const completedLearningDays = new Set(completionRows.map((row) => row.eventDate)).size;
     const progress = await db.select({
       wordId: wordProgress.wordId,
       mastery: wordProgress.mastery,
@@ -195,7 +202,10 @@ export async function GET(request: Request) {
       },
     });
 
-    return Response.json({ profile: profilePayload(profile, nextDueAt), learningQueue });
+    return Response.json({
+      profile: { ...profilePayload(profile, nextDueAt), completedLearningDays },
+      learningQueue,
+    });
   } catch (error) {
     return routeError(error);
   }
