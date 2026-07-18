@@ -10,6 +10,7 @@ type Learner = {
   displayName: string;
   grade: string;
   streak: number;
+  completedLearningDays: number;
   completedToday: number;
   studySecondsToday: number;
   dailySessionCompleted: boolean;
@@ -43,6 +44,8 @@ type ParentProfile = {
     completedAt: string;
   }>;
   orders: Array<{ id: string; orderName: string; amount: number; status: string; receiptUrl: string | null; createdAt: string }>;
+  pricePresented: boolean;
+  priceIntentAnswered: boolean;
   createdLearnerId?: string | null;
 };
 
@@ -248,6 +251,36 @@ export default function ParentPage() {
     }
   };
 
+  useEffect(() => {
+    if (!session || !profile?.account.hasAcceptedPolicies || profile.pricePresented) return;
+    void fetch("/api/commercial/profile", {
+      method: "POST",
+      headers: authHeaders(session),
+      body: JSON.stringify({ action: "pricePresented" }),
+    }).then(async (response) => {
+      if (response.ok) setProfile(await response.json() as ParentProfile);
+    }).catch(() => {});
+  }, [session, profile?.account.hasAcceptedPolicies, profile?.pricePresented]);
+
+  const answerPriceIntent = async (answer: "yes" | "unsure" | "no") => {
+    if (!session) return;
+    setBusy("priceIntent");
+    setMessage("");
+    const response = await fetch("/api/commercial/profile", {
+      method: "POST",
+      headers: authHeaders(session),
+      body: JSON.stringify({ action: "priceIntent", priceIntent: answer }),
+    });
+    const data = await response.json() as ParentProfile & { error?: string };
+    setBusy("");
+    if (!response.ok) {
+      setMessage(data.error || "답변을 저장하지 못했습니다.");
+      return;
+    }
+    setProfile(data);
+    setMessage("답변을 저장했습니다. 베타 운영에 큰 도움이 됩니다.");
+  };
+
   const submitFeedback = async (event: FormEvent) => {
     event.preventDefault();
     if (!session || feedbackMessage.trim().length < 5) return;
@@ -282,9 +315,11 @@ export default function ParentPage() {
         <section className="parent-auth-grid">
           <div className="parent-auth-copy">
             <span className="commerce-kicker">OPEN BETA · 초5·6 · 중1</span>
-            <h1>아이의 영어 연결을<br /><em>7일 동안</em> 확인해보세요.</h1>
+            <h1>{diagnosticId
+              ? <>방금 확인한 진단 결과를<br /><em>저장하고 7일 학습</em>을 시작하세요.</>
+              : <>아이의 영어 연결을<br /><em>7일 동안</em> 확인해보세요.</>}</h1>
             <p>초등 5·6학년과 중학교 1학년을 위한 첫 오픈 베타입니다. 가입 즉시 결제정보 없이 무료 프로그램이 시작됩니다.</p>
-            <ul><li>아이 최대 3명까지 분리 관리</li><li>진단부터 매일 15분 맞춤 학습</li><li>베타 기간 결제·자동 결제 없음</li></ul>
+            <ul><li>아이 최대 3명까지 분리 관리</li><li>진단부터 매일 15분 맞춤 학습</li><li>베타 기간 결제·자동 결제 없음</li><li>7일 무료 · 정식 출시 예정: 30일 이용권 12,900원</li></ul>
           </div>
           <section className="parent-auth-card">
             <h2>부모 계정 만들기</h2>
@@ -376,6 +411,19 @@ export default function ParentPage() {
         </div>
       </section>
 
+      {!profile.priceIntentAnswered && profile.learners.some((learner) => learner.completedLearningDays >= 3) && (
+        <section className="parent-section price-intent-section">
+          <div className="parent-section-head"><div><span>PRICE CHECK</span><h2>3일 학습을 완료했어요</h2></div><small>1문항 · 결제 아님</small></div>
+          <p className="price-intent-question">15Loop가 정식 출시되면 30일 이용권은 12,900원입니다. 출시되면 결제를 검토하시겠어요?</p>
+          <div className="price-intent-actions">
+            <button className="commerce-primary" onClick={() => answerPriceIntent("yes")} disabled={busy === "priceIntent"}>네, 검토하겠습니다</button>
+            <button className="price-intent-ghost" onClick={() => answerPriceIntent("unsure")} disabled={busy === "priceIntent"}>아직 모르겠어요</button>
+            <button className="price-intent-ghost" onClick={() => answerPriceIntent("no")} disabled={busy === "priceIntent"}>아니요</button>
+          </div>
+          <small>답변은 베타 운영 참고용이며, 어떤 결제도 발생하지 않습니다.</small>
+        </section>
+      )}
+
       <section className="parent-section">
         <div className="parent-section-head"><div><span>BETA ACCESS</span><h2>7일 무료 오픈 베타</h2></div><small>결제정보를 받지 않습니다</small></div>
         <div className="plan-grid">
@@ -387,7 +435,7 @@ export default function ParentPage() {
             <Link className="commerce-primary" href="/diagnosis">무료 진단 다시 보기 <span>→</span></Link>
           </article>
         </div>
-        <p className="payment-note">이번 오픈 베타에서는 결제수단을 등록하거나 자동 결제하지 않습니다. 7일 이후 운영 방식은 베타 결과를 반영해 별도로 안내합니다.</p>
+        <p className="payment-note">이번 오픈 베타에서는 결제수단을 등록하거나 자동 결제하지 않습니다. 정식 출시 예정: 30일 이용권 12,900원 — 베타 참여 가정에는 별도로 안내드립니다.</p>
       </section>
 
       <section className="parent-section">

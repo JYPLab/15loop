@@ -3,6 +3,7 @@
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { dailyWords, shuffledDailyWords, type VocaWord } from "../data/words";
 import { insertBoundedRetry, prioritizedSkillOrder, type AdaptiveQueueItem } from "../lib/adaptive-queue";
+import { entryDestination } from "../lib/entry-routing";
 import { getSupabaseBrowserClient } from "../lib/supabase-browser";
 import { speakEnglish } from "../lib/speech";
 
@@ -20,6 +21,7 @@ type ProgressResponse = {
     completedToday: number;
     studySecondsToday: number;
     dailySessionCompleted: boolean;
+    completedLearningDays?: number;
     scores: Record<SkillKey, number>;
     nextDueAt?: string | null;
   };
@@ -98,6 +100,7 @@ const copy = {
     reviewResult: "학습 결과 다시 보기",
     dayComplete: "오늘의 15분 학습을 마쳤어요.",
     dayCompleteBody: (count: number) => `${count}개 단어의 네 가지 연결을 확인했어요. AI가 약해지기 직전의 단어부터 다음 학습을 준비합니다.`,
+    journey: (day: number) => `7일 여정 ${day} / 7일차`,
     profile: "나의 영어 연결도",
     profileLabel: "LIVE PROFILE",
     gapTitle: "AI가 발견한 오늘의 빈틈",
@@ -198,6 +201,7 @@ const copy = {
     reviewResult: "Review result",
     dayComplete: "You completed today’s 15-minute session.",
     dayCompleteBody: (count: number) => `You checked four memory connections across ${count} words. The next session starts with memories closest to fading.`,
+    journey: (day: number) => `Day ${day} of 7`,
     profile: "My connection profile",
     profileLabel: "LIVE PROFILE",
     gapTitle: "The gap AI found today",
@@ -294,6 +298,8 @@ export default function Home() {
   })));
   const [queueIndex, setQueueIndex] = useState(0);
   const [stepIndex, setStepIndex] = useState(0);
+  const [stageInfo, setStageInfo] = useState<SkillKey | null>(null);
+  const [entryReady, setEntryReady] = useState(false);
   const [selected, setSelected] = useState("");
   const [recall, setRecall] = useState("");
   const [feedback, setFeedback] = useState<FeedbackState>({ status: "idle", text: "" });
@@ -306,6 +312,8 @@ export default function Home() {
   const [completedIds, setCompletedIds] = useState<Set<string>>(() => new Set());
   const [completedToday, setCompletedToday] = useState(0);
   const [studySecondsToday, setStudySecondsToday] = useState(0);
+  const [completedLearningDays, setCompletedLearningDays] = useState(0);
+  const [dayCompletedAtLoad, setDayCompletedAtLoad] = useState(false);
   const [timerPaused, setTimerPaused] = useState(true);
   const [streak, setStreak] = useState(1);
   const [wordHadError, setWordHadError] = useState(false);
@@ -422,9 +430,17 @@ export default function Home() {
     let active = true;
 
     const loadAccountAndProgress = async () => {
+      const hasChallenge = new URLSearchParams(window.location.search).has("challenge");
+      let hasSession = false;
       try {
         const supabase = getSupabaseBrowserClient();
         const session = supabase ? (await supabase.auth.getSession()).data.session : null;
+        hasSession = Boolean(session);
+        const sessionDestination = entryDestination({ authenticated: hasSession, learnerId, hasChallenge });
+        if (!session && sessionDestination !== "learn") {
+          window.location.replace(sessionDestination === "diagnosis" ? "/diagnosis" : "/parent");
+          return;
+        }
         const token = session?.access_token ?? "";
         setAuthToken(token);
         const accountResponse = await fetch("/api/account", { headers: token ? { Authorization: `Bearer ${token}` } : undefined });
@@ -434,6 +450,17 @@ export default function Home() {
 
         if (!active) return;
         setAccount(accountData);
+
+        const destination = entryDestination({
+          authenticated: accountData.authenticated,
+          learnerId,
+          hasChallenge,
+        });
+        if (destination !== "learn") {
+          window.location.replace(destination === "diagnosis" ? "/diagnosis" : "/parent");
+          return;
+        }
+        setEntryReady(true);
 
         const welcome = new URLSearchParams(window.location.search).get("welcome") === "1";
         if (accountData.authenticated && welcome) {
@@ -468,10 +495,18 @@ export default function Home() {
         const savedStudySeconds = Math.min(DAILY_SESSION_SECONDS, progressData.profile.studySecondsToday);
         studySecondsRef.current = savedStudySeconds;
         setStudySecondsToday(savedStudySeconds);
+        setCompletedLearningDays(progressData.profile.completedLearningDays ?? 0);
+        setDayCompletedAtLoad(Boolean(progressData.profile.dailySessionCompleted));
         if (progressData.profile.dailySessionCompleted) setCompleted(true);
         setStreak(progressData.profile.streak);
       } catch {
-        // Anonymous learning remains available if account discovery is interrupted.
+        if (!active) return;
+        const destination = entryDestination({ authenticated: hasSession, learnerId, hasChallenge });
+        if (destination !== "learn") {
+          window.location.replace(destination === "diagnosis" ? "/diagnosis" : "/parent");
+          return;
+        }
+        setEntryReady(true);
       } finally {
         if (active) setIsProgressLoaded(true);
       }
@@ -881,11 +916,24 @@ export default function Home() {
 
   const closeChallenge = () => {
     setChallengeOpen(false);
+    if (!account.authenticated) {
+      window.location.replace("/diagnosis");
+      return;
+    }
     const url = new URL(window.location.href);
     url.searchParams.delete("challenge");
     url.searchParams.delete("score");
     window.history.replaceState({}, "", url);
   };
+
+  if (!entryReady) {
+    return (
+      <main className="entry-gate" aria-live="polite">
+        <div className="brand"><span className="brand-mark">15</span><span>15LOOP</span></div>
+        <p>{locale === "ko" ? "무료 진단으로 연결하고 있어요." : "Opening your free diagnostic."}</p>
+      </main>
+    );
+  }
 
   return (
     <main className="app-shell">
@@ -941,20 +989,42 @@ export default function Home() {
         <div className="learn-column">
           <div className="step-tabs" aria-label="Evaluation stages">
             {activeSkillOrder.map((item, index) => (
-              <div
-                className={`step-tab ${index === stepIndex && !completed ? "active" : ""} ${index < stepIndex || completed ? "done" : ""}`}
+              <button
+                type="button"
+                className={`step-tab ${index === stepIndex && !completed ? "active" : ""} ${index < stepIndex || completed ? "done" : ""} ${stageInfo === item ? "explaining" : ""}`}
+                aria-current={index === stepIndex && !completed ? "step" : undefined}
+                aria-expanded={stageInfo === item}
+                aria-controls="stage-explanation"
+                onClick={() => setStageInfo((current) => current === item ? null : item)}
                 key={item}
               >
                 <span>{index < stepIndex || completed ? "✓" : index + 1}</span>
                 <b>{skillLabels[item]}</b>
-              </div>
+              </button>
             ))}
           </div>
+          {stageInfo ? (
+            <div className="step-explanation" id="stage-explanation" aria-live="polite">
+              <b>{skillLabels[stageInfo]}</b>
+              <span>{t.helpers[skillOrder.indexOf(stageInfo)]}</span>
+            </div>
+          ) : null}
 
           {isDayComplete && completed ? (
             <article className="result-card day-complete-card">
               <div className="result-badge">DAILY LOOP COMPLETE</div>
               <p className="result-number">{String(completedToday).padStart(2, "0")}</p>
+              {(() => {
+                const journeyDays = Math.min(7, completedLearningDays + (isDayComplete && !dayCompletedAtLoad ? 1 : 0));
+                return (
+                  <div className="journey-dots" aria-label={t.journey(journeyDays)}>
+                    {Array.from({ length: 7 }, (_, index) => (
+                      <i key={index} className={index < journeyDays ? "filled" : ""} />
+                    ))}
+                    <span>{t.journey(journeyDays)}</span>
+                  </div>
+                );
+              })()}
               <h2>{t.dayComplete}</h2>
               <p>{t.dayCompleteBody(completedToday)}</p>
               <div className="result-actions">

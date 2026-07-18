@@ -6,7 +6,7 @@ import { commercialPlans, isCommercialPlanCode } from "../../../../lib/plans";
 import { PRIVACY_VERSION, TERMS_VERSION } from "../../../../lib/policies";
 
 type ProfileAction = {
-  action?: "acceptPolicies" | "addLearner" | "claimDiagnostic";
+  action?: "acceptPolicies" | "addLearner" | "claimDiagnostic" | "pricePresented" | "priceIntent";
   termsAccepted?: boolean;
   privacyAccepted?: boolean;
   guardianConfirmed?: boolean;
@@ -15,6 +15,7 @@ type ProfileAction = {
   diagnosticId?: string;
   guestLearnerId?: string;
   learnerId?: string;
+  priceIntent?: string;
 };
 
 async function migrateGuestProgress(
@@ -101,6 +102,23 @@ async function profilePayload(
   const learners = learnerIds.length
     ? await db.select().from(schema.learnerProfiles).where(inArray(schema.learnerProfiles.id, learnerIds))
     : [];
+  const completionEvents = learnerIds.length
+    ? await db.select({
+      learnerId: schema.betaEvents.learnerId,
+      eventDate: schema.betaEvents.eventDate,
+    }).from(schema.betaEvents)
+      .where(and(
+        eq(schema.betaEvents.eventName, "daily_session_completed"),
+        inArray(schema.betaEvents.learnerId, learnerIds),
+      ))
+    : [];
+  const completedDaysByLearner = new Map<string, Set<string>>();
+  for (const event of completionEvents) {
+    if (!event.learnerId) continue;
+    const dates = completedDaysByLearner.get(event.learnerId) ?? new Set<string>();
+    dates.add(event.eventDate);
+    completedDaysByLearner.set(event.learnerId, dates);
+  }
   const orders = await db.select({
     id: schema.paymentOrders.id,
     planCode: schema.paymentOrders.planCode,
@@ -128,6 +146,14 @@ async function profilePayload(
     .where(eq(schema.diagnosticSessions.guardianId, account.id))
     .orderBy(desc(schema.diagnosticSessions.completedAt))
     .limit(10);
+  const priceEvents = await db.select({ eventName: schema.betaEvents.eventName })
+    .from(schema.betaEvents)
+    .where(and(
+      eq(schema.betaEvents.guardianId, account.id),
+      inArray(schema.betaEvents.eventName, ["price_presented", "price_intent_answered"]),
+    ));
+  const pricePresented = priceEvents.some((event) => event.eventName === "price_presented");
+  const priceIntentAnswered = priceEvents.some((event) => event.eventName === "price_intent_answered");
 
   return {
     account: publicGuardian(account),
@@ -136,6 +162,7 @@ async function profilePayload(
       displayName: learner.displayName,
       grade: learner.grade,
       streak: learner.streak,
+      completedLearningDays: completedDaysByLearner.get(learner.id)?.size ?? 0,
       completedToday: learner.completedToday,
       studySecondsToday: learner.studySecondsToday,
       dailySessionCompleted: learner.dailySessionCompleted,
@@ -148,6 +175,8 @@ async function profilePayload(
     })),
     diagnostics,
     orders,
+    pricePresented,
+    priceIntentAnswered,
   };
 }
 
@@ -264,6 +293,37 @@ export async function POST(request: Request) {
         learnerId,
         metadata: { itemCount: diagnostic.itemCount },
       });
+    } else if (body.action === "pricePresented") {
+      const [existing] = await db.select({ id: schema.betaEvents.id })
+        .from(schema.betaEvents)
+        .where(and(
+          eq(schema.betaEvents.guardianId, account.id),
+          eq(schema.betaEvents.eventName, "price_presented"),
+        ))
+        .limit(1);
+      if (!existing) {
+        await recordBetaEvent(db, schema, {
+          eventName: "price_presented",
+          guardianId: account.id,
+          metadata: { priceKrw: 12900, surface: "parent_dashboard" },
+        });
+      }
+    } else if (body.action === "priceIntent") {
+      const answer = String(body.priceIntent || "");
+      if (!["yes", "unsure", "no"].includes(answer)) {
+        return Response.json({ error: "가격 의향 답변이 올바르지 않습니다." }, { status: 400 });
+      }
+      const eligibility = await profilePayload(db, schema, account);
+      if (!eligibility.learners.some((learner) => learner.completedLearningDays >= 3)) {
+        return Response.json({ error: "3일 학습 완료 후 답변할 수 있습니다." }, { status: 403 });
+      }
+      if (!eligibility.priceIntentAnswered) {
+        await recordBetaEvent(db, schema, {
+          eventName: "price_intent_answered",
+          guardianId: account.id,
+          metadata: { answer, priceKrw: 12900 },
+        });
+      }
     } else {
       return Response.json({ error: "지원하지 않는 요청입니다." }, { status: 400 });
     }
