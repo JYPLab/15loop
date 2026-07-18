@@ -3,6 +3,7 @@
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { dailyWords, shuffledDailyWords, type VocaWord } from "../data/words";
 import { insertBoundedRetry, prioritizedSkillOrder, type AdaptiveQueueItem } from "../lib/adaptive-queue";
+import { entryDestination } from "../lib/entry-routing";
 import { getSupabaseBrowserClient } from "../lib/supabase-browser";
 import { speakEnglish } from "../lib/speech";
 
@@ -295,6 +296,7 @@ export default function Home() {
   const [queueIndex, setQueueIndex] = useState(0);
   const [stepIndex, setStepIndex] = useState(0);
   const [stageInfo, setStageInfo] = useState<SkillKey | null>(null);
+  const [entryReady, setEntryReady] = useState(false);
   const [selected, setSelected] = useState("");
   const [recall, setRecall] = useState("");
   const [feedback, setFeedback] = useState<FeedbackState>({ status: "idle", text: "" });
@@ -423,9 +425,17 @@ export default function Home() {
     let active = true;
 
     const loadAccountAndProgress = async () => {
+      const hasChallenge = new URLSearchParams(window.location.search).has("challenge");
+      let hasSession = false;
       try {
         const supabase = getSupabaseBrowserClient();
         const session = supabase ? (await supabase.auth.getSession()).data.session : null;
+        hasSession = Boolean(session);
+        const sessionDestination = entryDestination({ authenticated: hasSession, learnerId, hasChallenge });
+        if (!session && sessionDestination !== "learn") {
+          window.location.replace(sessionDestination === "diagnosis" ? "/diagnosis" : "/parent");
+          return;
+        }
         const token = session?.access_token ?? "";
         setAuthToken(token);
         const accountResponse = await fetch("/api/account", { headers: token ? { Authorization: `Bearer ${token}` } : undefined });
@@ -435,6 +445,17 @@ export default function Home() {
 
         if (!active) return;
         setAccount(accountData);
+
+        const destination = entryDestination({
+          authenticated: accountData.authenticated,
+          learnerId,
+          hasChallenge,
+        });
+        if (destination !== "learn") {
+          window.location.replace(destination === "diagnosis" ? "/diagnosis" : "/parent");
+          return;
+        }
+        setEntryReady(true);
 
         const welcome = new URLSearchParams(window.location.search).get("welcome") === "1";
         if (accountData.authenticated && welcome) {
@@ -472,7 +493,13 @@ export default function Home() {
         if (progressData.profile.dailySessionCompleted) setCompleted(true);
         setStreak(progressData.profile.streak);
       } catch {
-        // Anonymous learning remains available if account discovery is interrupted.
+        if (!active) return;
+        const destination = entryDestination({ authenticated: hasSession, learnerId, hasChallenge });
+        if (destination !== "learn") {
+          window.location.replace(destination === "diagnosis" ? "/diagnosis" : "/parent");
+          return;
+        }
+        setEntryReady(true);
       } finally {
         if (active) setIsProgressLoaded(true);
       }
@@ -882,11 +909,24 @@ export default function Home() {
 
   const closeChallenge = () => {
     setChallengeOpen(false);
+    if (!account.authenticated) {
+      window.location.replace("/diagnosis");
+      return;
+    }
     const url = new URL(window.location.href);
     url.searchParams.delete("challenge");
     url.searchParams.delete("score");
     window.history.replaceState({}, "", url);
   };
+
+  if (!entryReady) {
+    return (
+      <main className="entry-gate" aria-live="polite">
+        <div className="brand"><span className="brand-mark">15</span><span>15LOOP</span></div>
+        <p>{locale === "ko" ? "무료 진단으로 연결하고 있어요." : "Opening your free diagnostic."}</p>
+      </main>
+    );
+  }
 
   return (
     <main className="app-shell">

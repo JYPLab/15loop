@@ -187,7 +187,7 @@ export default function DiagnosisPage() {
     return (
       <main className="commerce-shell diagnosis-intro">
         <header className="commerce-topbar">
-          <Link className="brand" href="/"><span className="brand-mark">15</span><span>15LOOP</span></Link>
+          <Link className="brand" href="/diagnosis"><span className="brand-mark">15</span><span>15LOOP</span></Link>
           <Link className="commerce-text-link" href="/parent">부모 로그인</Link>
         </header>
         <section className="diagnosis-hero">
@@ -213,7 +213,7 @@ export default function DiagnosisPage() {
     return (
       <main className="commerce-shell">
         <header className="commerce-topbar">
-          <Link className="brand" href="/"><span className="brand-mark">15</span><span>15LOOP</span></Link>
+          <Link className="brand" href="/diagnosis"><span className="brand-mark">15</span><span>15LOOP</span></Link>
           <span className="commerce-status">진단 완료</span>
         </header>
         <section className="diagnosis-result-grid">
@@ -246,7 +246,7 @@ export default function DiagnosisPage() {
   return (
     <main className="commerce-shell diagnosis-session">
       <header className="commerce-topbar">
-        <Link className="brand" href="/"><span className="brand-mark">15</span><span>15LOOP</span></Link>
+        <Link className="brand" href="/diagnosis"><span className="brand-mark">15</span><span>15LOOP</span></Link>
         <span className="commerce-status">{index + 1} / {questions.length}</span>
       </header>
       <div className="diagnosis-progress"><i style={{ width: `${progress}%` }} /></div>

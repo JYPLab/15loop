@@ -23,7 +23,7 @@ const context = {
   passThroughOnException() {},
 };
 
-test("server-renders the 15Loop learning experience", async () => {
+test("server-renders a gated root before routing the visitor", async () => {
   const app = await worker();
   const response = await app.fetch(
     new Request("http://localhost/", { headers: { accept: "text/html" } }),
@@ -37,12 +37,25 @@ test("server-renders the 15Loop learning experience", async () => {
   const html = await response.text();
   assert.match(html, /<title>15Loop \| AI Vocabulary Memory Evaluation<\/title>/i);
   assert.match(html, /15LOOP/);
-  assert.match(html, /외웠는지가 아니라/);
-  assert.match(html, /오늘의 맞춤 루프/);
-  assert.match(html, /AI EVALUATION/);
-  assert.doesNotMatch(html, /with GPT-5\.6/);
-  assert.match(html, />EN</);
+  assert.match(html, /무료 진단으로 연결하고 있어요/);
+  assert.doesNotMatch(html, /외웠는지가 아니라|오늘의 맞춤 루프/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+});
+
+test("server-renders the no-signup free diagnostic as the first experience", async () => {
+  const app = await worker();
+  const response = await app.fetch(
+    new Request("http://localhost/diagnosis", { headers: { accept: "text/html" } }),
+    env(),
+    context,
+  );
+
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /무료 진단 시작/);
+  assert.match(html, /20~25/);
+  assert.match(html, /가입 없이/);
+  assert.match(html, /부모 로그인/);
 });
 
 test("adds baseline browser security headers without forcing HSTS on local HTTP", async () => {
@@ -389,7 +402,7 @@ test("keeps the open-beta journey usable on narrow mobile screens", async () => 
 
   assert.match(styles, /@media \(max-width: 640px\)/);
   assert.match(styles, /\.hero \{[^}]*flex-direction:column/);
-  assert.match(styles, /\.language-toggle button \{ width: 44px; height:44px; \}/);
+  assert.match(styles, /\.language-toggle button \{[^}]*width: 44px; height:44px;[^}]*\}/);
   assert.match(styles, /\.account-trigger \{[^}]*min-width:44px; min-height:44px/);
   assert.match(styles, /\.commerce-text-link \{ min-height:44px/);
   assert.match(styles, /\.optional-sentence-heading button \{ min-width:44px; min-height:44px/);
