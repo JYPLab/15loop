@@ -59,6 +59,7 @@ test("server-renders the no-signup free diagnostic as the first experience", asy
   assert.match(html, /정식 출시 예정: 30일 이용권 12,900원/);
   assert.match(html, /매일 외운 단어인데/);
   assert.match(html, /뜻 보고 단어 떠올리기/);
+  assert.match(html, /viewport-fit=cover/);
 });
 
 test("adds baseline browser security headers without forcing HSTS on local HTTP", async () => {
@@ -430,15 +431,26 @@ test("ships private achievement sharing and a five-word friend challenge", async
 });
 
 test("keeps the open-beta journey usable on narrow mobile screens", async () => {
-  const styles = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  const [styles, layout] = await Promise.all([
+    readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+    readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+  ]);
 
   assert.match(styles, /@media \(max-width: 640px\)/);
   assert.match(styles, /\.hero \{[^}]*flex-direction:column/);
   assert.match(styles, /\.language-toggle button \{[^}]*width: 44px; height:44px;[^}]*\}/);
   assert.match(styles, /\.account-trigger \{[^}]*min-width:44px; min-height:44px/);
   assert.match(styles, /\.commerce-text-link \{ min-height:44px/);
+  assert.match(styles, /\.commerce-primary \{ width:100%; min-height:52px/);
+  assert.match(styles, /\.diagnosis-question-card \{ min-height:calc\(100dvh - 126px\)/);
+  assert.match(styles, /\.diagnosis-choices button \{ min-height:56px; font-size:16px/);
+  assert.match(styles, /\.email-auth-form input \{ font-size:16px/);
+  assert.match(styles, /\.price-intent-actions \{ flex-direction:column/);
+  assert.match(styles, /\.price-intent-actions button \{ width:100%; min-height:48px/);
   assert.match(styles, /\.optional-sentence-heading button \{ min-width:44px; min-height:44px/);
+  assert.match(styles, /env\(safe-area-inset-top\)/);
   assert.match(styles, /env\(safe-area-inset-bottom\)/);
+  assert.match(layout, /width=device-width, initial-scale=1, viewport-fit=cover/);
 });
 
 test("ships finished metadata and a project-bound social card", async () => {
