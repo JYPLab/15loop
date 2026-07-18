@@ -52,10 +52,13 @@ test("server-renders the no-signup free diagnostic as the first experience", asy
 
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /무료 진단 시작/);
+  assert.match(html, /우리 아이 무료 진단하기/);
   assert.match(html, /20~25/);
-  assert.match(html, /가입 없이/);
+  assert.match(html, /가입 없이 시작/);
   assert.match(html, /부모 로그인/);
+  assert.match(html, /정식 출시 예정: 30일 이용권 12,900원/);
+  assert.match(html, /매일 외운 단어인데/);
+  assert.match(html, /뜻 보고 단어 떠올리기/);
 });
 
 test("adds baseline browser security headers without forcing HSTS on local HTTP", async () => {
@@ -255,8 +258,8 @@ test("ships an adaptive 20-to-25-word free diagnostic", async () => {
   assert.match(page, /scores\[weakest\] <= 60/);
   assert.match(page, /dailyWords\.slice\(20, 25\)/);
   assert.match(page, /20~25/);
-  assert.match(page, /OPEN BETA · 초5·6 · 중1/);
-  assert.match(page, /초등 핵심부터 중1 과정까지/);
+  assert.match(page, /초5·6 · 중1 무료 영어 단어 진단/);
+  assert.match(page, /매일 외운 단어인데/);
   assert.match(route, /answers\.length >= 20 && answers\.length <= 25/);
 
   const app = await worker();
@@ -299,8 +302,37 @@ test("connects reviewed content to the official 3,000-word curriculum map", asyn
   assert.equal(Object.values(data.reviewedContent.byTier).reduce((sum, count) => sum + count, 0), 30);
 
   const diagnosisPage = await readFile(new URL("../app/diagnosis/page.tsx", import.meta.url), "utf8");
-  assert.match(diagnosisPage, /교육부 2022 개정 기본 어휘 3,000개/);
-  assert.match(diagnosisPage, /검수한 30단어/);
+  assert.match(diagnosisPage, /교육부 2022 개정 교육과정 기본 어휘/);
+  assert.match(diagnosisPage, /검수를 완료한 30단어/);
+  assert.match(diagnosisPage, /뜻 보고 단어 떠올리기/);
+  assert.doesNotMatch(diagnosisPage, /뜻에서 직접 인출/);
+});
+
+test("instruments price presentation and intent behind the parent API", async () => {
+  const profileRoute = await readFile(new URL("../app/api/commercial/profile/route.ts", import.meta.url), "utf8");
+  assert.match(profileRoute, /price_presented/);
+  assert.match(profileRoute, /price_intent_answered/);
+  assert.match(profileRoute, /12900/);
+  assert.match(profileRoute, /if \(!existing\)/);
+  assert.match(profileRoute, /completedLearningDays/);
+  assert.match(profileRoute, /3일 학습 완료 후 답변할 수 있습니다/);
+  assert.match(profileRoute, /!eligibility\.priceIntentAnswered/);
+});
+
+test("gates the price question on completed learning days, not streak", async () => {
+  const parentPage = await readFile(new URL("../app/parent/page.tsx", import.meta.url), "utf8");
+  assert.match(parentPage, /completedLearningDays >= 3/);
+  assert.doesNotMatch(parentPage, /streak >= 3/);
+  assert.match(parentPage, /priceIntentAnswered/);
+  assert.match(parentPage, /pricePresented/);
+});
+
+test("renders the 7-day journey from completed learning days", async () => {
+  const appPage = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  assert.match(appPage, /journey-dots/);
+  assert.match(appPage, /completedLearningDays/);
+  const progressRoute = await readFile(new URL("../app/api/progress/route.ts", import.meta.url), "utf8");
+  assert.match(progressRoute, /completedLearningDays/);
 });
 
 test("keeps AI-generated content behind validation and a separate human publication gate", async () => {
