@@ -60,24 +60,32 @@ const copy = {
     timerPaused: "탭 이탈·60초 미활동 시 자동 일시정지",
     timerReady: "부모 계정의 아이 프로필에서 시작",
     timerDone: "오늘의 집중 학습 완료",
-    stages: ["보고 알기", "듣고 알기", "문맥 이해", "직접 인출"],
-    eyebrows: ["01 · 보고 알기", "02 · 듣고 알기", "03 · 문맥 이해", "04 · 직접 인출"],
+    stages: ["보고 알기", "듣고 알기", "문맥 이해", "빈칸 인출"],
+    eyebrows: ["01 · 보고 알기", "02 · 듣고 알기", "03 · 문맥 이해", "04 · 빈칸 인출"],
     seeTitle: (word: string) => `${word}의 뜻은 무엇일까요?`,
     hearTitle: "방금 들은 단어를 골라보세요.",
-    recallTitle: (sentence: string) => `‘${sentence}’를 영어로 써보세요.`,
+    recallTitle: (word: string) => `문장 속 ‘${word}’를 직접 꺼내보세요.`,
     helpers: [
       "생각나는 답을 골라보세요. 틀린 단어는 다음 루프에 다시 나와요.",
       "글자를 보지 않고 소리만으로 구별할 수 있는지 확인해요.",
       "문장 속에서 자연스럽게 이어지는 단어를 골라보세요.",
-      "힌트 없이 직접 꺼낼 수 있어야 오래 기억돼요.",
+      "문장 전체가 아니라 빈칸의 단어만 쓰면 돼요. 맞히면 완성 문장을 듣고 따라 말해요.",
     ],
     listen: "발음 듣기",
     listenAgain: "다시 듣기",
     tapToListen: "눌러서 단어 듣기",
     listenAnytime: "몇 번을 들어도 괜찮아요",
-    sentenceLabel: "영어 문장",
+    sentenceLabel: "빈칸에 들어갈 단어",
     evaluating: "평가 중",
-    evaluate: "AI 평가",
+    evaluate: "확인하기",
+    listenAndRepeat: "완성 문장 듣고 따라 말하기",
+    optionalChallenge: "내 문장 만들어보기 (선택)",
+    optionalChallengeBody: "배운 단어를 사용해 짧은 문장을 써보세요. 건너뛰어도 학습 결과에는 영향이 없어요.",
+    optionalSentenceLabel: "나만의 영어 문장",
+    optionalSentencePlaceholder: (word: string) => `${word}를 넣어 짧게 써보세요.`,
+    optionalEvaluate: "AI로 문장 확인",
+    optionalEvaluating: "AI가 확인 중",
+    optionalClose: "도전 접기",
     correct: "좋아요! 소리와 의미가 정확히 연결됐어요.",
     retry: "괜찮아요. 한 번 더 연결하면 더 오래 기억돼요.",
     retryButton: "다시 해보기",
@@ -152,24 +160,32 @@ const copy = {
     timerPaused: "Pauses off-tab or after 60 seconds idle",
     timerReady: "Start from a child profile in the parent account",
     timerDone: "Today’s focus session is complete",
-    stages: ["Recognition", "Listening", "Context", "Recall"],
-    eyebrows: ["01 · RECOGNITION", "02 · LISTENING", "03 · CONTEXT", "04 · ACTIVE RECALL"],
+    stages: ["Recognition", "Listening", "Context", "Cloze recall"],
+    eyebrows: ["01 · RECOGNITION", "02 · LISTENING", "03 · CONTEXT", "04 · CLOZE RECALL"],
     seeTitle: (word: string) => `What does “${word}” mean?`,
     hearTitle: "Choose the word you just heard.",
-    recallTitle: (sentence: string) => `Write this sentence in English: “${sentence}”`,
+    recallTitle: (word: string) => `Retrieve “${word}” inside the sentence.`,
     helpers: [
       "Choose the answer you remember. Missed words return in a later loop.",
       "Test whether sound alone is enough to recognize the word.",
       "Choose the word that naturally completes the sentence.",
-      "Retrieving without a hint is what makes memory durable.",
+      "Write only the missing word. Then hear and repeat the complete sentence.",
     ],
     listen: "Hear pronunciation",
     listenAgain: "Listen again",
     tapToListen: "Tap to hear the word",
     listenAnytime: "Replay it as many times as you need",
-    sentenceLabel: "English sentence",
+    sentenceLabel: "Missing word",
     evaluating: "Evaluating",
-    evaluate: "AI evaluate",
+    evaluate: "Check",
+    listenAndRepeat: "Hear and repeat the complete sentence",
+    optionalChallenge: "Make my own sentence (optional)",
+    optionalChallengeBody: "Use the word in one short sentence. Skipping this does not affect your learning result.",
+    optionalSentenceLabel: "My English sentence",
+    optionalSentencePlaceholder: (word: string) => `Write a short sentence with ${word}.`,
+    optionalEvaluate: "Check with AI",
+    optionalEvaluating: "AI is checking",
+    optionalClose: "Close challenge",
     correct: "Nice. Sound and meaning are connected accurately.",
     retry: "Not yet. One more connection will make this memory stronger.",
     retryButton: "Try again",
@@ -281,6 +297,10 @@ export default function Home() {
   const [selected, setSelected] = useState("");
   const [recall, setRecall] = useState("");
   const [feedback, setFeedback] = useState<FeedbackState>({ status: "idle", text: "" });
+  const [optionalSentenceOpen, setOptionalSentenceOpen] = useState(false);
+  const [optionalSentence, setOptionalSentence] = useState("");
+  const [optionalFeedback, setOptionalFeedback] = useState<FeedbackState>({ status: "idle", text: "" });
+  const [isCheckingOptional, setIsCheckingOptional] = useState(false);
   const [scores, setScores] = useState(initialScores);
   const [completed, setCompleted] = useState(false);
   const [completedIds, setCompletedIds] = useState<Set<string>>(() => new Set());
@@ -629,6 +649,7 @@ export default function Home() {
           answer: recall,
           meaning: word.exampleKo,
           locale,
+          mode: "cloze",
         }),
       });
       const result = (await response.json()) as {
@@ -649,10 +670,60 @@ export default function Home() {
       );
     } catch {
       const normalized = recall.toLowerCase().replace(/[^a-z\s]/g, "").replace(/\s+/g, " ").trim();
-      const target = word.example.toLowerCase().replace(/[^a-z\s]/g, "").replace(/\s+/g, " ").trim();
+      const target = word.contextChoices[0].toLowerCase().replace(/[^a-z\s]/g, "").replace(/\s+/g, " ").trim();
       applyResult(normalized === target, normalized === target ? 92 : 42, undefined, "local-fallback");
     } finally {
       setIsChecking(false);
+    }
+  };
+
+  const checkOptionalSentence = async () => {
+    if (!optionalSentence.trim() || isCheckingOptional || optionalFeedback.status !== "idle") return;
+    setIsCheckingOptional(true);
+
+    try {
+      const response = await fetch("/api/evaluate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
+        },
+        body: JSON.stringify({
+          learnerId,
+          word: word.word,
+          target: word.example,
+          answer: optionalSentence,
+          meaning: word.meaningKo,
+          locale,
+          mode: "challenge",
+        }),
+      });
+      const result = (await response.json()) as {
+        correct?: boolean;
+        feedbackKo?: string;
+        feedbackEn?: string;
+        source?: "openai" | "local-fallback";
+      };
+      if (!response.ok) throw new Error("Optional sentence evaluation failed");
+      setOptionalFeedback({
+        status: result.correct ? "correct" : "retry",
+        text: (locale === "ko" ? result.feedbackKo : result.feedbackEn) || (result.correct ? t.correct : t.retry),
+        source: result.source,
+      });
+    } catch {
+      const normalized = optionalSentence.toLowerCase().replace(/[^a-z\s']/g, " ").replace(/\s+/g, " ").trim();
+      const variants = [word.word, word.contextChoices[0]].map((value) => value.toLowerCase());
+      const tokens = normalized.split(" ");
+      const correct = tokens.length >= 3 && variants.some((variant) => tokens.includes(variant));
+      setOptionalFeedback({
+        status: correct ? "correct" : "retry",
+        text: correct
+          ? (locale === "ko" ? "배운 단어를 문장에 넣었어요. 소리 내어 읽어보세요." : "You used the word in a sentence. Read it aloud once.")
+          : (locale === "ko" ? `‘${word.word}’를 넣은 짧은 문장으로 다시 써보세요.` : `Try one short sentence that includes “${word.word}”.`),
+        source: "local-fallback",
+      });
+    } finally {
+      setIsCheckingOptional(false);
     }
   };
 
@@ -661,6 +732,9 @@ export default function Home() {
       setFeedback({ status: "idle", text: "" });
       setSelected("");
       setRecall("");
+      setOptionalSentenceOpen(false);
+      setOptionalSentence("");
+      setOptionalFeedback({ status: "idle", text: "" });
       return;
     }
 
@@ -707,6 +781,9 @@ export default function Home() {
     setStepIndex(0);
     setSelected("");
     setRecall("");
+    setOptionalSentenceOpen(false);
+    setOptionalSentence("");
+    setOptionalFeedback({ status: "idle", text: "" });
     setFeedback({ status: "idle", text: "" });
     setCompleted(false);
     setWordHadError(false);
@@ -718,7 +795,7 @@ export default function Home() {
       ? t.hearTitle
       : stepKey === "context"
         ? word.exampleBlank
-        : t.recallTitle(word.exampleKo);
+        : t.recallTitle(word.word);
 
   const focusProgressPercent = Math.round((studySecondsToday / DAILY_SESSION_SECONDS) * 100);
   const remainingTime = formatRemainingTime(studySecondsToday);
@@ -942,13 +1019,17 @@ export default function Home() {
                 </div>
               ) : (
                 <form className="recall-form" onSubmit={checkRecall}>
+                  <div className="recall-cloze">
+                    <p>{word.exampleBlank.split("_____")[0]}<b>_____</b>{word.exampleBlank.split("_____")[1]}</p>
+                    <small>{locale === "ko" ? word.exampleKo : word.contextEn}</small>
+                  </div>
                   <label htmlFor="recall-answer">{t.sentenceLabel}</label>
                   <div className="recall-input-row">
                     <input
                       id="recall-answer"
                       value={recall}
                       onChange={(event) => setRecall(event.target.value)}
-                      placeholder={word.example.split(" ").slice(0, 2).join(" ") + " ..."}
+                      placeholder="_____"
                       autoComplete="off"
                       disabled={feedback.status !== "idle"}
                     />
@@ -956,6 +1037,48 @@ export default function Home() {
                       {isChecking ? t.evaluating : t.evaluate}
                     </button>
                   </div>
+                  {feedback.status === "correct" && (
+                    <div className="recall-complete">
+                      <p>{word.example}</p>
+                      <button type="button" onClick={() => speak(word.example)}>▶ {t.listenAndRepeat}</button>
+                    </div>
+                  )}
+                  {feedback.status === "correct" && !optionalSentenceOpen && (
+                    <button className="optional-challenge-trigger" type="button" onClick={() => setOptionalSentenceOpen(true)}>
+                      ✦ {t.optionalChallenge}
+                    </button>
+                  )}
+                  {feedback.status === "correct" && optionalSentenceOpen && (
+                    <div className="optional-sentence-panel">
+                      <div className="optional-sentence-heading">
+                        <div><b>{t.optionalChallenge}</b><p>{t.optionalChallengeBody}</p></div>
+                        <button type="button" onClick={() => setOptionalSentenceOpen(false)}>{t.optionalClose}</button>
+                      </div>
+                      <label htmlFor="optional-sentence">{t.optionalSentenceLabel}</label>
+                      <div className="optional-sentence-row">
+                        <textarea
+                          id="optional-sentence"
+                          value={optionalSentence}
+                          onChange={(event) => {
+                            setOptionalSentence(event.target.value);
+                            setOptionalFeedback({ status: "idle", text: "" });
+                          }}
+                          placeholder={t.optionalSentencePlaceholder(word.word)}
+                          maxLength={300}
+                          disabled={optionalFeedback.status === "correct"}
+                        />
+                        <button type="button" onClick={checkOptionalSentence} disabled={!optionalSentence.trim() || isCheckingOptional || optionalFeedback.status === "correct"}>
+                          {isCheckingOptional ? t.optionalEvaluating : t.optionalEvaluate}
+                        </button>
+                      </div>
+                      {optionalFeedback.status !== "idle" && (
+                        <p className={`optional-sentence-feedback ${optionalFeedback.status}`} aria-live="polite">
+                          {optionalFeedback.text}
+                          {optionalFeedback.source && <small>{optionalFeedback.source === "openai" ? t.model : t.local}</small>}
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </form>
               )}
 
