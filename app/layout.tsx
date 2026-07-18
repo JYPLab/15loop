@@ -39,6 +39,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#f3f1e9" />
+      </head>
       <body>{children}</body>
     </html>
   );
