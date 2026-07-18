@@ -6,6 +6,8 @@ export type BetaEventName =
   | "learner_created"
   | "diagnostic_claimed"
   | "daily_session_completed"
+  | "price_presented"
+  | "price_intent_answered"
   | "payment_started"
   | "payment_completed";
 
