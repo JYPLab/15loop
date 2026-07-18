@@ -294,6 +294,7 @@ export default function Home() {
   })));
   const [queueIndex, setQueueIndex] = useState(0);
   const [stepIndex, setStepIndex] = useState(0);
+  const [stageInfo, setStageInfo] = useState<SkillKey | null>(null);
   const [selected, setSelected] = useState("");
   const [recall, setRecall] = useState("");
   const [feedback, setFeedback] = useState<FeedbackState>({ status: "idle", text: "" });
@@ -941,16 +942,26 @@ export default function Home() {
         <div className="learn-column">
           <div className="step-tabs" aria-label="Evaluation stages">
             {activeSkillOrder.map((item, index) => (
-              <div
-                className={`step-tab ${index === stepIndex && !completed ? "active" : ""} ${index < stepIndex || completed ? "done" : ""}`}
+              <button
+                type="button"
+                className={`step-tab ${index === stepIndex && !completed ? "active" : ""} ${index < stepIndex || completed ? "done" : ""} ${stageInfo === item ? "explaining" : ""}`}
                 aria-current={index === stepIndex && !completed ? "step" : undefined}
+                aria-expanded={stageInfo === item}
+                aria-controls="stage-explanation"
+                onClick={() => setStageInfo((current) => current === item ? null : item)}
                 key={item}
               >
                 <span>{index < stepIndex || completed ? "✓" : index + 1}</span>
                 <b>{skillLabels[item]}</b>
-              </div>
+              </button>
             ))}
           </div>
+          {stageInfo ? (
+            <div className="step-explanation" id="stage-explanation" aria-live="polite">
+              <b>{skillLabels[stageInfo]}</b>
+              <span>{t.helpers[skillOrder.indexOf(stageInfo)]}</span>
+            </div>
+          ) : null}
 
           {isDayComplete && completed ? (
             <article className="result-card day-complete-card">
