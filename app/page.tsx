@@ -943,6 +943,7 @@ export default function Home() {
             {activeSkillOrder.map((item, index) => (
               <div
                 className={`step-tab ${index === stepIndex && !completed ? "active" : ""} ${index < stepIndex || completed ? "done" : ""}`}
+                aria-current={index === stepIndex && !completed ? "step" : undefined}
                 key={item}
               >
                 <span>{index < stepIndex || completed ? "✓" : index + 1}</span>
