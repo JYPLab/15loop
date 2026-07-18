@@ -16,8 +16,15 @@ const labels: Record<SkillKey, string> = {
   see: "보고 의미 연결",
   hear: "듣고 단어 연결",
   context: "문맥에서 이해",
-  recall: "뜻에서 직접 인출",
+  recall: "뜻 보고 단어 떠올리기",
 };
+
+const sampleResult: Array<[string, number]> = [
+  ["보고 의미 연결", 78],
+  ["듣고 단어 연결", 42],
+  ["문맥에서 이해", 65],
+  ["뜻 보고 단어 떠올리기", 31],
+];
 
 function speak(text: string) {
   speakEnglish(text);
@@ -183,6 +190,11 @@ export default function DiagnosisPage() {
     setStartedAt(Date.now());
   };
 
+  const startDiagnosis = () => {
+    setPhase("questions");
+    setStartedAt(Date.now());
+  };
+
   if (phase === "intro") {
     return (
       <main className="commerce-shell diagnosis-intro">
@@ -190,17 +202,61 @@ export default function DiagnosisPage() {
           <Link className="brand" href="/diagnosis"><span className="brand-mark">15</span><span>15LOOP</span></Link>
           <Link className="commerce-text-link" href="/parent">부모 로그인</Link>
         </header>
+
         <section className="diagnosis-hero">
-          <span className="commerce-kicker">OPEN BETA · 초5·6 · 중1</span>
-          <h1>단어를 외웠는지가 아니라,<br /><em>어디서 끊기는지</em> 확인해요.</h1>
-          <p>초등 핵심부터 중1 과정까지, 교육부 2022 개정 기본 어휘 3,000개를 기준 지도로 사용합니다. 이번 베타 진단은 그중 뜻·발음·문장을 검수한 30단어에서 20~25개를 확인해요.</p>
-          <div className="diagnosis-facts">
-            <span><b>20~25</b> 단어</span><span><b>8~12</b> 분</span><span><b>가입 없이</b> 시작</span>
+          <span className="commerce-kicker">초5·6 · 중1 무료 영어 단어 진단</span>
+          <h1>매일 외운 단어인데,<br /><em>왜 읽거나 들으면</em><span className="landing-headline-tail"> 모를까요?</span></h1>
+          <p>아이가 단어를 모르는 게 아니라, 뜻·소리·문장이 아직 연결되지 않았을 수 있습니다. 가입 없이 8~12분 동안 어디에서 막히는지 확인해보세요.</p>
+          <button className="commerce-primary" onClick={startDiagnosis}>우리 아이 무료 진단하기 <span>→</span></button>
+          <p className="landing-facts-line">20~25개 단어 · 가입 없이 시작 · 결과 즉시 확인</p>
+          <small>7일 무료 · 정식 출시 예정: 30일 이용권 12,900원</small>
+        </section>
+
+        <section className="landing-story">
+          <span className="commerce-kicker">한 아빠의 발견</span>
+          <blockquote>
+            <p>중학생이 된 아이에게 외운 단어를 읽어보라고 했습니다.<br />뜻은 외웠다는데 발음은 낯설었고, 들려주면 알아보지 못했습니다.</p>
+            <p>선행이 부족해서가 아니었습니다.<br /><b>뜻과 소리와 문장이 서로 연결되지 않았던 겁니다.</b></p>
+            <p>그래서 단어를 몇 개 외웠는지가 아니라, 어디에서 연결이 끊기는지 확인하는 도구를 만들었습니다.</p>
+          </blockquote>
+        </section>
+
+        <section className="landing-sample">
+          <div>
+            <h2>진단이 끝나면<br />이렇게 보여드려요.</h2>
+            <p>네 가지 연결 점수와 가장 먼저 보강할 연결을 알려드립니다. 낮은 점수는 아이의 부족함이 아니라, 아직 만들어지지 않은 연결입니다.</p>
+            <p className="landing-trust">교육부 2022 개정 교육과정 기본 어휘를 기준으로 구성했습니다.</p>
           </div>
-          <button className="commerce-primary" onClick={() => {
-            setPhase("questions");
-            setStartedAt(Date.now());
-          }}>무료 진단 시작 <span>→</span></button>
+          <aside aria-hidden="true">
+            <span className="landing-sample-label">예시 결과 화면</span>
+            {sampleResult.map(([label, score]) => (
+              <div className="diagnosis-skill" key={label}>
+                <div><span>{label}</span><b>{score}</b></div>
+                <i><span style={{ width: `${score}%` }} /></i>
+              </div>
+            ))}
+            <p className="landing-sample-focus">가장 먼저 보강할 연결: <b>듣고 단어 연결</b></p>
+          </aside>
+        </section>
+
+        <section className="landing-offer">
+          <span className="commerce-kicker">7일 프로그램</span>
+          <h2>끊긴 연결부터, 매일 15분씩 7일.</h2>
+          <p>진단에서 찾은 약한 연결부터 매일 15분씩 학습합니다. 부모 화면에서 학습일, 학습시간, 학습한 단어와 반복 결과를 확인할 수 있습니다.</p>
+          <p className="landing-price-line">7일 무료 · 베타 기간 결제 없음 · 정식 출시 예정: 30일 이용권 12,900원</p>
+          <button className="commerce-primary" onClick={startDiagnosis}>우리 아이 무료 진단하기 <span>→</span></button>
+        </section>
+
+        <section className="landing-faq">
+          <h2>자주 묻는 질문</h2>
+          <dl>
+            <dt>어떤 단어가 나오나요?</dt>
+            <dd>오픈 베타 진단은 뜻·발음·예문 검수를 완료한 30단어 풀에서 아이의 응답에 따라 20~25개를 출제합니다. 단어 범위는 베타 기간 동안 계속 확장됩니다.</dd>
+            <dt>아이 혼자 할 수 있나요?</dt>
+            <dd>네. 진단과 학습 모두 아이 혼자 진행할 수 있게 만들었습니다. 아이에게 이메일이나 비밀번호를 요구하지 않습니다.</dd>
+            <dt>7일이 지나면 어떻게 되나요?</dt>
+            <dd>베타 기간에는 결제수단을 등록하지 않으며 자동 결제가 없습니다. 정식 출시 예정: 30일 이용권 12,900원.</dd>
+          </dl>
           <small>이 진단은 학교 성적을 예측하는 시험이 아니라 학습 연결을 찾는 도구입니다.</small>
         </section>
       </main>
@@ -221,7 +277,8 @@ export default function DiagnosisPage() {
             <span className="commerce-kicker">CONNECTION RESULT</span>
             <p className="diagnosis-big-score">{overall}</p>
             <h1>가장 먼저 보강할 연결은<br /><em>{labels[weakest]}</em>예요.</h1>
-            <p>교육과정 3,000단어 지도에 연결된 {result.answers.length}단어의 실제 응답으로 다음 7일 학습의 우선순위를 만들었습니다.</p>
+            <p className="diagnosis-reframe">아이는 단어를 모르는 게 아니라, 아직 연결되지 않았을 뿐이에요.</p>
+            <p>교육부 2022 개정 교육과정 기본 어휘를 기준으로 {result.answers.length}단어의 실제 응답을 확인해 다음 7일 학습의 우선순위를 만들었습니다.</p>
           </article>
           <aside className="diagnosis-report-card">
             <h2>영어 연결도</h2>
@@ -232,11 +289,20 @@ export default function DiagnosisPage() {
               </div>
             ))}
             <div className="diagnosis-next-step">
-              <b>다음 단계</b>
-              <p>부모 계정에 결과를 연결하면 7일 동안 맞춤 학습과 변화 리포트를 이용할 수 있어요.</p>
+              <b>부모 계정에 연결하면 이렇게 이어져요</b>
+              <ul className="diagnosis-locked-list">
+                <li>이 진단 결과를 아이 프로필에 저장</li>
+                <li>가장 약한 연결부터 매일 15분 맞춤 학습</li>
+                <li>부모 화면에서 학습일·학습시간·반복 결과 확인</li>
+              </ul>
+              <p>7일 무료 · 베타 기간 결제 없음 · 정식 출시 예정: 30일 이용권 12,900원</p>
             </div>
             <Link className="commerce-primary" href={`/parent?diagnostic=${encodeURIComponent(result.sessionId)}`}>부모에게 결과 연결 <span>→</span></Link>
-            <small>{saved === "saved" ? "✓ 결과가 안전하게 저장됐어요." : saved === "local" ? "이 기기에 결과를 보관했어요." : "결과 저장 중…"}</small>
+            <small>{saved === "saved"
+              ? "✓ 결과가 저장됐어요. 아직 이 기기에서만 볼 수 있어요 — 부모 계정에 연결하면 계속 이어집니다."
+              : saved === "local"
+                ? "결과가 이 기기에만 보관돼 있어요. 부모 계정에 연결하면 안전하게 저장됩니다."
+                : "결과 저장 중…"}</small>
           </aside>
         </section>
       </main>
