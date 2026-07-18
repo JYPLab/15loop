@@ -91,6 +91,53 @@ test("evaluates recall locally when no API key is configured", async () => {
   assert.equal(data.feedbackEn.length > 0, true);
 });
 
+test("uses cloze recall for mastery and keeps free sentence writing optional", async () => {
+  const app = await worker();
+  const clozeResponse = await app.fetch(
+    new Request("http://localhost/api/evaluate", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        target: "Can I borrow your pencil?",
+        answer: "borrow",
+        mode: "cloze",
+      }),
+    }),
+    env(),
+    context,
+  );
+
+  assert.equal(clozeResponse.status, 200);
+  const cloze = await clozeResponse.json();
+  assert.equal(cloze.correct, true);
+  assert.equal(cloze.canonicalAnswer, "borrow");
+  assert.equal(cloze.source, "local-fallback");
+
+  const challengeResponse = await app.fetch(
+    new Request("http://localhost/api/evaluate", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        target: "Can I borrow your pencil?",
+        answer: "I borrow books at school.",
+        mode: "challenge",
+      }),
+    }),
+    env(),
+    context,
+  );
+  assert.equal(challengeResponse.status, 200);
+  const challenge = await challengeResponse.json();
+  assert.equal(challenge.correct, true);
+  assert.equal(challenge.source, "local-fallback");
+
+  const page = await readFile(new URL("../app/page.tsx", import.meta.url), "utf8");
+  assert.match(page, /mode: "cloze"/);
+  assert.match(page, /내 문장 만들어보기 \(선택\)/);
+  assert.match(page, /완성 문장 듣고 따라 말하기/);
+  assert.doesNotMatch(page, /를 영어로 써보세요/);
+});
+
 test("rejects arbitrary text from the AI evaluation endpoint", async () => {
   const app = await worker();
   const response = await app.fetch(
@@ -335,6 +382,18 @@ test("ships private achievement sharing and a five-word friend challenge", async
   assert.match(page, /닉네임·학교·채팅 없이/);
   assert.match(styles, /\.challenge-modal/);
   assert.match(styles, /\.challenge-choices/);
+});
+
+test("keeps the open-beta journey usable on narrow mobile screens", async () => {
+  const styles = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+
+  assert.match(styles, /@media \(max-width: 640px\)/);
+  assert.match(styles, /\.hero \{[^}]*flex-direction:column/);
+  assert.match(styles, /\.language-toggle button \{ width: 44px; height:44px; \}/);
+  assert.match(styles, /\.account-trigger \{[^}]*min-width:44px; min-height:44px/);
+  assert.match(styles, /\.commerce-text-link \{ min-height:44px/);
+  assert.match(styles, /\.optional-sentence-heading button \{ min-width:44px; min-height:44px/);
+  assert.match(styles, /env\(safe-area-inset-bottom\)/);
 });
 
 test("ships finished metadata and a project-bound social card", async () => {
