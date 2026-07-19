@@ -3,6 +3,7 @@
 import { FormEvent, useCallback, useEffect, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
 import Link from "next/link";
+import { trackAnalyticsEvent } from "../../lib/analytics";
 import { authNextStorageKey, getSupabaseBrowserClient, isSupabaseConfigured } from "../../lib/supabase-browser";
 
 type Learner = {
@@ -138,6 +139,10 @@ export default function ParentPage() {
       if (!active) return;
       setSession(data.session);
       if (data.session) {
+        if (!window.sessionStorage.getItem("15loop-parent-session-tracked")) {
+          trackAnalyticsEvent("parent_session_started", { has_diagnostic: Boolean(requestedDiagnostic) });
+          window.sessionStorage.setItem("15loop-parent-session-tracked", "1");
+        }
         try {
           const loaded = await fetchProfile(data.session);
           if (requestedDiagnostic && loaded.account.hasAcceptedPolicies) {
@@ -164,6 +169,7 @@ export default function ParentPage() {
   const signInWithGoogle = async () => {
     const client = getSupabaseBrowserClient();
     if (!client) return;
+    trackAnalyticsEvent("signup_started", { method: "google", has_diagnostic: Boolean(diagnosticId) });
     setBusy("google");
     const next = `/parent${diagnosticId ? `?diagnostic=${encodeURIComponent(diagnosticId)}` : ""}`;
     window.localStorage.setItem(authNextStorageKey, next);
@@ -179,6 +185,7 @@ export default function ParentPage() {
     event.preventDefault();
     const client = getSupabaseBrowserClient();
     if (!client || !email.trim()) return;
+    trackAnalyticsEvent("signup_started", { method: "email", has_diagnostic: Boolean(diagnosticId) });
     setBusy("email");
     const next = `/parent${diagnosticId ? `?diagnostic=${encodeURIComponent(diagnosticId)}` : ""}`;
     window.localStorage.setItem(authNextStorageKey, next);
@@ -206,6 +213,7 @@ export default function ParentPage() {
       return;
     }
     setProfile(data);
+    trackAnalyticsEvent("learner_created", {});
     setNickname("");
     if (diagnosticId) {
       const createdLearnerId = data.createdLearnerId;
@@ -242,6 +250,7 @@ export default function ParentPage() {
       return;
     }
     setProfile(data);
+    trackAnalyticsEvent("guardian_consent_completed", {});
     if (diagnosticId) {
       try {
         await claimDiagnostic(session, diagnosticId);
@@ -253,6 +262,8 @@ export default function ParentPage() {
 
   useEffect(() => {
     if (!session || !profile?.account.hasAcceptedPolicies || profile.pricePresented) return;
+    const eligibleLearningDays = Math.max(0, ...profile.learners.map((learner) => learner.completedLearningDays));
+    trackAnalyticsEvent("price_viewed", { eligible_learning_days: eligibleLearningDays });
     void fetch("/api/commercial/profile", {
       method: "POST",
       headers: authHeaders(session),
@@ -260,7 +271,7 @@ export default function ParentPage() {
     }).then(async (response) => {
       if (response.ok) setProfile(await response.json() as ParentProfile);
     }).catch(() => {});
-  }, [session, profile?.account.hasAcceptedPolicies, profile?.pricePresented]);
+  }, [session, profile?.account.hasAcceptedPolicies, profile?.learners, profile?.pricePresented]);
 
   const answerPriceIntent = async (answer: "yes" | "unsure" | "no") => {
     if (!session) return;
@@ -278,6 +289,7 @@ export default function ParentPage() {
       return;
     }
     setProfile(data);
+    trackAnalyticsEvent("price_intent_answered", { answer });
     setMessage("답변을 저장했습니다. 베타 운영에 큰 도움이 됩니다.");
   };
 
