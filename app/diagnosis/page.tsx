@@ -3,6 +3,7 @@
 import { FormEvent, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { dailyWords, type VocaWord } from "../../data/words";
+import { trackAnalyticsEvent } from "../../lib/analytics";
 import { speakEnglish } from "../../lib/speech";
 
 type SkillKey = "see" | "hear" | "context" | "recall";
@@ -25,6 +26,70 @@ const sampleResult: Array<[string, number]> = [
   ["문맥에서 이해", 65],
   ["뜻 보고 단어 떠올리기", 31],
 ];
+
+const landingStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://15loop.com/#website",
+      name: "15Loop",
+      url: "https://15loop.com/diagnosis",
+      inLanguage: "ko-KR",
+      description: "초등 5·6학년과 중학교 1학년을 위한 AI 영어 단어 연결 진단과 15분 학습",
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://15loop.com/#application",
+      name: "15Loop",
+      url: "https://15loop.com/diagnosis",
+      applicationCategory: "EducationalApplication",
+      operatingSystem: "Web",
+      inLanguage: "ko-KR",
+      isAccessibleForFree: true,
+      audience: {
+        "@type": "EducationalAudience",
+        educationalRole: "student",
+      },
+      description: "영어 단어의 뜻·소리·문장·떠올리기 연결을 진단하고 약한 연결부터 복습하는 웹 학습 서비스",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "KRW",
+        description: "7일 오픈 베타",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "어떤 단어가 나오나요?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "오픈 베타 진단은 뜻·발음·예문 검수를 완료한 30단어 풀에서 아이의 응답에 따라 20~25개를 출제하며, 단어 범위는 계속 확장됩니다.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "아이 혼자 할 수 있나요?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "진단과 학습 모두 아이 혼자 진행할 수 있으며 아이에게 이메일이나 비밀번호를 요구하지 않습니다.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "7일이 지나면 어떻게 되나요?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "베타 기간에는 결제수단을 등록하지 않으며 자동 결제가 없습니다. 정식 출시 예정 가격은 30일 이용권 12,900원입니다.",
+          },
+        },
+      ],
+    },
+  ],
+};
 
 function speak(text: string) {
   speakEnglish(text);
@@ -127,13 +192,20 @@ export default function DiagnosisPage() {
 
   const finish = (nextAnswers: Answer[]) => {
     const scores = scoreAnswers(nextAnswers);
+    const weakest = [...skillOrder].sort((a, b) => scores[a] - scores[b])[0];
+    const level = levelFrom(scores);
     const nextResult: Result = {
       sessionId: `diag-${crypto.randomUUID()}`,
       guestLearnerId: getGuestLearnerId(),
       answers: nextAnswers,
       scores,
-      level: levelFrom(scores),
+      level,
     };
+    trackAnalyticsEvent("diagnosis_completed", {
+      item_count: nextAnswers.length,
+      recommended_level: level,
+      weakest_skill: weakest,
+    });
     setResult(nextResult);
     setPhase("result");
     void persistResult(nextResult);
@@ -190,7 +262,8 @@ export default function DiagnosisPage() {
     setStartedAt(Date.now());
   };
 
-  const startDiagnosis = () => {
+  const startDiagnosis = (placement: "hero" | "offer") => {
+    trackAnalyticsEvent("diagnosis_started", { placement });
     setPhase("questions");
     setStartedAt(Date.now());
   };
@@ -198,6 +271,7 @@ export default function DiagnosisPage() {
   if (phase === "intro") {
     return (
       <main className="commerce-shell diagnosis-intro">
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(landingStructuredData) }} />
         <header className="commerce-topbar">
           <Link className="brand" href="/diagnosis"><span className="brand-mark">15</span><span>15LOOP</span></Link>
           <Link className="commerce-text-link" href="/parent">부모 로그인</Link>
@@ -207,7 +281,7 @@ export default function DiagnosisPage() {
           <span className="commerce-kicker">초5·6 · 중1 무료 영어 단어 진단</span>
           <h1>매일 외운 단어인데,<br /><em>왜 읽거나 들으면</em><span className="landing-headline-tail"> 모를까요?</span></h1>
           <p>아이가 단어를 모르는 게 아니라, 뜻·소리·문장이 아직 연결되지 않았을 수 있습니다. 가입 없이 8~12분 동안 어디에서 막히는지 확인해보세요.</p>
-          <button className="commerce-primary" onClick={startDiagnosis}>우리 아이 무료 진단하기 <span>→</span></button>
+          <button className="commerce-primary" onClick={() => startDiagnosis("hero")}>우리 아이 무료 진단하기 <span>→</span></button>
           <p className="landing-facts-line">20~25개 단어 · 가입 없이 시작 · 결과 즉시 확인</p>
           <small>7일 무료 · 정식 출시 예정: 30일 이용권 12,900원</small>
         </section>
@@ -244,7 +318,7 @@ export default function DiagnosisPage() {
           <h2>끊긴 연결부터, 매일 15분씩 7일.</h2>
           <p>진단에서 찾은 약한 연결부터 매일 15분씩 학습합니다. 부모 화면에서 학습일, 학습시간, 학습한 단어와 반복 결과를 확인할 수 있습니다.</p>
           <p className="landing-price-line">7일 무료 · 베타 기간 결제 없음 · 정식 출시 예정: 30일 이용권 12,900원</p>
-          <button className="commerce-primary" onClick={startDiagnosis}>우리 아이 무료 진단하기 <span>→</span></button>
+          <button className="commerce-primary" onClick={() => startDiagnosis("offer")}>우리 아이 무료 진단하기 <span>→</span></button>
         </section>
 
         <section className="landing-faq">
@@ -297,7 +371,7 @@ export default function DiagnosisPage() {
               </ul>
               <p>7일 무료 · 베타 기간 결제 없음 · 정식 출시 예정: 30일 이용권 12,900원</p>
             </div>
-            <Link className="commerce-primary" href={`/parent?diagnostic=${encodeURIComponent(result.sessionId)}`}>부모에게 결과 연결 <span>→</span></Link>
+            <Link className="commerce-primary" href={`/parent?diagnostic=${encodeURIComponent(result.sessionId)}`} onClick={() => trackAnalyticsEvent("parent_connect_clicked", { source: "diagnosis_result" })}>부모에게 결과 연결 <span>→</span></Link>
             <small>{saved === "saved"
               ? "✓ 결과가 저장됐어요. 아직 이 기기에서만 볼 수 있어요 — 부모 계정에 연결하면 계속 이어집니다."
               : saved === "local"

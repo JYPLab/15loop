@@ -35,11 +35,12 @@ test("server-renders a gated root before routing the visitor", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
-  assert.match(html, /<title>15Loop \| AI Vocabulary Memory Evaluation<\/title>/i);
+  assert.match(html, /<title>15Loop \| 초5·6·중1 AI 영어 단어 진단<\/title>/i);
   assert.match(html, /15LOOP/);
   assert.match(html, /무료 진단으로 연결하고 있어요/);
   assert.doesNotMatch(html, /외웠는지가 아니라|오늘의 맞춤 루프/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape|react-loading-skeleton/i);
+  assert.match(html, /rel="canonical" href="https:\/\/15loop\.com\/diagnosis"/i);
 });
 
 test("server-renders the no-signup free diagnostic as the first experience", async () => {
@@ -60,6 +61,71 @@ test("server-renders the no-signup free diagnostic as the first experience", asy
   assert.match(html, /매일 외운 단어인데/);
   assert.match(html, /뜻 보고 단어 떠올리기/);
   assert.match(html, /viewport-fit=cover/);
+  assert.match(html, /application\/ld\+json/);
+  assert.match(html, /EducationalApplication/);
+});
+
+test("publishes crawl controls and a canonical sitemap", async () => {
+  const app = await worker();
+  const [robotsResponse, sitemapResponse, parentResponse] = await Promise.all([
+    app.fetch(new Request("https://15loop.com/robots.txt"), env(), context),
+    app.fetch(new Request("https://15loop.com/sitemap.xml"), env(), context),
+    app.fetch(new Request("https://15loop.com/parent", { headers: { accept: "text/html" } }), env(), context),
+  ]);
+
+  assert.equal(robotsResponse.status, 200);
+  const robots = await robotsResponse.text();
+  assert.match(robots, /Sitemap: https:\/\/15loop\.com\/sitemap\.xml/);
+  assert.match(robots, /Disallow: \/api\//);
+  assert.match(robots, /Disallow: \/parent/);
+
+  assert.equal(sitemapResponse.status, 200);
+  const sitemap = await sitemapResponse.text();
+  assert.match(sitemap, /https:\/\/15loop\.com\/diagnosis/);
+  assert.doesNotMatch(sitemap, /\/parent|\/api\//);
+
+  const parent = await parentResponse.text();
+  assert.match(parent, /name="robots" content="noindex, nofollow"/i);
+});
+
+test("keeps analytics optional and verification tokens environment-driven", async () => {
+  const app = await worker();
+  const withoutAnalytics = await app.fetch(
+    new Request("https://15loop.com/diagnosis", { headers: { accept: "text/html" } }),
+    env(),
+    context,
+  );
+  const plainHtml = await withoutAnalytics.text();
+  assert.doesNotMatch(plainHtml, /googletagmanager\.com\/gtag\/js/);
+  assert.doesNotMatch(plainHtml, /google-site-verification|naver-site-verification/);
+
+  const previous = {
+    analytics: process.env.GA_MEASUREMENT_ID,
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    naver: process.env.NAVER_SITE_VERIFICATION,
+  };
+  process.env.GA_MEASUREMENT_ID = "G-TEST123456";
+  process.env.GOOGLE_SITE_VERIFICATION = "google-test-token";
+  process.env.NAVER_SITE_VERIFICATION = "naver-test-token";
+  try {
+    const withAnalytics = await app.fetch(
+      new Request("https://15loop.com/diagnosis", { headers: { accept: "text/html" } }),
+      env(),
+      context,
+    );
+    const configuredHtml = await withAnalytics.text();
+    assert.match(configuredHtml, /googletagmanager\.com\/gtag\/js\?id=G-TEST123456/);
+    assert.match(configuredHtml, /google-site-verification/);
+    assert.match(configuredHtml, /naver-site-verification/);
+    assert.doesNotMatch(configuredHtml, /parent@example\.com|loopvoca-learner-id/);
+  } finally {
+    if (previous.analytics === undefined) delete process.env.GA_MEASUREMENT_ID;
+    else process.env.GA_MEASUREMENT_ID = previous.analytics;
+    if (previous.google === undefined) delete process.env.GOOGLE_SITE_VERIFICATION;
+    else process.env.GOOGLE_SITE_VERIFICATION = previous.google;
+    if (previous.naver === undefined) delete process.env.NAVER_SITE_VERIFICATION;
+    else process.env.NAVER_SITE_VERIFICATION = previous.naver;
+  }
 });
 
 test("adds baseline browser security headers without forcing HSTS on local HTTP", async () => {

@@ -63,12 +63,33 @@ NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
 NEXT_PUBLIC_TOSS_CLIENT_KEY=
 TOSS_SECRET_KEY=
 APP_ORIGIN=http://localhost:3000
+GA_MEASUREMENT_ID=
+GOOGLE_SITE_VERIFICATION=
+NAVER_SITE_VERIFICATION=
 ```
 
 - **Parent authentication:** Create a Supabase project, enable Google and email authentication, and allow `http://localhost:3000/auth/callback` as a redirect URL. Email magic links require a production SMTP provider before public launch; Supabase's default sender is intended only for limited testing.
 - **Payments:** Use Toss Payments test client and secret keys locally. The browser opens Toss Standard Payments v2, while the server creates the authoritative order, verifies the returned amount, and confirms the payment using the secret key. The current products are non-renewing 30-day passes; automatic recurring billing is intentionally excluded until a separate billing contract is approved.
 - **Pricing:** KRW 12,900 for one learner and KRW 19,900 for up to three learners are initial beta hypotheses, not validated final prices.
 - **Legal launch gate:** The beta includes versioned guardian consent, terms, and a privacy notice. Before collecting real payments, a qualified reviewer must still approve the documents, add the operator/merchant contact details and refund policy, and confirm the guardian-verification method for learners under 14.
+
+## Search and analytics setup
+
+The public diagnostic is the canonical, indexable landing page. `robots.txt` and `sitemap.xml` allow the landing and legal pages while excluding account, authentication, checkout, and API routes.
+
+Configure these runtime values before registering the site with search providers:
+
+```bash
+GA_MEASUREMENT_ID=G-XXXXXXXXXX
+GOOGLE_SITE_VERIFICATION=
+NAVER_SITE_VERIFICATION=
+```
+
+GA4 records acquisition and onboarding steps only. Analytics events never include parent email, child nickname, learner identifiers, answers, or studied words. Product retention and learning completion remain authoritative in the first-party `beta_events` data.
+
+- Google Search Console: add the `15loop.com` domain property, verify it by DNS when possible, then submit `https://15loop.com/sitemap.xml`.
+- Naver Search Advisor: add `https://15loop.com`, use the verification meta value when needed, then submit the same sitemap.
+- Daum Search Registration: submit the public diagnostic as the representative site after the production SEO files are live.
 
 ## Persistence
 
