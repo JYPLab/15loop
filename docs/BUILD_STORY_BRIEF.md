@@ -1,5 +1,7 @@
 # 15Loop 개발기 소스팩 추출 브리프 (codex exec 실행용)
 
+> **완료 안내 (2026-07-19):** 이 추출 브리프의 결과물은 `docs/BUILD_STORY_SOURCE.md`에 커밋·파일 근거 중심 소스팩으로 생성됐고, `docs/handoff/02_BUILD_STORY_MASTER.md`에서 마케팅용 상세 개발기로 정리됐다. 실제 마케팅 실행은 `docs/handoff/03_MARKETING_CONTENT_HANDOFF.md`와 Project JYP의 `15Loop_개발기_마케팅_HANDOFF_2026-07-19.md`를 사용한다.
+
 너는 이 레포(15Loop — 초5·6/중1 영어 단어 연결 진단·학습 서비스)의 **개발 전 과정을 스레드 연재의 스토리 재료로 채굴**한다. 목적: "만들어서 파는 연재"(아빠가 AI로 아이 영어 앱을 만들어 실제 매출까지 가는 과정 공개)의 1차 소스팩.
 
 ## 원칙
