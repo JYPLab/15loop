@@ -315,7 +315,6 @@ export default function Home() {
   const [isCheckingOptional, setIsCheckingOptional] = useState(false);
   const [scores, setScores] = useState(initialScores);
   const [completed, setCompleted] = useState(false);
-  const [completedIds, setCompletedIds] = useState<Set<string>>(() => new Set());
   const [completedToday, setCompletedToday] = useState(0);
   const [studySecondsToday, setStudySecondsToday] = useState(0);
   const [completedLearningDays, setCompletedLearningDays] = useState(0);
