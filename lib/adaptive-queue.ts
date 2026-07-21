@@ -16,6 +16,9 @@ export type WordReviewSnapshot = {
   wordId: string;
   mastery: number;
   dueAt: string;
+  cycleSkillMask?: number;
+  cycleErrorMask?: number;
+  completedOn?: string | null;
 };
 
 export type ReviewCycleState = {
@@ -23,6 +26,7 @@ export type ReviewCycleState = {
   intervalHours: number;
   dueAt: string;
   cycleSkillMask: number;
+  cycleErrorMask?: number;
   cycleHadError: boolean;
   completedOn: string | null;
 };
@@ -60,6 +64,32 @@ export function prioritizedSkillOrder(focusSkill: SkillKey) {
   return [focusSkill, ...skillOrder.filter((skill) => skill !== focusSkill)];
 }
 
+function skillRanking(skills: SkillKey[], scores: SkillScores) {
+  return [...skills].sort((left, right) => (
+    scores[left] - scores[right]
+    || skillOrder.indexOf(left) - skillOrder.indexOf(right)
+  ));
+}
+
+/**
+ * A learning encounter verifies one connection only. The remaining connections
+ * return after other words, rather than becoming four predictable screens for
+ * the same word in a row.
+ */
+export function nextSkillForReview(review: WordReviewSnapshot | undefined, scores: SkillScores): SkillKey {
+  if (!review) return "see";
+
+  const errorMask = review.cycleErrorMask ?? 0;
+  const failedSkills = skillOrder.filter((skill) => (errorMask & skillBits[skill]) !== 0);
+  if (failedSkills.length) return skillRanking(failedSkills, scores)[0];
+
+  const completedMask = review.cycleSkillMask ?? 0;
+  if (completedMask === 0) return review.completedOn ? "recall" : "see";
+
+  const unseenSkills = skillOrder.filter((skill) => (completedMask & skillBits[skill]) === 0);
+  return unseenSkills.length ? skillRanking(unseenSkills, scores)[0] : "recall";
+}
+
 export function buildAdaptiveQueue(input: {
   learnerId: string;
   dateKey: string;
@@ -74,14 +104,13 @@ export function buildAdaptiveQueue(input: {
       .filter((item) => curriculumIds.has(item.wordId))
       .map((item) => [item.wordId, item]),
   );
-  const focusSkill = weakestSkill(input.scores);
   const nowMs = input.now.getTime();
 
   return input.wordIds.map((wordId) => {
     const review = progressByWord.get(wordId);
     if (!review) {
       return {
-        item: { wordId, focusSkill, reason: "new" as const, mastery: null, dueAt: null },
+        item: { wordId, focusSkill: nextSkillForReview(undefined, input.scores), reason: "new" as const, mastery: null, dueAt: null },
         tier: 2,
         dueTime: Number.POSITIVE_INFINITY,
         seeded: seededRank(`${input.learnerId}|${input.dateKey}|${wordId}`),
@@ -98,7 +127,7 @@ export function buildAdaptiveQueue(input: {
     return {
       item: {
         wordId,
-        focusSkill,
+        focusSkill: nextSkillForReview(review, input.scores),
         reason,
         mastery: clamp(review.mastery),
         dueAt: Number.isFinite(Date.parse(review.dueAt)) ? review.dueAt : null,
@@ -156,12 +185,16 @@ export function applyEvaluationToReviewState(input: {
     intervalHours: 6,
     dueAt: new Date(input.now.getTime() + 6 * 60 * 60 * 1000).toISOString(),
     cycleSkillMask: 0,
+    cycleErrorMask: 0,
     cycleHadError: false,
     completedOn: null,
   };
   const nextMask = previous.cycleSkillMask | skillBits[input.skill];
+  const nextErrorMask = input.correct
+    ? (previous.cycleErrorMask ?? 0) & ~skillBits[input.skill]
+    : (previous.cycleErrorMask ?? 0) | skillBits[input.skill];
   const nextHadError = previous.cycleHadError || !input.correct;
-  const cycleComplete = input.correct && nextMask === completeSkillMask;
+  const cycleComplete = nextMask === completeSkillMask && nextErrorMask === 0;
 
   if (cycleComplete) {
     const mastery = clamp(previous.mastery + (
@@ -175,6 +208,7 @@ export function applyEvaluationToReviewState(input: {
       intervalHours,
       dueAt: new Date(input.now.getTime() + intervalHours * 60 * 60 * 1000).toISOString(),
       cycleSkillMask: 0,
+      cycleErrorMask: 0,
       cycleHadError: false,
       completedOn: input.today,
       cycleComplete: true,
@@ -190,6 +224,7 @@ export function applyEvaluationToReviewState(input: {
       ? previous.dueAt
       : new Date(input.now.getTime() + 60 * 60 * 1000).toISOString(),
     cycleSkillMask: nextMask,
+    cycleErrorMask: nextErrorMask,
     cycleHadError: nextHadError,
     completedOn: previous.completedOn,
     cycleComplete: false,

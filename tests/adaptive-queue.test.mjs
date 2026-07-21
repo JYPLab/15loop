@@ -4,6 +4,7 @@ import {
   applyEvaluationToReviewState,
   buildAdaptiveQueue,
   insertBoundedRetry,
+  nextSkillForReview,
   prioritizedSkillOrder,
 } from "../lib/adaptive-queue.ts";
 
@@ -19,7 +20,7 @@ test("builds a deterministic unique queue for an unseen learner", () => {
   assert.deepEqual(first, second);
   assert.equal(new Set(first.map((item) => item.wordId)).size, wordIds.length);
   assert.equal(first.every((item) => item.reason === "new"), true);
-  assert.equal(first.every((item) => item.focusSkill === "hear"), true);
+  assert.equal(first.every((item) => item.focusSkill === "see"), true);
 });
 
 test("prioritizes overdue, due-soon, unseen, then future reviews", () => {
@@ -47,6 +48,34 @@ test("prioritizes overdue, due-soon, unseen, then future reviews", () => {
 test("starts with the weakest skill and still includes all four skills once", () => {
   assert.deepEqual(prioritizedSkillOrder("context"), ["context", "see", "hear", "recall"]);
   assert.deepEqual(prioritizedSkillOrder("recall"), ["recall", "see", "hear", "context"]);
+});
+
+test("schedules one connection per encounter instead of four sequential screens", () => {
+  assert.equal(nextSkillForReview(undefined, scores), "see");
+  assert.equal(nextSkillForReview({
+    wordId: "borrow",
+    mastery: 40,
+    dueAt: now.toISOString(),
+    cycleSkillMask: 1,
+    cycleErrorMask: 0,
+    completedOn: null,
+  }, scores), "hear");
+  assert.equal(nextSkillForReview({
+    wordId: "borrow",
+    mastery: 40,
+    dueAt: now.toISOString(),
+    cycleSkillMask: 15,
+    cycleErrorMask: 4,
+    completedOn: null,
+  }, scores), "context");
+  assert.equal(nextSkillForReview({
+    wordId: "borrow",
+    mastery: 80,
+    dueAt: now.toISOString(),
+    cycleSkillMask: 0,
+    cycleErrorMask: 0,
+    completedOn: "2026-07-16",
+  }, scores), "recall");
 });
 
 test("inserts one bounded retry after three distinct words", () => {
@@ -79,6 +108,7 @@ test("preserves any lapse across a four-skill cycle and counts completion once",
   assert.equal(state.intervalHours, 1);
   assert.equal(state.mastery, 30);
   assert.equal(state.cycleSkillMask, 0);
+  assert.equal(state.cycleErrorMask, 0);
 
   for (const skill of ["hear", "see", "context", "recall"]) {
     state = applyEvaluationToReviewState({ ...base, existing: state, skill, correct: true });

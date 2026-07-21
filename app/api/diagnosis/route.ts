@@ -6,6 +6,7 @@ type DiagnosticAnswer = {
   skill: "see" | "hear" | "context" | "recall";
   correct: boolean;
   responseMs: number;
+  responseKind?: "answered" | "unknown";
 };
 
 type DiagnosticRequest = {
@@ -32,7 +33,9 @@ export async function POST(request: Request) {
     typeof answer.wordId === "string" &&
     ["see", "hear", "context", "recall"].includes(answer.skill) &&
     typeof answer.correct === "boolean" &&
-    Number.isFinite(answer.responseMs) && answer.responseMs >= 0 && answer.responseMs <= 300_000
+    Number.isFinite(answer.responseMs) && answer.responseMs >= 0 && answer.responseMs <= 300_000 &&
+    (answer.responseKind === undefined || ["answered", "unknown"].includes(answer.responseKind)) &&
+    (answer.responseKind !== "unknown" || (answer.skill === "recall" && answer.correct === false))
   ));
 
   if (

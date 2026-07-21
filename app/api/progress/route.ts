@@ -28,6 +28,7 @@ type ProfileRow = {
 };
 
 type SkillKey = "see" | "hear" | "context" | "recall";
+type ResponseKind = "answered" | "unknown";
 
 type ProgressRequest = {
   action?: "heartbeat";
@@ -36,6 +37,7 @@ type ProgressRequest = {
   skill?: SkillKey;
   answer?: string;
   evaluationReceiptId?: string;
+  responseKind?: ResponseKind;
   locale?: "ko" | "en";
   studySeconds?: number;
 };
@@ -181,6 +183,9 @@ export async function GET(request: Request) {
       wordId: wordProgress.wordId,
       mastery: wordProgress.mastery,
       dueAt: wordProgress.dueAt,
+      cycleSkillMask: wordProgress.cycleSkillMask,
+      cycleErrorMask: wordProgress.cycleErrorMask,
+      completedOn: wordProgress.completedOn,
     })
       .from(wordProgress)
       .where(eq(wordProgress.learnerId, learnerId));
@@ -269,6 +274,13 @@ export async function POST(request: Request) {
   ) {
     return Response.json({ error: "invalid progress event" }, { status: 400 });
   }
+  const responseKind = body.responseKind ?? "answered";
+  if (responseKind !== "answered" && responseKind !== "unknown") {
+    return Response.json({ error: "invalid response kind" }, { status: 400 });
+  }
+  if (responseKind === "unknown" && skill !== "recall") {
+    return Response.json({ error: "unknown responses are only supported for recall" }, { status: 400 });
+  }
 
   try {
     const { db, schema } = await getStorage();
@@ -285,7 +297,12 @@ export async function POST(request: Request) {
     let correct: boolean;
     let verifiedScore: number;
     let evaluationReceiptId: string | null = null;
-    if (skill === "recall") {
+    if (responseKind === "unknown") {
+      // "I don't know" is distinct learner evidence: it is not a guessed answer and
+      // must not require an AI evaluation receipt. It still schedules a gentle review.
+      correct = false;
+      verifiedScore = 0;
+    } else if (skill === "recall") {
       evaluationReceiptId = String(body.evaluationReceiptId || "").trim();
       if (!/^eval-[0-9a-f-]{36}$/i.test(evaluationReceiptId)) {
         return Response.json({ error: "a valid recall evaluation receipt is required" }, { status: 400 });
@@ -327,6 +344,7 @@ export async function POST(request: Request) {
         skill,
         correct,
         score: verifiedScore,
+        responseKind,
         evaluationReceiptId,
       }),
       db.insert(wordProgress).values({
@@ -338,6 +356,7 @@ export async function POST(request: Request) {
         dueAt: review.dueAt,
         lastResult: correct,
         cycleSkillMask: review.cycleSkillMask,
+        cycleErrorMask: review.cycleErrorMask,
         cycleHadError: review.cycleHadError,
         completedOn: review.completedOn,
         lastStudiedAt: nowIso,
@@ -349,6 +368,7 @@ export async function POST(request: Request) {
           dueAt: review.dueAt,
           lastResult: correct,
           cycleSkillMask: review.cycleSkillMask,
+          cycleErrorMask: review.cycleErrorMask,
           cycleHadError: review.cycleHadError,
           completedOn: review.completedOn,
           lastStudiedAt: nowIso,

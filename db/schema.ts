@@ -29,6 +29,7 @@ export const wordProgress = sqliteTable("word_progress", {
   dueAt: text("due_at").notNull(),
   lastResult: integer("last_result", { mode: "boolean" }).notNull().default(false),
   cycleSkillMask: integer("cycle_skill_mask").notNull().default(0),
+  cycleErrorMask: integer("cycle_error_mask").notNull().default(0),
   cycleHadError: integer("cycle_had_error", { mode: "boolean" }).notNull().default(false),
   completedOn: text("completed_on"),
   lastStudiedAt: text("last_studied_at").notNull().default(sql`CURRENT_TIMESTAMP`),
@@ -43,6 +44,7 @@ export const evaluationEvents = sqliteTable("evaluation_events", {
   skill: text("skill").notNull(),
   correct: integer("correct", { mode: "boolean" }).notNull(),
   score: integer("score").notNull(),
+  responseKind: text("response_kind").notNull().default("answered"),
   evaluationReceiptId: text("evaluation_receipt_id"),
   createdAt: text("created_at").notNull().default(sql`CURRENT_TIMESTAMP`),
 }, (table) => [

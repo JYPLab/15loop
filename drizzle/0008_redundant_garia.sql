@@ -1,0 +1,1 @@
+ALTER TABLE `evaluation_events` ADD `response_kind` text DEFAULT 'answered' NOT NULL;

@@ -1,0 +1,1 @@
+ALTER TABLE `word_progress` ADD `cycle_error_mask` integer DEFAULT 0 NOT NULL;
