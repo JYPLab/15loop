@@ -2,7 +2,7 @@
 
 import { FormEvent, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { dailyWords, shuffledDailyWords, type VocaWord } from "../data/words";
-import { insertBoundedRetry, prioritizedSkillOrder, type AdaptiveQueueItem } from "../lib/adaptive-queue";
+import { insertBoundedRetry, type AdaptiveQueueItem } from "../lib/adaptive-queue";
 import { entryDestination } from "../lib/entry-routing";
 import { getSupabaseBrowserClient } from "../lib/supabase-browser";
 import { speakEnglish } from "../lib/speech";
@@ -10,7 +10,7 @@ import { speakEnglish } from "../lib/speech";
 type Locale = "ko" | "en";
 type SkillKey = "see" | "hear" | "context" | "recall";
 type FeedbackState = {
-  status: "idle" | "correct" | "retry";
+  status: "idle" | "correct" | "retry" | "unknown";
   text: string;
   source?: "openai" | "local-fallback";
 };
@@ -91,6 +91,9 @@ const copy = {
     correct: "좋아요! 소리와 의미가 정확히 연결됐어요.",
     retry: "괜찮아요. 한 번 더 연결하면 더 오래 기억돼요.",
     retryButton: "다시 해보기",
+    unknown: "괜찮아요. 정답과 소리를 확인하고, 다른 단어를 먼저 만나볼게요.",
+    unknownButton: "모르겠어요 · 다음",
+    nextEncounter: "다음 단어",
     nextStage: "다음 단계",
     seeResult: "결과 보기",
     loopComplete: "LOOP COMPLETE",
@@ -192,6 +195,9 @@ const copy = {
     correct: "Nice. Sound and meaning are connected accurately.",
     retry: "Not yet. One more connection will make this memory stronger.",
     retryButton: "Try again",
+    unknown: "That’s okay. See and hear the answer, then meet other words before this returns.",
+    unknownButton: "I don’t know · Next",
+    nextEncounter: "Next word",
     nextStage: "Next stage",
     seeResult: "See result",
     loopComplete: "LOOP COMPLETE",
@@ -345,7 +351,9 @@ export default function Home() {
     return dailyWords.find((item) => item.id === queueItem?.wordId) ?? dailyWords[0];
   }, [queueItem?.wordId]);
   const activeSkillOrder = useMemo(() => {
-    return prioritizedSkillOrder(queueItem?.focusSkill ?? "see");
+    // One encounter verifies one connection. The adaptive queue determines which
+    // connection returns next, so learners cannot infer answers from a just-seen step.
+    return [queueItem?.focusSkill ?? "see"];
   }, [queueItem?.focusSkill]);
   const stepKey = activeSkillOrder[stepIndex];
   const copySkillIndex = skillOrder.indexOf(stepKey);
@@ -608,7 +616,7 @@ export default function Home() {
 
   const saveResult = async (
     skill: SkillKey,
-    verification: { answer?: string; evaluationReceiptId?: string } = {},
+    verification: { answer?: string; evaluationReceiptId?: string; responseKind?: "unknown" } = {},
   ) => {
     if (!learnerId) return;
     setLastSaved(false);
@@ -644,7 +652,7 @@ export default function Home() {
     evaluationScore = correct ? 92 : 42,
     text?: string,
     source?: FeedbackState["source"],
-    verification: { answer?: string; evaluationReceiptId?: string } = {},
+    verification: { answer?: string; evaluationReceiptId?: string; responseKind?: "unknown" } = {},
   ) => {
     setFeedback({
       status: correct ? "correct" : "retry",
@@ -712,6 +720,18 @@ export default function Home() {
     }
   };
 
+  const markRecallUnknown = () => {
+    if (feedback.status !== "idle" || isChecking) return;
+    setRecall("");
+    setFeedback({ status: "unknown", text: t.unknown });
+    setWordHadError(true);
+    setScores((current) => ({
+      ...current,
+      recall: Math.round(Math.min(98, Math.max(20, current.recall * 0.78 + 42 * 0.22))),
+    }));
+    void saveResult("recall", { responseKind: "unknown" });
+  };
+
   const checkOptionalSentence = async () => {
     if (!optionalSentence.trim() || isCheckingOptional || optionalFeedback.status !== "idle") return;
     setIsCheckingOptional(true);
@@ -773,19 +793,7 @@ export default function Home() {
       return;
     }
 
-    if (stepIndex === activeSkillOrder.length - 1) {
-      if (!completedIds.has(word.id)) {
-        setCompletedIds((current) => new Set(current).add(word.id));
-        if (!isFamilyLearner) setCompletedToday((current) => Math.min(dailyWords.length, current + 1));
-      }
-      setCompleted(true);
-      if (!isFamilyLearner) setAccountOpen(true);
-      return;
-    }
-
-    setStepIndex((current) => current + 1);
-    setSelected("");
-    setFeedback({ status: "idle", text: "" });
+    nextWord();
   };
 
   const nextWord = () => {
@@ -987,7 +995,7 @@ export default function Home() {
 
       <section className="workspace">
         <div className="learn-column">
-          <div className="step-tabs" aria-label="Evaluation stages">
+          <div className="step-tabs encounter-tabs" aria-label="Current learning connection">
             {activeSkillOrder.map((item, index) => (
               <button
                 type="button"
@@ -998,7 +1006,7 @@ export default function Home() {
                 onClick={() => setStageInfo((current) => current === item ? null : item)}
                 key={item}
               >
-                <span>{index < stepIndex || completed ? "✓" : index + 1}</span>
+                <span>{index < stepIndex || completed ? "✓" : "•"}</span>
                 <b>{skillLabels[item]}</b>
               </button>
             ))}
@@ -1107,9 +1115,17 @@ export default function Home() {
                       {isChecking ? t.evaluating : t.evaluate}
                     </button>
                   </div>
-                  {feedback.status === "correct" && (
+                  <button
+                    className="recall-unknown-button"
+                    type="button"
+                    onClick={markRecallUnknown}
+                    disabled={feedback.status !== "idle" || isChecking}
+                  >
+                    {t.unknownButton}
+                  </button>
+                  {(feedback.status === "correct" || feedback.status === "unknown") && (
                     <div className="recall-complete">
-                      <p>{word.example}</p>
+                      <p><b>{word.word}</b> <small>{word.phonetic}</small><br />{word.example}</p>
                       <button type="button" onClick={() => speak(word.example)}>▶ {t.listenAndRepeat}</button>
                     </div>
                   )}
@@ -1166,7 +1182,7 @@ export default function Home() {
                 </div>
                 {feedback.status !== "idle" && (
                   <button className="next-button" onClick={advance}>
-                    {feedback.status === "retry" ? t.retryButton : stepIndex === activeSkillOrder.length - 1 ? t.seeResult : t.nextStage} <span>→</span>
+                    {feedback.status === "retry" ? t.retryButton : t.nextEncounter} <span>→</span>
                   </button>
                 )}
               </div>

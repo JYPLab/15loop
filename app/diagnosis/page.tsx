@@ -8,7 +8,7 @@ import { speakEnglish } from "../../lib/speech";
 
 type SkillKey = "see" | "hear" | "context" | "recall";
 type Question = { word: VocaWord; skill: SkillKey };
-type Answer = { wordId: string; skill: SkillKey; correct: boolean; responseMs: number };
+type Answer = { wordId: string; skill: SkillKey; correct: boolean; responseMs: number; responseKind?: "answered" | "unknown" };
 type ScoreMap = Record<SkillKey, number>;
 type Result = { sessionId: string; guestLearnerId: string; answers: Answer[]; scores: ScoreMap; level: string };
 
@@ -146,6 +146,7 @@ export default function DiagnosisPage() {
   const [recall, setRecall] = useState("");
   const [answered, setAnswered] = useState(false);
   const [lastCorrect, setLastCorrect] = useState(false);
+  const [lastResponseKind, setLastResponseKind] = useState<"answered" | "unknown">("answered");
   const [extended, setExtended] = useState(false);
   const [startedAt, setStartedAt] = useState(() => Date.now());
   const [result, setResult] = useState<Result | null>(null);
@@ -211,13 +212,14 @@ export default function DiagnosisPage() {
     void persistResult(nextResult);
   };
 
-  const submitAnswer = (value: string) => {
+  const submitAnswer = (value: string, responseKind: "answered" | "unknown" = "answered") => {
     if (!question || answered) return;
     const normalized = value.toLowerCase().replace(/[^a-z가-힣]/g, "");
     const target = correctValue(question).toLowerCase().replace(/[^a-z가-힣]/g, "");
-    const correct = normalized === target;
+    const correct = responseKind === "unknown" ? false : normalized === target;
     setSelected(value);
     setLastCorrect(correct);
+    setLastResponseKind(responseKind);
     setAnswered(true);
     if (question.skill !== "see") speak(question.word.word);
   };
@@ -227,6 +229,8 @@ export default function DiagnosisPage() {
     if (recall.trim()) submitAnswer(recall.trim());
   };
 
+  const markRecallUnknown = () => submitAnswer("", "unknown");
+
   const advance = () => {
     if (!question) return;
     const nextAnswers = [...answers, {
@@ -234,6 +238,7 @@ export default function DiagnosisPage() {
       skill: question.skill,
       correct: lastCorrect,
       responseMs: Math.min(300_000, Math.max(0, Date.now() - startedAt)),
+      responseKind: lastResponseKind,
     }];
     setAnswers(nextAnswers);
 
@@ -259,6 +264,7 @@ export default function DiagnosisPage() {
     setRecall("");
     setAnswered(false);
     setLastCorrect(false);
+    setLastResponseKind("answered");
     setStartedAt(Date.now());
   };
 
@@ -416,6 +422,7 @@ export default function DiagnosisPage() {
           <form className="diagnosis-recall" onSubmit={submitRecall}>
             <label htmlFor="diagnosis-recall">‘{question.word.meaningKo}’에 해당하는 영어 단어를 직접 써보세요.</label>
             <div><input id="diagnosis-recall" value={recall} onChange={(event) => setRecall(event.target.value)} disabled={answered} autoFocus autoComplete="off" /><button disabled={!recall.trim() || answered}>확인</button></div>
+            <button className="diagnosis-unknown-button" type="button" onClick={markRecallUnknown} disabled={answered}>모르겠어요 · 다음</button>
           </form>
         )}
 
