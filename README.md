@@ -143,3 +143,12 @@ This project was built during OpenAI Build Week through a continuous Codex colla
 - **GPT-5.6 contribution:** GPT-5.6 is the runtime evaluator for active recall. It judges semantic equivalence more intelligently than string matching and produces structured bilingual feedback. GPT-5.6 was also the reasoning model used with Codex for architecture and implementation decisions.
 
 The git history and the Build Week Codex session provide timestamped evidence of the implementation completed during the submission period.
+
+
+## License
+
+Copyright (C) 2026 JYPLab.
+
+The 15Loop source code is licensed under the [GNU Affero General Public License v3.0 only](LICENSE). If you run a modified version as a network service, you must offer its corresponding source code as required by the license.
+
+The 15Loop name, logo, domain, and other brand identifiers are not licensed for reuse. Third-party dependencies remain subject to their own licenses.
